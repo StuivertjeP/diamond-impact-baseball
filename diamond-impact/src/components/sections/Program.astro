@@ -1,0 +1,121 @@
+---
+import { schedule } from '../../data/schedule';
+import type { BadgeType } from '../../data/schedule';
+
+const badgeLabel: Record<NonNullable<BadgeType>, string> = {
+  skills: 'Skills',
+  game: 'Game',
+  faith: 'Opt.',
+};
+---
+<section class="section program" id="program" aria-labelledby="prog-h">
+  <div class="container">
+    <div class="sh reveal">
+      <p class="label-tag">Twee volle dagen</p>
+      <h2 class="impact sh-title" id="prog-h">HET <em>PROGRAMMA</em></h2>
+    </div>
+
+    <div class="program-layout">
+      <!-- Sticky price card -->
+      <div class="price-card reveal">
+        <div class="early-flag">Early Bird Prijs</div>
+        <div class="price-num"><sup>€</sup>140</div>
+        <p class="price-after">Early bird t/m 15 juni &nbsp;·&nbsp; daarna <s>→ €160</s> &nbsp;·&nbsp; All-in</p>
+
+        <ul class="price-list">
+          {[
+            "2 volledige dagen honkbaltraining",
+            "Alle maaltijden & snacks inbegrepen",
+            "Coaches met MLB / MiLB & NL ervaring",
+            "Kleine groepssessies & getuigenissen",
+            "Avondprogramma met muziek (optioneel)",
+            "Diamond Impact T-shirt",
+            "Geen overnachting nodig",
+          ].map(item => (
+            <li>
+              <span class="chk">
+                <svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5"/></svg>
+              </span>
+              {item}
+            </li>
+          ))}
+        </ul>
+
+        <div class="deadline-note">
+          Inschrijven vóór <strong>31 juli 2026</strong><br/>
+          HCAW Complex · Zanderijweg 4–6, 1403 XV Bussum
+        </div>
+
+        <a href="#signup" class="btn btn-gold" style="width:100%;justify-content:center;font-size:.8rem;">
+          Nu inschrijven — €140
+        </a>
+        <p style="font-size:.68rem;color:var(--mist-dark);text-align:center;margin-top:.75rem;">
+          Contact: <a href="mailto:vrooi@celebrationchurch.nl" style="color:var(--gold-dim);">vrooi@celebrationchurch.nl</a>
+        </p>
+      </div>
+
+      <!-- Schedule tabs -->
+      <div class="reveal d2">
+        <div class="sched-tabs" role="tablist">
+          <button class="sched-tab active" data-day="1" role="tab" aria-selected="true" aria-controls="day1">
+            Dag 1 — Zat 11 aug
+          </button>
+          <button class="sched-tab" data-day="2" role="tab" aria-selected="false" aria-controls="day2">
+            Dag 2 — Zon 12 aug
+          </button>
+        </div>
+
+        <div class="sched-body active" id="day1" role="tabpanel">
+          {schedule.day1.map(item => (
+            <div class="sched-row">
+              <div class="sched-time">{item.time}</div>
+              <div class="sched-desc">{item.desc}</div>
+              {item.badge
+                ? <span class={`sched-badge badge-${item.badge}`}>{badgeLabel[item.badge]}</span>
+                : <span></span>
+              }
+            </div>
+          ))}
+        </div>
+
+        <div class="sched-body" id="day2" role="tabpanel">
+          {schedule.day2.map(item => (
+            <div class="sched-row">
+              <div class="sched-time">{item.time}</div>
+              <div class="sched-desc">{item.desc}</div>
+              {item.badge
+                ? <span class={`sched-badge badge-${item.badge}`}>{badgeLabel[item.badge]}</span>
+                : <span></span>
+              }
+            </div>
+          ))}
+        </div>
+
+        <div class="note-strip" style="margin-top:2px;">
+          <p class="note-strip-label">Let op</p>
+          <p>
+            Alle geloofsmomenten zijn <strong style="color:var(--off-white);">volledig vrijwillig</strong>.
+            Gemarkeerd met <span class="sched-badge badge-faith" style="display:inline-block;">Opt.</span> — jij kiest wat je bijwoont.
+            Het kamp is open voor iedereen, ongeacht geloofsachtergrond.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.sched-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const day = (tab as HTMLElement).dataset.day;
+      document.querySelectorAll('.sched-tab').forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.sched-body').forEach(b => b.classList.remove('active'));
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      document.getElementById('day' + day)!.classList.add('active');
+    });
+  });
+</script>

@@ -1,0 +1,22 @@
+---
+const items = [
+  "Diamond Impact Baseball",
+  "11–12 Augustus 2026",
+  "HCAW Complex Bussum",
+  "Minor League & Major League Coaches",
+  "€140 Early Bird · Na 15 juni €160",
+  "Leeftijden 12–18 Jaar",
+  "Inschrijven vóór 31 Juli 2026",
+  "FCA Netherlands · Celebration Church Hilversum",
+];
+---
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    {items.map(item => (
+      <span class="ticker-item">{item}<span class="ticker-sep">◆</span></span>
+    ))}
+    {items.map(item => (
+      <span class="ticker-item">{item}<span class="ticker-sep">◆</span></span>
+    ))}
+  </div>
+</div>

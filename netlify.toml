@@ -1,0 +1,3 @@
+# Statische landingspagina (index.html in projectroot)
+[build]
+  publish = "."

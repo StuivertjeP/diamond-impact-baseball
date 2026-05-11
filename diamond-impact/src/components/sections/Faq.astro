@@ -1,0 +1,51 @@
+---
+import { faqs } from '../../data/faq';
+---
+<section class="section faq" id="faq" aria-labelledby="faq-h">
+  <div class="container">
+    <div class="sh reveal" style="text-align:center;">
+      <p class="label-tag" style="justify-content:center;margin-bottom:1rem;">Vragen?</p>
+      <h2 class="impact sh-title" id="faq-h" style="text-align:center;font-size:clamp(2.5rem,6vw,5rem);">
+        <em>ANTWOORDEN</em>
+      </h2>
+    </div>
+
+    <div class="faq-list reveal d1">
+      {faqs.map(item => (
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            {item.q}
+            <span class="faq-icon">
+              <svg viewBox="0 0 10 10">
+                <line x1="5" y1="2" x2="5" y2="8"/>
+                <line x1="2" y1="5" x2="8" y2="5"/>
+              </svg>
+            </span>
+          </button>
+          <div class="faq-a" set:html={item.a}></div>
+        </div>
+      ))}
+    </div>
+
+    <div class="reveal" style="text-align:center;margin-top:3rem;">
+      <p style="font-size:.875rem;color:var(--mist);margin-bottom:1.25rem;">Nog een vraag?</p>
+      <a href="mailto:vrooi@celebrationchurch.nl" class="btn btn-outline">Mail Vince</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q')!.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-q')!.setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        item.querySelector('.faq-q')!.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>

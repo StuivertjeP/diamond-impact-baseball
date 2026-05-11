@@ -1,0 +1,42 @@
+---
+const problems = [
+  "Angst om fouten te maken zorgt dat je niet je beste honkbal speelt — je kop is bezig met gevolgen, niet met het spel",
+  "Resultaat bepaalt je zelfgevoel. Een slechte wedstrijd voelt als een slechte dag als mens",
+  "Er is nauwelijks plek voor het mentale spel — coaches praten over techniek, maar zelden over wat er in je hoofd gebeurt",
+  "Je vraagt je af waarom je speelt. Plezier en betekenis voelen ver weg, zeker als de druk hoog is",
+];
+---
+<section class="section problem" id="problem" aria-labelledby="prob-h">
+  <div class="container">
+    <div class="prob-grid">
+      <div class="reveal">
+        <p class="label-tag" style="margin-bottom:1.5rem;">De realiteit van jonge spelers</p>
+        <blockquote class="big-quote" id="prob-h">
+          JE HOEFT<br/>
+          JEZELF<br/>
+          <em>NIET TE<br/>BEWIJZEN.</em>
+        </blockquote>
+        <p style="margin-top:1.75rem;font-size:.95rem;color:var(--mist);line-height:1.8;max-width:400px;">
+          Veel jonge spelers spelen niet vrij. Ze spelen om te bewijzen dat ze goed genoeg zijn — en dat vreet energie. Diamond Impact draait dit om.
+        </p>
+      </div>
+
+      <div class="reveal d2">
+        <p style="font-size:.8rem;color:var(--mist-dark);margin-bottom:1.75rem;font-family:var(--font-cond);font-weight:700;letter-spacing:.12em;text-transform:uppercase;">
+          Herken jij dit?
+        </p>
+        <ul class="prob-list">
+          {problems.map((text, i) => (
+            <li>
+              <span class="prob-num">{String(i + 1).padStart(2, '0')}</span>
+              <span>{text}</span>
+            </li>
+          ))}
+        </ul>
+        <div style="margin-top:2rem;">
+          <a href="#signup" class="btn btn-gold" style="font-size:.78rem;">Dit kamp is voor jou →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

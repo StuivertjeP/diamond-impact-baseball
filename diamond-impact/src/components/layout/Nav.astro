@@ -1,0 +1,70 @@
+---
+---
+<nav class="nav" id="nav" aria-label="Hoofdnavigatie">
+  <a href="#" class="nav-brand">
+    <div class="nav-wordmark">
+      <span class="nav-brand-main">DIAMOND IMPACT</span>
+      <span class="nav-brand-sub">Baseball Camp 2026</span>
+    </div>
+
+    <div class="nav-logos" aria-label="Partners">
+      <div class="nav-logo-wrap" title="Fellowship of Christian Athletes">
+        <svg width="28" height="32" viewBox="0 0 28 32" fill="none" aria-label="FCA">
+          <path d="M14 1L2 6V17C2 23.6 7.4 29.4 14 31C20.6 29.4 26 23.6 26 17V6L14 1Z"
+                fill="#D4942A" stroke="#9A6A18" stroke-width=".75"/>
+          <rect x="12.5" y="7" width="3" height="17" rx=".5" fill="#060B14"/>
+          <rect x="7" y="13" width="14" height="3" rx=".5" fill="#060B14"/>
+        </svg>
+        <span class="nav-logo-name">FCA</span>
+      </div>
+
+      <div style="width:1px;height:24px;background:rgba(74,154,236,.15);"></div>
+
+      <div class="nav-logo-wrap" title="Celebration Church Hilversum">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-label="Celebration Church">
+          <path d="M22 5.5A12 12 0 1 0 22 22.5" stroke="#EEF2F8" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M19 9A7 7 0 1 0 19 19" stroke="#8EA8C8" stroke-width="1.75" stroke-linecap="round" fill="none"/>
+        </svg>
+        <span class="nav-logo-name">Celebration</span>
+      </div>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#problem">Waarom dit kamp</a></li>
+    <li><a href="#coaches">Coaches</a></li>
+    <li><a href="#program">Programma</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+
+  <a href="#signup" class="btn btn-gold nav-register" style="padding:.65rem 1.4rem;font-size:.72rem;">
+    Inschrijven — €140
+  </a>
+
+  <button class="hamburger" id="hamburger" aria-label="Menu openen">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mob-menu" id="mobMenu" role="dialog" aria-modal="true" aria-label="Navigatiemenu">
+  <button class="mob-menu-close" id="mobClose" aria-label="Menu sluiten">✕</button>
+  <a href="#problem" class="mob-link">Waarom dit kamp</a>
+  <a href="#coaches" class="mob-link">Coaches</a>
+  <a href="#program" class="mob-link">Programma</a>
+  <a href="#signup" class="mob-link">Inschrijven</a>
+  <a href="#faq" class="mob-link" style="font-size:1.8rem;color:var(--mist);">FAQ</a>
+</div>
+
+<script>
+  const nav = document.getElementById('nav')!;
+  const syncNav = () => nav.classList.toggle('scrolled', scrollY > 50);
+  addEventListener('scroll', syncNav, { passive: true });
+  syncNav();
+
+  const mobMenu = document.getElementById('mobMenu')!;
+  const openMenu  = () => { mobMenu.classList.add('open'); document.body.style.overflow = 'hidden'; };
+  const closeMenu = () => { mobMenu.classList.remove('open'); document.body.style.overflow = ''; };
+  document.getElementById('hamburger')!.addEventListener('click', openMenu);
+  document.getElementById('mobClose')!.addEventListener('click', closeMenu);
+  document.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', closeMenu));
+</script>

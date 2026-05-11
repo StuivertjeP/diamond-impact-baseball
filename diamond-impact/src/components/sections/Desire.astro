@@ -1,0 +1,42 @@
+---
+const pillars = [
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-bright)" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M5.5 5.5c1 1.5 1.5 3 1.5 6.5s-.5 5-1.5 6.5"/><path d="M18.5 5.5c-1 1.5-1.5 3-1.5 6.5s.5 5 1.5 6.5"/></svg>`,
+    num: "01",
+    title: "SKILL",
+    body: "Hands-on training van coaches die op het hoogste niveau gespeeld en gecoacht hebben. Pitchen, slaan, veldspel — echte reps met echte feedback.",
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>`,
+    num: "02",
+    title: "KARAKTER",
+    body: "Kleine groepssessies over leiderschap, mentale weerbaarheid en wat het echt betekent om een goede teamgenoot te zijn — de dingen die coaches graag zouden onderwijzen.",
+  },
+  {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-mid)" stroke-width="1.5"><path d="M12 21c-5-3-9-7-9-12a9 9 0 0118 0c0 5-4 9-9 12z"/><circle cx="12" cy="9" r="2"/></svg>`,
+    num: "03",
+    title: "DOEL",
+    body: "Optionele geloofsmomenten — getuigenissen, muziek, gesprekken. Nooit druk, nooit preken. Een eerlijke blik op wat ons drijft en waarom we spelen.",
+  },
+];
+---
+<section class="section transform" id="transform" aria-labelledby="trans-h">
+  <div class="container">
+    <p class="label-tag reveal" style="display:block;text-align:center;margin-bottom:1rem;">Wat je meeneemt</p>
+    <h2 class="impact trans-headline reveal d1" id="trans-h">GROEI IN <em>ALLES</em></h2>
+    <p class="trans-sub reveal d2">
+      Twee dagen. Echte coaches. Echte gesprekken. Honkbal eerst — geloof en karakter als fundament dat alles in perspectief zet.
+    </p>
+
+    <div class="pillars reveal d3">
+      {pillars.map(p => (
+        <div class="pillar">
+          <div class="pillar-icon" set:html={p.icon}></div>
+          <span class="pillar-num">{p.num}</span>
+          <h3>{p.title}</h3>
+          <p>{p.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
