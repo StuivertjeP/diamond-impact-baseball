@@ -177,6 +177,14 @@
       white-space: nowrap;
       opacity: .7;
     }
+    .nav-logo-img {
+      display: block;
+      height: clamp(26px, 3.8vw, 32px);
+      width: auto;
+      max-width: min(104px, 22vw);
+      object-fit: contain;
+      object-position: center;
+    }
 
     .nav-links { display: none; list-style: none; gap: 2rem; align-items: center; margin-left: auto; flex-shrink: 0; padding: 0; }
     @media (min-width:768px) { .nav-links { display: flex; } }
@@ -462,7 +470,26 @@
 
     .partner-card { background:var(--navy-3); border:1px solid rgba(30,95,173,.18); padding:2rem 2.25rem; display:flex; align-items:center; gap:1.5rem; transition:border-color .3s; }
     .partner-card:hover { border-color:rgba(212,148,42,.3); }
-    .partner-logo { width:56px; height:56px; border:2px solid rgba(212,148,42,.35); border-radius:2px; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:'Bebas Neue',sans-serif; font-size:1.1rem; color:var(--gold); letter-spacing:.04em; }
+    .partner-logo {
+      width: 88px;
+      height: 56px;
+      padding: 6px;
+      border: 2px solid rgba(212,148,42,.35);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: rgba(6,11,20,.35);
+      box-sizing: border-box;
+    }
+    .partner-logo--img img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
     .partner-card-text h4 { font-family:'Bebas Neue',sans-serif; font-size:1.1rem; color:var(--white); letter-spacing:.05em; }
     .partner-card-text p  { font-size:.8rem; color:var(--mist); line-height:1.55; margin-top:.25rem; }
 
@@ -613,31 +640,14 @@
       <!-- Partner logos — hidden on small mobile -->
       <div class="nav-logos" aria-label="Partners">
 
-        <!-- FCA logo mark: classic shield + cross -->
-        <div class="nav-logo-wrap" title="Fellowship of Christian Athletes">
-          <svg width="28" height="32" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="FCA">
-            <!-- Shield body -->
-            <path d="M14 1L2 6V17C2 23.6 7.4 29.4 14 31C20.6 29.4 26 23.6 26 17V6L14 1Z"
-                  fill="#D4942A" stroke="#9A6A18" stroke-width=".75"/>
-            <!-- Cross vertical bar -->
-            <rect x="12.5" y="7" width="3" height="17" rx=".5" fill="#060B14"/>
-            <!-- Cross horizontal bar -->
-            <rect x="7" y="13" width="14" height="3" rx=".5" fill="#060B14"/>
-          </svg>
-          <span class="nav-logo-name">FCA</span>
+        <div class="nav-logo-wrap" title="FCA Netherlands">
+          <img class="nav-logo-img" src="assets/images/FCA-Logo.png" alt="FCA Netherlands" width="120" height="40" decoding="async" />
         </div>
 
-        <div style="width:1px;height:24px;background:rgba(74,154,236,.15);"></div>
+        <div style="width:1px;height:24px;background:rgba(74,154,236,.15);flex-shrink:0;" aria-hidden="true"></div>
 
-        <!-- Celebration Church logo mark: stylised C arc -->
-        <div class="nav-logo-wrap" title="Celebration Church Hilversum">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Celebration Church">
-            <!-- Outer C arc -->
-            <path d="M22 5.5A12 12 0 1 0 22 22.5" stroke="#EEF2F8" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-            <!-- Inner C arc — thinner, offset -->
-            <path d="M19 9A7 7 0 1 0 19 19" stroke="#8EA8C8" stroke-width="1.75" stroke-linecap="round" fill="none"/>
-          </svg>
-          <span class="nav-logo-name">Celebration</span>
+        <div class="nav-logo-wrap" title="Celebration Church Nederland">
+          <img class="nav-logo-img" src="assets/images/CCNL-logo.webp" alt="Celebration Church Nederland" width="120" height="40" decoding="async" />
         </div>
       </div>
     </a>
@@ -916,14 +926,18 @@
 
       <div class="partner-bar reveal">
         <div class="partner-card">
-          <div class="partner-logo">FCA</div>
+          <div class="partner-logo partner-logo--img">
+            <img src="assets/images/FCA-Logo.png" alt="" width="160" height="80" decoding="async" />
+          </div>
           <div class="partner-card-text">
             <h4>FCA Netherlands</h4>
             <p>Fellowship of Christian Athletes — meer dan 70 jaar actief in sport en geloof in 100+ landen. Verantwoordelijk voor de optionele geloofsmomenten, altijd sportergestuurd.</p>
           </div>
         </div>
         <div class="partner-card">
-          <div class="partner-logo" style="font-size:.65rem;letter-spacing:.01em;text-align:center;line-height:1.2;">CEL<br/>CHU</div>
+          <div class="partner-logo partner-logo--img">
+            <img src="assets/images/CCNL-logo.webp" alt="" width="160" height="80" decoding="async" />
+          </div>
           <div class="partner-card-text">
             <h4>Celebration Church Hilversum</h4>
             <p>Mede-organisator van Diamond Impact. Praktische logistiek, gemeenschap en een plek waar iedereen welkom is — gelovig of niet.</p>
