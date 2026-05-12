@@ -64,16 +64,13 @@
     #feedback{height:20px;font-size:8px;letter-spacing:.08em;display:flex;align-items:center;justify-content:center;margin-top:2px;}
     .fb-catch{color:var(--goldL);} .fb-miss{color:var(--red);} .fb-bonus{color:var(--goldBr);}
 
-    /* Mobile controls */
-    #controls{display:none;width:100%;justify-content:space-between;padding:.5rem 0 0;gap:.5rem;}
-    @media(pointer:coarse){#controls{display:flex;}}
-    .ctrl-btn{
-      flex:1;font-family:'Press Start 2P',monospace;font-size:14px;
-      color:var(--gold);background:var(--navy2);border:2px solid var(--navy3);
-      padding:14px 0;cursor:pointer;-webkit-tap-highlight-color:transparent;
-      transition:background .1s;
+    /* Touch joystick overlay — shown on touch devices */
+    #joystick-hint{
+      display:none;
+      font-size:6px;letter-spacing:.1em;text-transform:uppercase;
+      color:var(--mist-dark);opacity:.5;margin-top:4px;text-align:center;
     }
-    .ctrl-btn:active{background:var(--navy3);}
+    @media(pointer:coarse){#joystick-hint{display:block;}}
   </style>
 </head>
 <body>
@@ -94,8 +91,9 @@
       <div class="ov-sub" id="ov-sub">
         VANG ALLE BALLEN<br/>
         DIE NEERKOMEN<br/><br/>
-        ← → PIJLTJES OF A/D<br/>
-        OP MOBIEL: GEBRUIK<br/>DE KNOPPEN HIERONDER
+        SLEEP JE VINGER<br/>
+        OM TE BEWEGEN<br/><br/>
+        ← → PIJLTJES OF A/D
       </div>
       <div class="ov-score hidden" id="ov-score">SCORE: <span id="final-score">0</span></div>
       <button class="play-btn" id="play-btn">▶ START</button>
@@ -104,10 +102,7 @@
 
   <div id="feedback">&nbsp;</div>
 
-  <div id="controls">
-    <button class="ctrl-btn" id="btn-left">◀</button>
-    <button class="ctrl-btn" id="btn-right">▶</button>
-  </div>
+  <div id="joystick-hint">sleep je vinger op het scherm om te bewegen</div>
 </div>
 
 <script>
@@ -455,7 +450,7 @@ function loop(){
   requestAnimationFrame(loop);
 }
 
-/* ── INPUT ── */
+/* ── INPUT — keyboard ── */
 window.addEventListener('keydown',e=>{
   keys[e.key]=true;
   if(['ArrowLeft','ArrowRight',' '].includes(e.key)) e.preventDefault();
@@ -465,17 +460,38 @@ window.addEventListener('keyup',e=>{keys[e.key]=false;});
 
 document.getElementById('play-btn').addEventListener('click',startGame);
 
-function hold(k,on){ if(on) keys[k]=true; else delete keys[k]; }
-const bL=document.getElementById('btn-left');
-const bR=document.getElementById('btn-right');
-['touchstart','mousedown'].forEach(ev=>{
-  bL.addEventListener(ev,e=>{e.preventDefault();hold('ArrowLeft',true);});
-  bR.addEventListener(ev,e=>{e.preventDefault();hold('ArrowRight',true);});
-});
-['touchend','mouseup','mouseleave'].forEach(ev=>{
-  bL.addEventListener(ev,()=>hold('ArrowLeft',false));
-  bR.addEventListener(ev,()=>hold('ArrowRight',false));
-});
+/* ── INPUT — touch: drag finger to move player directly ── */
+let touchX = null;   // last touch X on canvas
+let touchStartX = null;
+let playerStartX = null;
+
+function canvasTouchX(e) {
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = W / rect.width;
+  return (e.touches[0].clientX - rect.left) * scaleX;
+}
+
+canvas.addEventListener('touchstart', e => {
+  e.preventDefault();
+  if(state !== 'playing') { startGame(); return; }
+  touchStartX  = canvasTouchX(e);
+  playerStartX = player.x;
+  touchX       = touchStartX;
+}, { passive: false });
+
+canvas.addEventListener('touchmove', e => {
+  e.preventDefault();
+  if(state !== 'playing') return;
+  touchX = canvasTouchX(e);
+  /* Move player relative to drag delta — feels like dragging the fielder */
+  const delta = touchX - touchStartX;
+  player.x = Math.max(PLAYER_W/2, Math.min(W - PLAYER_W/2, playerStartX + delta));
+}, { passive: false });
+
+canvas.addEventListener('touchend', e => {
+  e.preventDefault();
+  touchX = null;
+}, { passive: false });
 
 loop();
 </script>

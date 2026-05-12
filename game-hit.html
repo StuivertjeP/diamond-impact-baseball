@@ -55,13 +55,13 @@
     #hint{display:flex;align-items:center;gap:10px;margin-top:4px;opacity:.45;}
     .key-box{border:2px solid var(--mist);border-radius:3px;padding:4px 18px;font-size:7px;color:var(--mist);letter-spacing:.1em;}
     #hint span{font-size:6px;color:var(--mist);letter-spacing:.1em;}
-    #tap-btn{
-      display:none;position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);
-      font-family:'Press Start 2P',monospace;font-size:8px;
-      background:rgba(212,148,42,.15);color:var(--gold);border:2px solid var(--gold);
-      padding:12px 24px;cursor:pointer;letter-spacing:.1em;z-index:10;
+    /* Tap hint for touch — no button needed, whole canvas is tappable */
+    @media(pointer:coarse){#hint{display:none;}}
+    #touch-hint{
+      display:none;font-size:6px;letter-spacing:.1em;text-transform:uppercase;
+      color:var(--mist-dark);opacity:.5;margin-top:4px;text-align:center;
     }
-    @media(pointer:coarse){#tap-btn{display:block;}#hint{display:none;}}
+    @media(pointer:coarse){#touch-hint{display:block;}}
   </style>
 </head>
 <body>
@@ -78,15 +78,15 @@
     <canvas id="canvas"></canvas>
     <div id="overlay">
       <div class="ov-title" id="ov-title">HIT THE BALL</div>
-      <div class="ov-sub" id="ov-sub">DRUK OP SPATIEBALK<br/>OP HET JUISTE MOMENT<br/>OM DE BAL TE RAKEN</div>
+      <div class="ov-sub" id="ov-sub">TIK OP HET SCHERM<br/>OF DRUK OP SPATIEBALK<br/>OP HET JUISTE MOMENT<br/>OM DE BAL TE RAKEN</div>
       <div class="ov-score hidden" id="ov-score">SCORE: <span id="final-score">0</span></div>
       <button class="play-btn" id="play-btn">▶ START</button>
     </div>
   </div>
   <div id="feedback">&nbsp;</div>
   <div id="hint"><div class="key-box">SPATIEBALK</div><span>OM TE SLAAN</span></div>
+  <div id="touch-hint">tik op het scherm om te slaan</div>
 </div>
-<button id="tap-btn">⚾ SWING</button>
 
 <script>
 const canvas=document.getElementById('canvas'),ctx=canvas.getContext('2d');
@@ -292,18 +292,41 @@ function update(){
   }
   if(swingAnim>0) swingAnim--;
 }
+function drawTapHint(){
+  /* Only show on touch, when ball is approaching */
+  if(state!=='playing'||!ball.active) return;
+  const prog=(ball.y-PY)/(PLATEY-PY);
+  if(prog<0.5) return;
+  const alpha=Math.min(1,(prog-0.5)/0.3)*0.35;
+  ctx.globalAlpha=alpha;
+  ctx.font=`7px 'Press Start 2P',monospace`;
+  ctx.fillStyle=C.gold;
+  ctx.textAlign='center';
+  ctx.fillText('TIK!',PLATEX,PLATEY+40);
+  ctx.globalAlpha=1;
+  ctx.textAlign='left';
+}
+
 function loop(){
   ctx.clearRect(0,0,W,H);
   drawField(); drawHitZone(); drawParticles();
-  drawBall(); drawPitcher(); drawBatter(); drawSwingResult(); drawCombo();
+  drawBall(); drawPitcher(); drawBatter(); drawSwingResult(); drawCombo(); drawTapHint();
   update(); requestAnimationFrame(loop);
 }
 document.addEventListener('keydown',e=>{
   if(e.code==='Space'){e.preventDefault();if(state!=='playing') startGame(); else swing();}
 });
 document.getElementById('play-btn').addEventListener('click',startGame);
-document.getElementById('tap-btn').addEventListener('click',()=>{if(state!=='playing') startGame(); else swing();});
-canvas.addEventListener('click',()=>{if(state==='playing') swing();});
+
+/* ── Touch: tap anywhere on canvas to swing ── */
+canvas.addEventListener('touchstart', e=>{
+  e.preventDefault();
+  if(state !== 'playing') { startGame(); return; }
+  swing();
+}, { passive: false });
+
+/* Also keep mouse click for desktop */
+canvas.addEventListener('click', ()=>{ if(state==='playing') swing(); });
 loop();
 </script>
 </body>
