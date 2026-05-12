@@ -634,6 +634,116 @@
     .faq-a { display:none; padding:0 1.5rem 1.25rem; font-size:.875rem; color:var(--mist); line-height:1.8; }
     .faq-item.open .faq-a { display:block; }
 
+    /* ════════════════════════════════  RETRO GAMES (modal)  ══ */
+    .game-teaser {
+      background: var(--navy-4);
+      border-block: 1px solid rgba(30, 95, 173, .22);
+      padding-block: clamp(3.5rem, 8vw, 5rem);
+    }
+    .game-teaser-inner { max-width: 42rem; margin-inline: auto; text-align: center; }
+    .game-teaser-lede {
+      font-size: .925rem;
+      color: var(--mist);
+      line-height: 1.75;
+      margin-top: 1rem;
+      margin-bottom: 1.75rem;
+    }
+    .game-teaser-btns { display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center; }
+
+    .game-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 220;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: max(.75rem, env(safe-area-inset-top)) max(.75rem, env(safe-area-inset-right))
+        max(.75rem, env(safe-area-inset-bottom)) max(.75rem, env(safe-area-inset-left));
+    }
+    .game-modal[hidden] { display: none !important; }
+    .game-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      border: none;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      background: rgba(6, 11, 20, .92);
+      backdrop-filter: blur(10px);
+    }
+    .game-modal-dialog {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 620px);
+      max-height: min(92dvh, 820px);
+      display: flex;
+      flex-direction: column;
+      background: var(--navy-2);
+      border: 1px solid rgba(74, 154, 236, .28);
+      border-radius: 3px;
+      box-shadow: 0 28px 100px rgba(0, 0, 0, .55);
+      overflow: hidden;
+    }
+    .game-modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .75rem;
+      padding: .55rem .85rem;
+      border-bottom: 1px solid rgba(30, 95, 173, .22);
+      flex-shrink: 0;
+      background: var(--navy-3);
+    }
+    .game-modal-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.05rem;
+      letter-spacing: .08em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin: 0;
+      line-height: 1.1;
+    }
+    .game-modal-close {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      line-height: 1;
+      color: var(--mist);
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 2px;
+      cursor: pointer;
+      transition: color .2s, border-color .2s;
+    }
+    .game-modal-close:hover { color: var(--gold); border-color: rgba(212, 148, 42, .45); }
+    .game-modal-frame-wrap {
+      flex: 1;
+      min-height: 200px;
+      background: #060b14;
+    }
+    .game-modal-frame-wrap iframe {
+      display: block;
+      width: 100%;
+      height: min(76dvh, 680px);
+      border: 0;
+    }
+    @media (max-width: 639px) {
+      .game-modal { align-items: stretch; padding: 0; }
+      .game-modal-dialog {
+        width: 100%;
+        max-height: 100svh;
+        border-radius: 0;
+      }
+      .game-modal-frame-wrap iframe {
+        height: calc(100dvh - 48px);
+        min-height: 50vh;
+      }
+    }
+
     /* ════════════════════════════════  FINAL CTA  ══ */
     .final-cta { background:var(--navy-2); text-align:center; padding-block:clamp(5rem,10vw,8rem); position:relative; overflow:hidden; }
     .final-cta::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(30,95,173,.1) 0%,transparent 70%); pointer-events:none; }
@@ -714,6 +824,7 @@
     <a href="#program" class="mob-link">Programma</a>
     <a href="#signup" class="mob-link">Inschrijven</a>
     <a href="#faq" class="mob-link" style="font-size:1.8rem;color:var(--mist);">FAQ</a>
+    <a href="#games" class="mob-link" style="font-size:2rem;">Retro games</a>
   </div>
 
   <!-- ══════════════ HERO ══════════════ -->
@@ -1209,6 +1320,39 @@
     </div>
   </section>
 
+  <!-- ══════════════ RETRO GAMES ══════════════ -->
+  <section class="game-teaser" id="games" aria-labelledby="games-h">
+    <div class="container game-teaser-inner reveal">
+      <p class="label-tag" style="justify-content:center;">Even pauzeren?</p>
+      <h2 class="impact" id="games-h" style="font-size:clamp(2.2rem,5.5vw,3.5rem);color:var(--white);margin-top:.5rem;">
+        RETRO <em style="color:var(--blue-bright);font-style:normal;">ARCADE</em>
+      </h2>
+      <p class="game-teaser-lede">
+        Twee browser-spelletjes in oude-school stijl: <strong style="color:var(--off-white);font-weight:600;">Field Catch</strong> (vangen)
+        en <strong style="color:var(--off-white);font-weight:600;">Hit The Ball</strong> (slaan).
+        Open het arcade-menu voor tabs en uitleg — of spring direct een game in.
+      </p>
+      <div class="game-teaser-btns">
+        <button type="button" class="btn btn-gold" data-game-open data-game-src="files/games.html" data-game-title="Diamond Impact — Games">Open arcade-menu</button>
+        <button type="button" class="btn btn-outline" data-game-open data-game-src="files/game.html" data-game-title="Field Catch — Diamond Impact">Alleen vangen</button>
+        <button type="button" class="btn btn-outline" data-game-open data-game-src="files/game-hit.html" data-game-title="Hit The Ball — Diamond Impact">Alleen slaan</button>
+      </div>
+    </div>
+  </section>
+
+  <div id="gameModal" class="game-modal" hidden aria-hidden="true">
+    <button type="button" class="game-modal-backdrop" data-game-close tabindex="-1" aria-label="Sluit spel"></button>
+    <div class="game-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="gameModalTitle">
+      <div class="game-modal-head">
+        <h2 class="game-modal-title" id="gameModalTitle">Retro game</h2>
+        <button type="button" class="game-modal-close" data-game-close aria-label="Sluit spel">✕</button>
+      </div>
+      <div class="game-modal-frame-wrap">
+        <iframe id="gameModalFrame" title="Diamond Impact retro game" allow="fullscreen" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+
   <!-- ══════════════ FINAL CTA ══════════════ -->
   <section class="final-cta" aria-label="Laatste oproep tot actie">
     <div class="final-cta-inner container">
@@ -1232,6 +1376,7 @@
         <li><a href="#program">Programma</a></li>
         <li><a href="#signup">Inschrijven</a></li>
         <li><a href="#faq">FAQ</a></li>
+        <li><a href="#games">Retro games</a></li>
       </ul>
       <div class="footer-copy">
         © 2026 Diamond Impact Baseball<br/>
@@ -1331,6 +1476,40 @@
           }
         });
       });
+
+      /* Retro game modal — iframe loads on demand */
+      var gameModal = document.getElementById('gameModal');
+      var gameFrame = document.getElementById('gameModalFrame');
+      var gameTitle = document.getElementById('gameModalTitle');
+      if (gameModal && gameFrame) {
+        function closeGameModal() {
+          gameFrame.src = '';
+          gameModal.hidden = true;
+          gameModal.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        }
+        function openGameModal(src, title) {
+          if (!src) return;
+          gameFrame.src = src;
+          if (gameTitle && title) gameTitle.textContent = title;
+          gameModal.hidden = false;
+          gameModal.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+          var closeBtn = gameModal.querySelector('.game-modal-close');
+          if (closeBtn) closeBtn.focus();
+        }
+        document.querySelectorAll('[data-game-open]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            openGameModal(btn.getAttribute('data-game-src'), btn.getAttribute('data-game-title'));
+          });
+        });
+        gameModal.querySelectorAll('[data-game-close]').forEach(function (el) {
+          el.addEventListener('click', closeGameModal);
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && gameModal && !gameModal.hidden) closeGameModal();
+        });
+      }
     })();
   </script>
 </body>
