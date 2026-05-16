@@ -528,6 +528,9 @@
       object-fit:cover;
       object-position:center 22%;
     }
+    .coach-img--photo-raphael img {
+      object-position:center 12%;
+    }
     .coach-img-grain {
       position:absolute; inset:-1px; z-index:1; pointer-events:none;
       opacity:.16;
@@ -1101,16 +1104,23 @@
 
       <div class="coach-grid">
         <div class="coach-card reveal">
-          <div class="coach-img">
-            <svg class="coach-sil" viewBox="0 0 80 120" fill="white"><ellipse cx="40" cy="28" rx="17" ry="17"/><path d="M12 108 Q12 72 40 66 Q68 72 68 108Z"/></svg>
-            <span class="coach-note">Foto volgt</span>
-            <div class="coach-flag">🇺🇸</div>
-            <div class="coach-level">Minor / Major League</div>
+          <div class="coach-img coach-img--photo coach-img--photo-raphael">
+            <img
+              src="assets/images/raphael-smeenk-002.jpeg"
+              alt="Raphaël Smeenk"
+              width="600"
+              height="800"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="coach-img-grain" aria-hidden="true"></div>
+            <div class="coach-flag">🇳🇱</div>
+            <div class="coach-level">EK U18 · NCAA · NL NT</div>
           </div>
           <div class="coach-body">
-            <h3>Coach VS · naam volgt</h3>
-            <p class="coach-role">Head Coach · professioneel niveau USA</p>
-            <p class="coach-bio">Onze Amerikaanse head coach wordt binnenkort bekendgemaakt — met echte speel- en coachervaring op hoog niveau. Je kunt nu al rekenen op kleine groepen en concrete feedback op pitching, veldspel en game situaties.</p>
+            <h3>RAPHAËL SMEENK</h3>
+            <p class="coach-role">Assistant Coach · Dutch National Team · NCAA USA</p>
+            <p class="coach-bio">Europees kampioen 2021 met Team Kingdom of the Netherlands U-18 en actief op internationaal topniveau binnen het Nederlands honkbal. Na zijn route via Quick Amsterdam, Pirates, Diamonds en het Talent Team NL speelt Raphaël nu in Amerika voor Tarleton State University, waar hij zijn droom leeft op NCAA-niveau.</p>
           </div>
         </div>
 
