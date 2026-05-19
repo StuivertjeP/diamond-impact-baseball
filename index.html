@@ -699,6 +699,129 @@
     .partner-card-text h4 { font-family:'Bebas Neue',sans-serif; font-size:1.1rem; color:var(--white); letter-spacing:.05em; }
     .partner-card-text p  { font-size:.8rem; color:var(--mist); line-height:1.55; margin-top:.25rem; }
 
+    /* ════════════════════════════════  IMANI / UGANDA (The bigger picture)  ══ */
+    .imani-section {
+      background:linear-gradient(180deg, var(--navy-2) 0%, var(--navy-3) 65%, var(--navy-2) 100%);
+      position:relative;
+      overflow:hidden;
+    }
+    .imani-section::after {
+      content:'';
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:radial-gradient(ellipse 72% 50% at 12% 40%, rgba(212,148,42,.085) 0%, transparent 58%);
+      z-index:0;
+    }
+    .imani-inner { position:relative; z-index:1; }
+
+    .imani-split {
+      display:grid;
+      gap:clamp(2rem, 5vw, 3.5rem);
+      align-items:start;
+    }
+    @media (min-width: 960px) {
+      .imani-split.imani-split--ltr {
+        grid-template-columns:minmax(0, 1fr) minmax(0, 1.08fr);
+      }
+    }
+
+    .imani-photo-wrap {
+      border-radius:4px;
+      overflow:hidden;
+      border:1px solid rgba(212,148,42,.35);
+      box-shadow:0 22px 55px rgba(5, 8, 16, .5);
+      background:var(--navy);
+    }
+    .imani-photo-wrap .imani-photo-hero {
+      display:block;
+      width:100%;
+      aspect-ratio:4 / 5;
+      object-fit:cover;
+      object-position:center 38%;
+      max-height:min(556px, 78vh);
+    }
+
+    .imani-gallery {
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:.5rem;
+      margin-top:.65rem;
+    }
+    .imani-gallery img {
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      aspect-ratio:1 / 1;
+      border-radius:3px;
+      border:1px solid rgba(74,154,236,.26);
+      box-shadow:0 8px 24px rgba(5, 8, 16, .38);
+      transition:border-color .2s, transform .25s;
+    }
+    .imani-gallery img:hover {
+      border-color:rgba(212,148,42,.55);
+      transform:translateY(-2px);
+    }
+
+    .imani-vimeo {
+      margin-top:1.05rem;
+      position:relative;
+      padding:56.25% 0 0;
+      border-radius:4px;
+      overflow:hidden;
+      border:1px solid rgba(30,95,173,.42);
+      background:var(--navy);
+      box-shadow:0 16px 44px rgba(5, 8, 16, .45);
+    }
+    .imani-vimeo iframe {
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+    }
+    .imani-vimeo-cap {
+      font-family:var(--font-cond);
+      font-size:.58rem;
+      font-weight:700;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--mist-dark);
+      margin-top:.5rem;
+    }
+
+    .imani-copy .label-tag { margin-bottom:.25rem; }
+    .imani-title {
+      font-family:'Bebas Neue', sans-serif;
+      font-size:clamp(2.5rem, 6.8vw, 6rem);
+      line-height:.93;
+      letter-spacing:.03em;
+      text-transform:uppercase;
+      color:var(--white);
+      margin:.35rem 0 .85rem;
+      text-shadow:0 2px 28px rgba(5, 8, 16, .52);
+    }
+
+    .imani-lead {
+      font-family:var(--font-cond);
+      font-style:italic;
+      font-size:clamp(1rem, 2.1vw, 1.3rem);
+      font-weight:600;
+      letter-spacing:.04em;
+      line-height:1.55;
+      color:var(--gold);
+      margin-bottom:1.5rem;
+      max-width:36rem;
+    }
+    .imani-body {
+      font-size:.95rem;
+      color:var(--mist);
+      line-height:1.78;
+      max-width:39rem;
+    }
+    .imani-body p + p { margin-top:1.05rem; }
+
     /* ════════════════════════════════  PROGRAM  ══ */
     .program { background:var(--navy-2); }
     .program-layout { display:grid; gap:3rem; }
@@ -999,6 +1122,7 @@
     <ul class="nav-links">
       <li><a href="#problem">Waarom dit kamp</a></li>
       <li><a href="#coaches">Coaches</a></li>
+      <li><a href="#imani">Imani</a></li>
       <li><a href="#program">Programma</a></li>
       <li><a href="#games">Games</a></li>
       <li><a href="#faq">FAQ</a></li>
@@ -1011,6 +1135,7 @@
     <button class="mob-menu-close" id="mobClose" aria-label="Menu sluiten">✕</button>
     <a href="#problem" class="mob-link">Waarom dit kamp</a>
     <a href="#coaches" class="mob-link">Coaches</a>
+    <a href="#imani" class="mob-link">Imani</a>
     <a href="#program" class="mob-link">Programma</a>
     <a href="#games" class="mob-link">Games</a>
     <a href="#faq" class="mob-link" style="font-size:1.8rem;color:var(--mist);">FAQ</a>
@@ -1226,17 +1351,19 @@
     <div class="container">
       <div class="sh reveal">
         <p class="label-tag">Train met de besten</p>
-        <h2 class="impact sh-title" id="coaches-h">COACHES UIT<br/><em>VS & NEDERLAND</em></h2>
-        <p class="sh-body">Krijg het beste van twee werelden op één veld. Ons team combineert de Amerikaanse pro-ervaring met de kennis van het Nederlandse topniveau.
-          <br><br><strong>Onze line-up bestaat uit:</strong><br><br>
-          <strong>🇺🇸 Amerikaanse pro-ervaring</strong> Coaches en spelers met ervaring binnen het Amerikaanse baseballsysteem, van high-level college baseball tot professioneel niveau.
+        <h2 class="impact sh-title" id="coaches-h">COACHES UIT<br/><em>AMERIKA & NEDERLAND</em></h2>
+        <p class="sh-body">Diamond Impact brengt een unieke line-up samen van internationale coaches en spelers die het spel op het hoogste niveau hebben beleefd.
+<br><br>
+          Van Minor League ervaring in Amerika tot internationals uit het Nederlandse topbaseball <strong>dit is een kans om te leren van mensen die weten wat er écht nodig is om te groeien.</strong> 
+          <br><br><strong>Onze coaching line-up bestaat uit:</strong><br><br>
+          <strong>🇺🇸 Amerikaanse pro-ervaring</strong> <br>Coaches en spelers met ervaring binnen het Amerikaanse baseballsysteem, van high-level college baseball tot professioneel niveau.
           <br><br>
-          <strong>🇳🇱 Nederlandse topcoaches & internationals</strong> Spelers en coaches die het Europese topniveau kennen en weten wat nodig is om daar te presteren.
+          <strong>🇳🇱 Nederlandse topcoaches & internationals</strong> <br>Spelers en coaches die het Europese topniveau kennen en weten wat nodig is om daar te presteren.
           <br><br>
           <strong>🤝 FCA & Celebration Church</strong> Een unieke samenwerking waarin topsport, mentorship en karakterontwikkeling samenkomen in een veilige en inspirerende omgeving.
           <br><br>
-        <strong>Voor jongens en meisjes van 12 t/m 18 jaar</strong>
-Of je nu ambitie hebt om de top te bereiken of simpelweg wilt groeien als speler — Diamond Impact is gebouwd om je uit te dagen op jouw niveau.</p>
+        <strong>Voor jongens en meisjes van 12 t/m 18 jaar</strong><br>
+Of je nu ambitie hebt om de top te bereiken of simpelweg wilt groeien als speler. Diamond Impact Baseball is gebouwd om je uit te dagen op jouw niveau.</p>
       </div>
 
       <div class="coach-grid">
@@ -1316,6 +1443,56 @@ Of je nu ambitie hebt om de top te bereiken of simpelweg wilt groeien als speler
           <div class="partner-card-text">
             <h4>Celebration Church Netherlands</h4>
             <p><strong>Samen met FCA organiseert Celebration Church Diamond Impact.</strong> Vanuit hun thuisbasis verzorgen zij de praktische organisatie, de hospitality en de gezonde maaltijden tijdens het weekend. Celebration Church staat voor een omgeving waar iedereen welkom is, ongeacht je achtergrond of overtuiging.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- ══════════════ IMANI / THE BIGGER PICTURE ══════════════ -->
+  <section class="section imani-section" id="imani" aria-labelledby="imani-h">
+    <div class="container imani-inner">
+      <div class="imani-split imani-split--ltr">
+        <div class="imani-media-col reveal">
+          <div class="imani-photo-wrap">
+            <img
+              class="imani-photo-hero"
+              src="assets/images/Imani-ministry-uganda-baseball.jpeg"
+              alt="Ugandaanse kinderen trainen baseball met het IMANI Outreach Ministries-programma"
+              width="800"
+              height="1000"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="imani-gallery" aria-hidden="true">
+            <img src="assets/images/Imani-ministry-uganda-baseball-002.jpeg" alt="" loading="lazy" decoding="async" />
+            <img src="assets/images/Imani-ministry-uganda-baseball-003.jpeg" alt="" loading="lazy" decoding="async" />
+            <img src="assets/images/Imani-ministry-uganda-baseball-004.jpeg" alt="" loading="lazy" decoding="async" />
+          </div>
+          <div class="imani-vimeo">
+            <iframe
+              src="https://player.vimeo.com/video/1193482867?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+              allow="fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              title="IMANI Outreach Ministries — baseball in Uganda"
+            ></iframe>
+          </div>
+          <p class="imani-vimeo-cap">Uganda · IMANI Outreach Ministries</p>
+        </div>
+
+        <div class="imani-copy-col reveal d2">
+          <p class="label-tag">THE BIGGER PICTURE</p>
+          <h2 class="impact imani-title" id="imani-h">SOMS IS BASEBALL<br/> MEER DAN EEN SPEL</h2>
+          <p class="imani-lead">Wat begint met een bal en handschoen, kan uitgroeien tot hoop, richting en karaktervorming.</p>
+          <div class="imani-body">
+            <p>In Uganda werkt Kennedy Indevu met <strong style="color:var(--off-white);">IMANI Outreach Ministries</strong> dagelijks met kinderen en jongeren die via baseball méér leren dan alleen het spel.</p>
+            <p>Ze leren discipline. Teamwork. Leiderschap. Geloof. En ontdekken dat hun waarde groter is dan hun prestaties.</p>
+            <p>Dat raakt precies de kern van Diamond Impact.</p>
+            <p>Daarom is Kennedy niet zomaar onderdeel van dit kamp — hij vertegenwoordigt het grotere verhaal achter waarom we dit doen.</p>
+            <p>Met beelden uit Uganda laten we zien wat sport kan betekenen wanneer impact belangrijker wordt dan alleen winnen.</p>
           </div>
         </div>
       </div>
@@ -1427,7 +1604,7 @@ Of je nu ambitie hebt om de top te bereiken of simpelweg wilt groeien als speler
 
           <div class="info-strip" style="margin-top:1.5rem;">
             <svg viewBox="0 0 20 20"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm1 12H9v-2h2v2zm0-4H9V6h2v4z"/></svg>
-            <p><strong style="color:var(--gold);font-family:var(--font-cond);letter-spacing:.08em;text-transform:uppercase;font-size:.75rem;"><strong>⚠️ Wacht niet te lang:</strong> Inschrijven kan tot uiterlijk <strong style="color:var(--off-white);">31 juli 2026.</strong>Na 15 juni stijgt de prijs naar €160,-</p>
+            <p><strong style="color:var(--gold);font-family:var(--font-cond);letter-spacing:.08em;text-transform:uppercase;font-size:.75rem;"><strong>⚠️ Wacht niet te lang:</strong> Inschrijven kan tot uiterlijk <strong style="color:var(--off-white);">31 juli 2026. </strong>Na 15 juni stijgt de prijs naar €160,-</p>
           </div>
         </div>
 
@@ -1628,7 +1805,7 @@ Of je nu ambitie hebt om de top te bereiken of simpelweg wilt groeien als speler
         </div>
 
         <p id="game-instr-hit" class="games-instr">Spatiebalk om te slaan — op mobiel tik op het scherm</p>
-        <p id="game-instr-catch" class="games-instr" hidden>Pijltjestoetsen ← → om te bewegen — op mobiel gebruik de knoppen</p>
+        <p id="game-instr-catch" class="games-instr" hidden>Pijltjestoetsen ← → om te bewegen — op mobiel begweeg met je vinger.</p>
       </div>
     </div>
   </section>
@@ -1671,6 +1848,7 @@ Of je nu ambitie hebt om de top te bereiken of simpelweg wilt groeien als speler
       <ul class="footer-links">
         <li><a href="#problem">Waarom dit kamp</a></li>
         <li><a href="#coaches">Coaches</a></li>
+        <li><a href="#imani">Imani</a></li>
         <li><a href="#program">Programma</a></li>
         <li><a href="#signup">Inschrijven</a></li>
         <li><a href="#faq">FAQ</a></li>
