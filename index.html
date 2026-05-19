@@ -455,6 +455,19 @@
     .sh-title { font-size:clamp(2.5rem,6vw,5rem); color:var(--white); margin-top:.6rem; }
     .sh-title em { color:var(--blue-bright); font-style:normal; }
     .sh-body { max-width:var(--prose-max); color:var(--mist); font-size:.95rem; line-height:1.8; margin-top:1rem; }
+    /* Coaches-intro: twee kolommen op desktop */
+    @media(min-width:900px){
+      .coaches-section .sh-body-columns{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:clamp(1.5rem,3.8vw,2.75rem);
+        max-width:none;
+        align-items:start;
+      }
+    }
+    .coaches-section .coach-intro-col{ color:var(--mist); font-size:.95rem; line-height:1.82; margin:0; }
+    .coaches-section .coach-intro-col p + p { margin-top:1rem; }
+    .coaches-section .sh-body-columns{ margin-top:1rem; max-width:none !important; }
 
     /* ════════════════════════════════  PROBLEM  ══ */
     .problem { background:var(--navy-2); position:relative; overflow:hidden; }
@@ -704,44 +717,11 @@
 
     /* ════════════════════════════════  IMANI / UGANDA (The bigger picture)  ══ */
     .imani-section {
-      position:relative;
-      isolation:isolate;
-      overflow:hidden;
       background:var(--navy);
     }
-    /* Achtergrond: zelfde beeld als site-hero Imani-shot (jpeg in repo ≈ gevraagde .jpg) */
-    .imani-bg {
-      position:absolute;
-      inset:-6px;
-      z-index:0;
-      pointer-events:none;
-      background:url("assets/images/Imani-ministry-uganda-baseball.jpeg") center / cover no-repeat;
-      filter:saturate(1.06) contrast(1.03);
-      transform:scale(1.02);
-    }
-    .imani-bg-wash {
-      position:absolute;
-      inset:0;
-      z-index:1;
-      pointer-events:none;
-      background:
-        radial-gradient(ellipse 90% 60% at 50% -10%, rgba(46, 125, 214, .22) 0%, transparent 55%),
-        radial-gradient(ellipse 55% 70% at 8% 50%, rgba(6, 11, 20, .82) 0%, transparent 58%),
-        radial-gradient(ellipse 50% 60% at 96% 40%, rgba(6, 11, 20, .75) 0%, transparent 55%),
-        linear-gradient(165deg, rgba(6, 11, 20, .88) 0%, rgba(6, 11, 20, .82) 35%, rgba(6, 11, 20, .86) 100%);
-    }
-    .imani-bg-grain {
-      position:absolute;
-      inset:-1px;
-      z-index:2;
-      pointer-events:none;
-      opacity:.11;
-      mix-blend-mode:overlay;
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
-    }
+
     .imani-inner {
       position:relative;
-      z-index:3;
     }
 
     .imani-split {
@@ -750,22 +730,31 @@
       align-items:start;
     }
 
-    /* Mobiel: DOM = tekst + video eerst; daarna coachblok (= foto’s/media) */
     @media(min-width: 960px) {
       .imani-split.imani-split--story {
-        grid-template-columns:minmax(0, 1.2fr) minmax(260px, min(380px, 30vw));
-        gap:clamp(2rem, 4vw, 3.25rem);
+        grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);
+        gap:clamp(1.75rem, 4vw, 3rem);
+        align-items:start;
       }
-      .imani-copy-col {
-        justify-self:start;
-      }
+      .imani-copy-col { justify-self:stretch; }
       .imani-media-col {
-        justify-self:end;
+        justify-self:stretch;
+        max-width:none;
       }
       .imani-ken-coach-card {
         position:sticky;
         top:6.75rem;
       }
+      .imani-body--dual {
+        column-count:2;
+        column-gap:clamp(1.25rem, 3vw, 2rem);
+        max-width:none;
+      }
+      .imani-body--dual p {
+        break-inside:avoid;
+        margin-top:0;
+      }
+      .imani-body--dual p + p { margin-top:1rem; }
     }
 
     .imani-media-col {
@@ -777,24 +766,10 @@
       overflow:hidden;
     }
 
-    /* Video onder kopie voor verteld verhaal */
-    .imani-vimeo {
-      margin-top:0;
-      position:relative;
-      padding:56.25% 0 0;
-      border-radius:4px;
-      overflow:hidden;
-      border:1px solid rgba(30,95,173,.42);
-      background:var(--navy);
-      box-shadow:0 16px 44px rgba(5, 8, 16, .52);
-      max-width:100%;
-    }
-    .imani-vimeo iframe {
-      position:absolute;
-      inset:0;
-      width:100%;
-      height:100%;
-      border:0;
+    .imani-ken-coach-card .coach-role {
+      text-transform:none;
+      letter-spacing:.1em;
+      line-height:1.5;
     }
 
     .imani-video-intro {
@@ -805,39 +780,27 @@
       text-transform:uppercase;
       color:var(--gold);
       margin-top:2rem;
-      margin-bottom:.5rem;
-      text-shadow:0 1px 2px rgba(5, 8, 16, .92);
+      margin-bottom:.65rem;
     }
-    .imani-vimeo-cap {
-      font-family:var(--font-cond);
-      font-size:.8rem;
-      font-weight:400;
-      font-style:italic;
-      letter-spacing:.03em;
-      text-transform:none;
-      color:var(--mist);
-      margin-top:.75rem;
-      line-height:1.65;
-      text-shadow:0 1px 2px rgba(5, 8, 16, .75);
-      max-width:36rem;
+    .imani-vimeo {
+      position:relative;
+      padding:56.25% 0 0;
+      border-radius:4px;
+      overflow:hidden;
+      border:1px solid rgba(30,95,173,.42);
+      background:var(--navy-3);
+      box-shadow:0 16px 44px rgba(5, 8, 16, .45);
+      max-width:100%;
     }
-
-    .imani-meta-line {
-      font-family:var(--font-cond);
-      font-size:.72rem;
-      font-weight:700;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      color:var(--blue-bright);
-      margin:-.65rem 0 1rem;
-      line-height:1.45;
-      text-shadow:0 1px 2px rgba(5, 8, 16, .92);
-      max-width:36rem;
+    .imani-vimeo iframe {
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
     }
 
-    .imani-copy .label-tag {
-      margin-bottom:.35rem;
-    }
+    .imani-copy .label-tag { margin-bottom:.35rem; }
     .imani-title {
       font-family:'Bebas Neue', sans-serif;
       font-size:clamp(2.5rem, 6.8vw, 6rem);
@@ -850,6 +813,11 @@
         0 1px 2px rgba(5, 8, 16, .95),
         0 0 40px rgba(5, 8, 16, .5),
         0 10px 36px rgba(5, 8, 16, .55);
+    }
+    .imani-title em {
+      color:var(--blue-bright);
+      font-style:normal;
+      text-shadow:0 0 28px rgba(6, 20, 40, .82), 0 1px 2px rgba(5, 8, 16, .9);
     }
 
     .imani-lead {
@@ -866,10 +834,10 @@
     }
     .imani-body {
       font-size:.965rem;
-      color:#c8d4e6;
+      color:var(--mist);
       line-height:1.78;
       max-width:41rem;
-      text-shadow:0 1px 2px rgba(5, 8, 16, .75);
+      text-shadow:0 1px 2px rgba(5, 8, 16, .5);
     }
     .imani-body p strong { font-weight:600; color:var(--off-white); }
     .imani-body p + p { margin-top:1.05rem; }
@@ -1404,18 +1372,19 @@
       <div class="sh reveal">
         <p class="label-tag">Train met de besten</p>
         <h2 class="impact sh-title" id="coaches-h">COACHES UIT<br/><em>AMERIKA & NEDERLAND</em></h2>
-        <p class="sh-body">Diamond Impact brengt een unieke line-up samen van internationale coaches en spelers die het spel op het hoogste niveau hebben beleefd.
-<br><br>
-          Van Minor League ervaring in Amerika tot internationals uit het Nederlandse topbaseball <strong>dit is een kans om te leren van mensen die weten wat er écht nodig is om te groeien.</strong> 
-          <br><br><strong>Onze coaching line-up bestaat uit:</strong><br><br>
-          <strong>🇺🇸 Amerikaanse pro-ervaring</strong> <br>Coaches en spelers met ervaring binnen het Amerikaanse baseballsysteem, van high-level college baseball tot professioneel niveau.
-          <br><br>
-          <strong>🇳🇱 Nederlandse topcoaches & internationals</strong> <br>Spelers en coaches die het Europese topniveau kennen en weten wat nodig is om daar te presteren.
-          <br><br>
-          <strong>🤝 FCA & Celebration Church</strong> Een unieke samenwerking waarin topsport, mentorship en karakterontwikkeling samenkomen in een veilige en inspirerende omgeving.
-          <br><br>
-        <strong>Voor jongens en meisjes van 12 t/m 18 jaar</strong><br>
-Of je nu ambitie hebt om de top te bereiken of simpelweg wilt groeien als speler. Diamond Impact Baseball is gebouwd om je uit te dagen op jouw niveau.</p>
+        <div class="sh-body sh-body-columns">
+          <div class="coach-intro-col">
+            <p>Diamond Impact brengt een unieke line-up samen van internationale coaches en spelers die het spel op het hoogste niveau hebben beleefd.</p>
+            <p>Van Minor League ervaring in Amerika tot internationals uit het Nederlandse topbaseball — <strong>dit is een kans om te leren van mensen die weten wat er écht nodig is om te groeien.</strong></p>
+            <p><strong>Onze coaching line-up bestaat uit:</strong></p>
+            <p><strong>🇺🇸 Amerikaanse pro-ervaring</strong><br>Coaches en spelers met ervaring binnen het Amerikaanse baseballsysteem, van high-level college baseball tot professioneel niveau.</p>
+          </div>
+          <div class="coach-intro-col">
+            <p><strong>🇳🇱 Nederlandse topcoaches &amp; internationals</strong><br>Spelers en coaches die het Europese topniveau kennen en weten wat nodig is om daar te presteren.</p>
+            <p><strong>🤝 FCA &amp; Celebration Church</strong> — Een unieke samenwerking waarin topsport, mentorship en karakterontwikkeling samenkomen in een veilige en inspirerende omgeving.</p>
+            <p><strong>Voor jongens en meisjes van 12 t/m 18 jaar</strong><br>Of je nu ambitie hebt om de top te bereiken of simpelweg wilt groeien als speler — Diamond Impact Baseball is gebouwd om je uit te dagen op jouw niveau.</p>
+          </div>
+        </div>
       </div>
 
       <div class="coach-grid">
@@ -1505,35 +1474,29 @@ Of je nu ambitie hebt om de top te bereiken of simpelweg wilt groeien als speler
 
   <!-- ══════════════ IMANI / THE BIGGER PICTURE ══════════════ -->
   <section class="section imani-section" id="imani" aria-labelledby="imani-h">
-    <div class="imani-bg" aria-hidden="true"></div>
-    <div class="imani-bg-wash" aria-hidden="true"></div>
-    <div class="imani-bg-grain" aria-hidden="true"></div>
     <div class="container imani-inner">
       <div class="imani-split imani-split--story">
-        <!-- Mobiel: eerst kopie (+ video daaronder); daarna foto in coach-layout -->
         <div class="imani-copy-col reveal">
           <p class="label-tag">THE BIGGER PICTURE</p>
-          <p class="imani-meta-line">Gastcoach uit Uganda · IMANI Outreach</p>
-          <h2 class="impact imani-title" id="imani-h">SOMS IS BASEBALL<br/> MEER DAN EEN SPEL</h2>
+          <h2 class="impact imani-title" id="imani-h">SOMS IS BASEBALL<br/><em>MEER DAN EEN SPEL</em></h2>
           <p class="imani-lead">Wat begint met een bal en handschoen, kan uitgroeien tot hoop, richting en karaktervorming.</p>
-          <div class="imani-body">
+          <div class="imani-body imani-body--dual">
             <p>In Uganda werkt Kennedy Indevu met <strong>IMANI Outreach Ministries</strong> dagelijks met kinderen en jongeren die via baseball méér leren dan alleen het spel.</p>
             <p>Ze leren discipline. Teamwork. Leiderschap. Geloof. En ontdekken dat hun waarde groter is dan hun prestaties.</p>
             <p>Dat raakt precies de kern van Diamond Impact.</p>
             <p>Daarom is Kennedy niet zomaar onderdeel van dit kamp — hij vertegenwoordigt het grotere verhaal achter waarom we dit doen.</p>
             <p>Met beelden uit Uganda laten we zien wat sport kan betekenen wanneer impact belangrijker wordt dan alleen winnen.</p>
           </div>
-
-          <p class="imani-video-intro">Het verhaal uit Uganda</p>
+          <div class="imani-video-intro">IMANI Uganda — baseball &amp; community</div>
           <div class="imani-vimeo">
             <iframe
+              loading="lazy"
               src="https://player.vimeo.com/video/1193482867?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-              allow="fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+              allow="autoplay; fullscreen; picture-in-picture"
               referrerpolicy="strict-origin-when-cross-origin"
-              title="IMANI Outreach Ministries — baseball in Uganda"
+              title="IMANI Outreach Ministries — Uganda"
             ></iframe>
           </div>
-          <p class="imani-vimeo-cap">Ontmoet Kennedy en het werk van IMANI in beeld — hetzelfde hart voor sport, karakter en geloof als tijdens dit kamp.</p>
         </div>
 
         <aside class="imani-media-col reveal d2" aria-label="Kennedy Indevu">
@@ -1541,7 +1504,7 @@ Of je nu ambitie hebt om de top te bereiken of simpelweg wilt groeien als speler
             <div class="coach-img coach-img--photo coach-img--kennedy">
               <img
                 src="assets/images/Imani-ministry-uganda-baseball-005.jpg"
-                alt="Kennedy Indevu — gastcoach uit Uganda, IMANI Outreach Ministries"
+                alt="Kennedy Indevu — Guest Coach, IMANI Outreach Uganda"
                 width="600"
                 height="800"
                 loading="lazy"
@@ -1549,12 +1512,13 @@ Of je nu ambitie hebt om de top te bereiken of simpelweg wilt groeien als speler
               />
               <div class="coach-img-grain" aria-hidden="true"></div>
               <div class="coach-flag">🇺🇬</div>
-              <div class="coach-level">Gastcoach · Uganda</div>
+              <div class="coach-level">Guest Coach · Uganda · IMANI</div>
             </div>
             <div class="coach-body">
-              <h3>Kennedy Indevu</h3>
-              <p class="coach-role">IMANI Outreach Ministries · dagelijks op het veld in Uganda</p>
-              <p class="coach-bio">Het gezicht achter dit verhaal: baseball als brug naar discipline, hoop en echte relaties voor jongeren in de gemeenschap.</p>
+              <h3>KENNEDY INDEVU</h3>
+              <p class="coach-role">Guest Coach · IMANI Outreach Uganda · Youth Mentor</p>
+              <p class="coach-bio">Director van IMANI Outreach Ministries in Uganda, waar baseball wordt ingezet om kinderen en jongeren te begeleiden in karakter, leiderschap, geloof en persoonlijke groei.</p>
+              <p class="coach-bio">Gedreven om via sport kansen te creëren en jonge spelers te helpen groeien, op én buiten het veld.</p>
             </div>
           </article>
         </aside>
