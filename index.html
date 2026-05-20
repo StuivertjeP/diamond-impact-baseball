@@ -664,9 +664,6 @@
     .coach-img--photo-raphael img {
       object-position:center 12%;
     }
-    .coach-img--kennedy img {
-      object-position:center 24%;
-    }
     .coach-img-grain {
       position:absolute; inset:-1px; z-index:1; pointer-events:none;
       opacity:.16;
@@ -722,6 +719,24 @@
 
     .imani-inner {
       position:relative;
+    }
+
+    /* Liggende IMANI-foto vast boven Kennedy-kaart (één visueel blok) */
+    .imani-ken-coach-card .imani-landscape {
+      margin:0;
+      max-width:none;
+      width:100%;
+      border:none;
+      border-radius:0;
+      box-shadow:none;
+      background:var(--navy-4);
+    }
+    .imani-ken-coach-card .imani-landscape img {
+      width:100%;
+      height:auto;
+      display:block;
+      object-fit:cover;
+      max-height:min(38vh, 360px);
     }
 
     .imani-split {
@@ -800,7 +815,8 @@
       border:0;
     }
 
-    .imani-copy .label-tag { margin-bottom:.35rem; }
+    .imani-copy .label-tag,
+    .imani-inner > .label-tag { margin-bottom:.35rem; }
     .imani-title {
       font-family:'Bebas Neue', sans-serif;
       font-size:clamp(2.5rem, 6.8vw, 6rem);
@@ -1475,11 +1491,11 @@
   <!-- ══════════════ IMANI / THE BIGGER PICTURE ══════════════ -->
   <section class="section imani-section" id="imani" aria-labelledby="imani-h">
     <div class="container imani-inner">
+      <p class="label-tag reveal">THE BIGGER PICTURE</p>
+      <h2 class="impact imani-title reveal" id="imani-h">SOMS IS BASEBALL<br/><em>MEER DAN EEN SPEL</em></h2>
+      <p class="imani-lead reveal">Wat begint met een bal en handschoen, kan uitgroeien tot hoop, richting en karaktervorming.</p>
       <div class="imani-split imani-split--story">
         <div class="imani-copy-col reveal">
-          <p class="label-tag">THE BIGGER PICTURE</p>
-          <h2 class="impact imani-title" id="imani-h">SOMS IS BASEBALL<br/><em>MEER DAN EEN SPEL</em></h2>
-          <p class="imani-lead">Wat begint met een bal en handschoen, kan uitgroeien tot hoop, richting en karaktervorming.</p>
           <div class="imani-body imani-body--dual">
             <p>In Uganda werkt Kennedy Indevu met <strong>IMANI Outreach Ministries</strong> dagelijks met kinderen en jongeren die via baseball méér leren dan alleen het spel.</p>
             <p>Ze leren discipline. Teamwork. Leiderschap. Geloof. En ontdekken dat hun waarde groter is dan hun prestaties.</p>
@@ -1501,19 +1517,16 @@
 
         <aside class="imani-media-col reveal d2" aria-label="Kennedy Indevu">
           <article class="coach-card imani-ken-coach-card">
-            <div class="coach-img coach-img--photo coach-img--kennedy">
+            <figure class="imani-landscape" role="group" aria-label="Baseball op het veld in Uganda, IMANI Outreach Ministries">
               <img
-                src="assets/images/Imani-ministry-uganda-baseball-005.jpg"
-                alt="Kennedy Indevu — Guest Coach, IMANI Outreach Uganda"
-                width="600"
-                height="800"
+                src="assets/images/Imani-ministry-uganda-baseball-002.jpg"
+                alt="Spelers en IMANI baseball op het veld in Uganda"
+                width="1200"
+                height="675"
                 loading="lazy"
                 decoding="async"
               />
-              <div class="coach-img-grain" aria-hidden="true"></div>
-              <div class="coach-flag">🇺🇬</div>
-              <div class="coach-level">Guest Coach · Uganda · IMANI</div>
-            </div>
+            </figure>
             <div class="coach-body">
               <h3>KENNEDY INDEVU</h3>
               <p class="coach-role">Guest Coach · IMANI Outreach Uganda · Youth Mentor</p>
