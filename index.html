@@ -128,10 +128,14 @@
       display: flex;
       align-items: center;
       gap: 1rem;
-      text-decoration: none;
     }
-    /* The wordmark stacked text */
-    .nav-wordmark { display: flex; flex-direction: column; line-height: 1; }
+    a.nav-wordmark {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      text-decoration: none;
+      color: inherit;
+    }
     .nav-brand-main {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 1.15rem;
@@ -157,11 +161,21 @@
       border-left: 1px solid rgba(74,154,236,.2);
     }
     @media (min-width: 640px) { .nav-logos { display: flex; } }
-    .nav-logo-wrap {
+    .nav-logo-link {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 2px;
+      text-decoration: none;
+      color: inherit;
+      opacity: .95;
+      transition: opacity .2s;
+    }
+    .nav-logo-link:hover { opacity: 1; }
+    .nav-logo-link:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+      border-radius: 2px;
     }
     .nav-logo-img {
       display: block;
@@ -711,6 +725,22 @@
     }
     .partner-card-text h4 { font-family:'Bebas Neue',sans-serif; font-size:1.1rem; color:var(--white); letter-spacing:.05em; }
     .partner-card-text p  { font-size:.8rem; color:var(--mist); line-height:1.55; margin-top:.25rem; }
+    .partner-card-more { margin-top:.85rem !important; font-size:.78rem; }
+    .partner-card-more a {
+      color:var(--gold);
+      text-decoration:underline;
+      text-underline-offset:2px;
+    }
+    .partner-card-more a:hover { color:var(--gold-light); }
+    .partner-logo-link {
+      text-decoration:none;
+      color:inherit;
+      transition: border-color .2s, opacity .2s;
+    }
+    .partner-logo-link:focus-visible {
+      outline:2px solid var(--gold);
+      outline-offset:3px;
+    }
 
     /* ════════════════════════════════  IMANI / UGANDA (The bigger picture)  ══ */
     .imani-section {
@@ -857,6 +887,12 @@
     }
     .imani-body p strong { font-weight:600; color:var(--off-white); }
     .imani-body p + p { margin-top:1.05rem; }
+    .imani-body a {
+      color:var(--gold);
+      text-decoration:underline;
+      text-underline-offset:3px;
+    }
+    .imani-body a:hover { color:var(--gold-light); }
 
     /* ════════════════════════════════  PROGRAM  ══ */
     .program { background:var(--navy-2); }
@@ -942,6 +978,7 @@
     .form-submit { width:100%; justify-content:center; font-size:.8rem; padding:1rem; margin-top:.25rem; }
     .form-note { font-size:.68rem; color:var(--mist-dark); text-align:center; line-height:1.7; margin-top:.25rem; }
     .form-note a { color:var(--gold-dim); }
+    .form-nb-honeypot { position:absolute!important; height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap;border:0;padding:0;margin:-1px; }
     .form-success { display:none; flex-direction:column; align-items:center; text-align:center; gap:1rem; padding:2rem 1rem; }
     .form-success.visible { display:flex; }
     .success-icon { width:52px; height:52px; border:2px solid var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; }
@@ -1134,27 +1171,36 @@
 
   <!-- ══════════════ NAV ══════════════ -->
   <nav class="nav" id="nav" aria-label="Hoofdnavigatie">
-    <a href="#" class="nav-brand">
-      <!-- Wordmark -->
-      <div class="nav-wordmark">
+    <div class="nav-brand">
+      <a href="#" class="nav-wordmark">
         <span class="nav-brand-main">DIAMOND IMPACT</span>
         <span class="nav-brand-sub">Baseball Camp 2026</span>
-      </div>
+      </a>
 
-      <!-- Partner logos — hidden on small mobile -->
       <div class="nav-logos" aria-label="Partners">
-
-        <div class="nav-logo-wrap" title="FCA Netherlands">
+        <a
+          href="https://www.fca.org/what-is-fca"
+          class="nav-logo-link"
+          title="FCA — What is FCA?"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img class="nav-logo-img" src="assets/images/FCA-Logo.png" alt="FCA Netherlands" width="120" height="40" decoding="async" />
-        </div>
+        </a>
 
         <div style="width:1px;height:24px;background:rgba(74,154,236,.15);flex-shrink:0;" aria-hidden="true"></div>
 
-        <div class="nav-logo-wrap" title="Celebration Church Nederland">
+        <a
+          href="https://www.celebrationchurch.nl/"
+          class="nav-logo-link"
+          title="Celebration Church Netherlands"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <img class="nav-logo-img" src="assets/images/CCNL-logo.webp" alt="Celebration Church Nederland" width="120" height="40" decoding="async" />
-        </div>
+        </a>
       </div>
-    </a>
+    </div>
     <ul class="nav-links">
       <li><a href="#problem">Waarom dit kamp</a></li>
       <li><a href="#coaches">Coaches</a></li>
@@ -1298,7 +1344,7 @@
           <p style="margin-top:1.75rem;font-size:.95rem;color:var(--mist);line-height:1.8;max-width:var(--prose-max);"> 
             Veel jonge spelers stappen het veld op met onzichtbare druk. De druk om te presteren. Om geen fouten te maken. Om te laten zien dat je goed genoeg bent. 
             
-            <br><br>Maar baseball speel je niet op je best wanneer je vastzit in bewijsdrang. Diamond Impact is een plek waar jonge spelers leren groeien in skill, vertrouwen en karakter, en ontdekken dat er meer is dan alleen prestaties en statistieken.
+            <br><br>Maar baseball speel je niet op je best wanneer je vastzit in bewijsdrang. Diamond Impact Baseball is de plek waar jonge spelers leren groeien in baseball skills, vertrouwen en karakter, en ontdekken dat er méér is dan alleen prestaties en statistieken.
             <br> <br>
             
           </p>
@@ -1464,22 +1510,36 @@
 
       <div class="partner-bar reveal">
         <div class="partner-card">
-          <div class="partner-logo partner-logo--img">
-            <img src="assets/images/FCA-Logo.png" alt="" width="160" height="80" decoding="async" />
-          </div>
+          <a
+            href="https://www.fca.org/what-is-fca"
+            class="partner-logo partner-logo--img partner-logo-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="FCA — meer informatie"
+          >
+            <img src="assets/images/FCA-Logo.png" alt="FCA Netherlands" width="160" height="80" decoding="async" />
+          </a>
           <div class="partner-card-text">
             <h4>FCA Netherlands</h4>
             <p><strong>FCA NETHERLANDS 70 jaar ervaring in sport en geloof.</strong> De Fellowship of Christian Athletes is wereldwijd actief in meer dan 100 landen. 
                In Nederland faciliteren zij de karakter-sessies en de optionele geloofsmomenten. Hun aanpak is altijd sporter-gestuurd: we praten over wat jou drijft op het veld. Deelname aan geloofsactiviteiten is bij ons altijd een keuze, nooit een verplichting.</p>
+            <p class="partner-card-more"><a href="https://www.fca.org/what-is-fca" target="_blank" rel="noopener noreferrer">Meer informatie over FCA</a></p>
           </div>
         </div>
         <div class="partner-card">
-          <div class="partner-logo partner-logo--img">
-            <img src="assets/images/CCNL-logo.webp" alt="" width="160" height="80" decoding="async" />
-          </div>
+          <a
+            href="https://www.celebrationchurch.nl/"
+            class="partner-logo partner-logo--img partner-logo-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Celebration Church Netherlands — meer informatie"
+          >
+            <img src="assets/images/CCNL-logo.webp" alt="Celebration Church Netherlands" width="160" height="80" decoding="async" />
+          </a>
           <div class="partner-card-text">
             <h4>Celebration Church Netherlands</h4>
             <p><strong>Samen met FCA organiseert Celebration Church Diamond Impact.</strong> Vanuit hun thuisbasis verzorgen zij de praktische organisatie, de hospitality en de gezonde maaltijden tijdens het weekend. Celebration Church staat voor een omgeving waar iedereen welkom is, ongeacht je achtergrond of overtuiging.</p>
+            <p class="partner-card-more"><a href="https://www.celebrationchurch.nl/" target="_blank" rel="noopener noreferrer">Meer informatie over Celebration Church</a></p>
           </div>
         </div>
       </div>
@@ -1493,17 +1553,17 @@
     <div class="container imani-inner">
       <p class="label-tag reveal">THE BIGGER PICTURE</p>
       <h2 class="impact imani-title reveal" id="imani-h">SOMS IS BASEBALL<br/><em>MEER DAN EEN SPEL</em></h2>
-      <p class="imani-lead reveal">Wat begint met een bal en handschoen, kan uitgroeien tot hoop, richting en karaktervorming.</p>
+      <p class="imani-lead reveal">Wat begint met een bal en handschoen, kan levens veranderen</p>
       <div class="imani-split imani-split--story">
         <div class="imani-copy-col reveal">
           <div class="imani-body imani-body--dual">
-            <p>In Uganda werkt Kennedy Indevu met <strong>IMANI Outreach Ministries</strong> dagelijks met kinderen en jongeren die via baseball méér leren dan alleen het spel.</p>
-            <p>Ze leren discipline. Teamwork. Leiderschap. Geloof. En ontdekken dat hun waarde groter is dan hun prestaties.</p>
-            <p>Dat raakt precies de kern van Diamond Impact.</p>
-            <p>Daarom is Kennedy niet zomaar onderdeel van dit kamp — hij vertegenwoordigt het grotere verhaal achter waarom we dit doen.</p>
-            <p>Met beelden uit Uganda laten we zien wat sport kan betekenen wanneer impact belangrijker wordt dan alleen winnen.</p>
+            <p>In Uganda bouwt Kennedy Indevu via <strong>IMANI Outreach Ministries</strong> aan de volgende generatie jonge leiders — met baseball als middel voor mentoring, karaktervorming, onderwijs en geloof. Meer over hun werk: <a href="https://www.imaniministry.com/" target="_blank" rel="noopener noreferrer">imaniministry.com</a>.</p>
+            <p>Daar leren kinderen niet alleen slaan, gooien of fielden.</p>
+            <p>Ze leren discipline. Leiderschap. Doorzetten. Samenwerken. En vooral: dat hun waarde niet afhangt van prestaties.</p>
+            <p>Precies dát is ook de kern van Diamond Impact.</p>
+            <p>Omdat wij geloven dat de mooiste winst niet altijd op het scorebord staat.</p>
           </div>
-          <div class="imani-video-intro">IMANI Uganda — baseball &amp; community</div>
+          <div class="imani-video-intro">IMANI Uganda - baseball &amp; community</div>
           <div class="imani-vimeo">
             <iframe
               loading="lazy"
@@ -1648,14 +1708,14 @@
           </div>
         </div>
 
-        <!-- Inschrijfformulier (mailto) -->
+        <!-- Inschrijfformulier — Netlify Forms (data-netlify + honeypot; na deploy ingesteld onder Site → Forms) -->
         <div class="form-box form-box--register reveal d2">
           <div class="form-header">
             <div class="form-icon">
               <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10h8M8 14h5"/></svg>
             </div>
             <h3>INSCHRIJVEN</h3>
-            <p class="form-intro">Vul je gegevens in; je e-mailprogramma opent met een kant-en-klare aanmelding naar Vince.</p>
+            <p class="form-intro">Vul je gegevens in; je aanmelding gaat direct naar Vince toe. Je hoeft hiervoor geen eigen e‑mailprogramma te openen.</p>
           </div>
 
           <div class="form-success" id="form-success">
@@ -1664,13 +1724,28 @@
             </div>
             <p class="success-title">AANMELDING VERSTUURD!</p>
             <p class="success-sub">
-              Je e-mailclient opent nu met een kant-en-klare aanmelding.<br/>
-              Klik op <strong>Verzenden</strong> om je inschrijving te bevestigen.<br/><br/>
-              Vragen? Mail naar <a href="mailto:vrooi@celebrationchurch.nl">vrooi@celebrationchurch.nl</a>
+              Bedankt! We hebben je aanmelding ontvangen.<br/>
+              Vince neemt zo snel mogelijk contact met je op op het adres dat je net hebt doorgegeven.<br/><br/>
+              Zelf nog iets vragen? <a href="mailto:vrooi@celebrationchurch.nl">vrooi@celebrationchurch.nl</a>
             </p>
           </div>
 
-          <form class="reg-form" id="reg-form" novalidate>
+          <form
+            class="reg-form"
+            id="reg-form"
+            name="dib-aanmelding"
+            method="POST"
+            action="/"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            novalidate
+          >
+            <input type="hidden" name="form-name" value="dib-aanmelding" />
+            <!-- spamfilter (laat verborgen, door niemand invullen — Netlify weigert automatisch bots) -->
+            <p class="form-nb-honeypot" aria-hidden="true">
+              <label for="dib-bot-field">Niet invullen:</label>
+              <input id="dib-bot-field" type="text" name="bot-field" tabindex="-1" autocomplete="off" />
+            </p>
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label" for="f-name">Voornaam *</label>
@@ -1726,8 +1801,8 @@
               Aanmelding versturen
             </button>
             <p class="form-note">
-              Je aanmelding wordt verstuurd via je eigen e-mailprogramma naar<br/>
-              <a href="mailto:vrooi@celebrationchurch.nl">vrooi@celebrationchurch.nl</a>
+              Je hoeft je mailprogramma niet te openen: na versturen wordt je aanmelding verwerkt door onze site‑host.<br/>
+              Vragen? Mail gerust naar <a href="mailto:vrooi@celebrationchurch.nl">vrooi@celebrationchurch.nl</a>.
             </p>
           </form>
 
@@ -2019,11 +2094,13 @@
         });
       });
 
+      /** Netlify Forms: eerste deploy registreert form “dib-aanmelding”. Site → Forms → notifications naar vrooi@… */
       var regForm = document.getElementById('reg-form');
       if (regForm) {
         regForm.addEventListener('submit', function (e) {
           e.preventDefault();
           var err = document.getElementById('form-error');
+          var btn = regForm.querySelector('button[type="submit"]');
           err.style.display = 'none';
           var name = document.getElementById('f-name').value.trim();
           var last = document.getElementById('f-last').value.trim();
@@ -2034,33 +2111,29 @@
           if (!email || !email.includes('@')) { err.textContent = 'Vul een geldig e-mailadres in.'; err.style.display = 'block'; return; }
           if (!dob) { err.textContent = 'Vul je geboortejaar in.'; err.style.display = 'block'; return; }
           if (!agree) { err.textContent = 'Vink de verklaring aan om door te gaan.'; err.style.display = 'block'; return; }
-          var phone = document.getElementById('f-phone').value.trim() || '—';
-          var pos = document.getElementById('f-pos').value || '—';
-          var club = document.getElementById('f-club').value.trim() || '—';
-          var msg = document.getElementById('f-msg').value.trim() || '—';
-          var subject = encodeURIComponent('Aanmelding Diamond Impact Baseball 2026 — ' + name + ' ' + last);
-          var body = encodeURIComponent(
-            'Hallo Vince,\r\n\r\n' +
-            'Hierbij mijn aanmelding voor Diamond Impact Baseball 2026.\r\n\r\n' +
-            'PERSOONSGEGEVENS\r\n' +
-            'Naam:         ' + name + ' ' + last + '\r\n' +
-            'E-mail:       ' + email + '\r\n' +
-            'Telefoon:     ' + phone + '\r\n' +
-            'Geboortejaar: ' + dob + '\r\n\r\n' +
-            'HONKBALINFO\r\n' +
-            'Positie:      ' + pos + '\r\n' +
-            'Club / team:  ' + club + '\r\n\r\n' +
-            'VRAGEN / OPMERKINGEN\r\n' +
-            msg + '\r\n\r\n' +
-            'Ik ga akkoord met deelname en begrijp dat geloofsmomenten optioneel zijn.\r\n\r\n' +
-            'Met vriendelijke groet,\r\n' +
-            name + ' ' + last
-          );
-          window.location.href = 'mailto:vrooi@celebrationchurch.nl?subject=' + subject + '&body=' + body;
-          setTimeout(function () {
-            document.getElementById('reg-form').style.display = 'none';
-            document.getElementById('form-success').classList.add('visible');
-          }, 300);
+
+          var payload = new URLSearchParams(new FormData(regForm));
+          if (btn) btn.disabled = true;
+
+          fetch(regForm.action || '/', {
+            method: 'POST',
+            body: payload
+          })
+            .then(function (res) {
+              if (!res.ok) throw new Error('HTTP ' + res.status);
+              return res.text();
+            })
+            .then(function () {
+              regForm.style.display = 'none';
+              document.getElementById('form-success').classList.add('visible');
+            })
+            .catch(function () {
+              err.textContent = 'Versturen lukt niet — probeer later opnieuw of mail naar vrooi@celebrationchurch.nl.';
+              err.style.display = 'block';
+            })
+            .finally(function () {
+              if (btn) btn.disabled = false;
+            });
         });
       }
     })();
