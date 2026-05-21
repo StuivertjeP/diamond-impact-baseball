@@ -490,9 +490,8 @@
     .prob-grid { display:grid; gap:3rem 6rem; align-items:center; }
     @media(min-width:900px){ .prob-grid { grid-template-columns:1fr 1fr; } }
 
-    .big-quote { font-family: 'Bebas Neue', sans-serif; font-size:clamp(2.2rem,5.5vw,4.5rem); color:var(--white); line-height:.95; position:relative; padding-left:1.5rem; letter-spacing:.03em; }
-    .big-quote::before { content:''; position:absolute; left:0; top:0; width:4px; height:100%; background:linear-gradient(180deg,var(--gold),rgba(212,148,42,.1)); border-radius:2px; }
-    .big-quote em { color:var(--blue-bright); font-style:normal; display:block; }
+    /* Kopblok links: zelfde typografie als coaches (.label-tag + .impact.sh-title); géén extra .sh-ondermarge */
+    .problem .prob-grid > .reveal > .sh.problem-head-block { margin-bottom:0; }
 
     .prob-list { list-style:none; display:flex; flex-direction:column; gap:1.2rem; }
     .prob-list li { display:flex; gap:1rem; font-size:.925rem; color:var(--mist); line-height:1.65; padding-bottom:1.2rem; border-bottom:1px solid rgba(26,75,140,.18); }
@@ -1415,17 +1414,15 @@
     <div class="container">
       <div class="prob-grid">
         <div class="reveal">
-          <p class="label-tag" style="margin-bottom:1.5rem;">De realiteit van jonge spelers</p>
-          <blockquote class="big-quote" id="prob-h">
-            JE HOEFT<br/>JEZELF<br/><em>NIET TE<br/>BEWIJZEN.</em>
-          </blockquote>
-          <p style="margin-top:1.75rem;font-size:.95rem;color:var(--mist);line-height:1.8;max-width:var(--prose-max);"> 
-            Veel jonge spelers stappen het veld op met onzichtbare druk. De druk om te presteren. Om geen fouten te maken. Om te laten zien dat je goed genoeg bent. 
-            
-            <br><br>Maar baseball speel je niet op je best wanneer je vastzit in bewijsdrang. Diamond Impact Baseball is de plek waar jonge spelers leren groeien in baseball skills, vertrouwen en karakter, en ontdekken dat er méér is dan alleen prestaties en statistieken.
-            <br> <br>
-            
-          </p>
+          <div class="sh problem-head-block">
+            <p class="label-tag">De realiteit van jonge spelers</p>
+            <h2 class="impact sh-title" id="prob-h">JE HOEFT JEZELF<br/><em>NIET TE BEWIJZEN</em></h2>
+            <p class="sh-body">
+              Veel jonge spelers stappen het veld op met onzichtbare druk. De druk om te presteren. Om geen fouten te maken. Om te laten zien dat je goed genoeg bent.
+              <br><br>
+              Maar baseball speel je niet op je best wanneer je vastzit in bewijsdrang. Diamond Impact Baseball is de plek waar jonge spelers leren groeien in baseball skills, vertrouwen en karakter, en ontdekken dat er méér is dan alleen prestaties en statistieken.
+            </p>
+          </div>
         </div>
         <div class="reveal d2">
           <h3 class="prob-subh">Herken jij dit?</h3>
@@ -1515,7 +1512,7 @@
         <div class="sh-body sh-body-columns">
           <div class="coach-intro-col">
             <p>Diamond Impact brengt een unieke line-up samen van internationale coaches en spelers die het spel op het hoogste niveau hebben beleefd.</p>
-            <p>Van Minor League ervaring in Amerika tot internationals uit het Nederlandse topbaseball — <strong>dit is een kans om te leren van mensen die weten wat er écht nodig is om te groeien.</strong></p>
+            <p>Van Minor League ervaring in Amerika tot internationals uit het Nederlandse topbaseball. <strong>Dit is een kans om te leren van mensen die weten wat er écht nodig is om te groeien.</strong></p>
             <p><strong>Onze coaching line-up bestaat uit:</strong></p>
             <p><strong>🇺🇸 Amerikaanse pro-ervaring</strong><br>Coaches en spelers met ervaring binnen het Amerikaanse baseballsysteem, van high-level college baseball tot professioneel niveau.</p>
           </div>
