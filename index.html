@@ -359,13 +359,6 @@
       line-height: 1.55;
       text-shadow: 0 1px 3px rgba(5, 8, 16, .92), 0 0 20px rgba(5, 8, 16, .55);
     }
-    @media (max-width: 639px) {
-      .hero-intro {
-        font-size: clamp(1.125rem, 4.2vw, 1.24rem);
-        line-height: 1.68;
-        letter-spacing: .01em;
-      }
-    }
     .hero-intro strong { color: var(--off-white); font-weight: 600; font-style: normal; }
 
     /* ── Date | Location — plain text row ── */
@@ -390,6 +383,20 @@
     }
     .meta-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
     .hero-meta-sep { color: rgba(74,154,236,.3); font-size: .7rem; }
+
+    /* Mobiel (#hero): intro + datum/locatie minimaal 16px voor leesbaarheid op video-achtergrond */
+    @media (max-width: 639px) {
+      .hero-intro {
+        font-size: max(1rem, 16px);
+        line-height: 1.72;
+        letter-spacing: 0.01em;
+      }
+      .hero-meta-item {
+        font-size: max(1rem, 16px);
+        letter-spacing: 0.08em;
+        line-height: 1.45;
+      }
+    }
 
     /* ── CTAs ── */
     .hero-ctas { display: flex; flex-wrap: wrap; gap: .875rem; }
