@@ -335,16 +335,18 @@
     }
     .hero-payoff {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(1.15rem, 3vw, 1.55rem);
+      font-size: 1.125rem; /* 18px — leesbare subkop onder de H1 */
       font-weight: 700;
       font-style: italic;
-      letter-spacing: .16em;
+      letter-spacing: .14em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--white);
       margin-top: 1rem;
       display: block;
-      line-height: 1.25;
-      text-shadow: 0 0 28px rgba(212, 148, 42, 0.35);
+      line-height: 1.3;
+      text-shadow:
+        0 1px 2px rgba(5, 8, 16, .92),
+        0 0 24px rgba(5, 8, 16, .5);
     }
 
     /* ── Intro text under title ── */
@@ -378,11 +380,11 @@
       font-weight: 600;
       letter-spacing: .1em;
       text-transform: uppercase;
-      color: var(--mist);
-      text-shadow: 0 1px 2px rgba(5, 8, 16, .9), 0 0 16px rgba(5, 8, 16, .45);
+      color: var(--white);
+      text-shadow: 0 1px 2px rgba(5, 8, 16, .92), 0 0 18px rgba(5, 8, 16, .55);
     }
     .meta-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
-    .hero-meta-sep { color: rgba(74,154,236,.3); font-size: .7rem; }
+    .hero-meta-sep { color: rgba(255, 255, 255, .4); font-size: .75rem; }
 
     /* Mobiel (#hero): intro + datum/locatie minimaal 16px voor leesbaarheid op video-achtergrond */
     @media (max-width: 639px) {
@@ -473,45 +475,8 @@
 
     /* ════════════════════════════════  SECTION HEADER  ══ */
     .sh { margin-bottom:clamp(2.5rem,5vw,4rem); }
-    .sh-title { font-size:clamp(2.5rem,6vw,5rem); margin-top:.6rem; }
-
-    /* Gradient-heading — zelfde familie als transform / IMANI (wit → lichtblauw → accent) */
-    h2.impact.sh-title,
-    h2.impact.imani-title,
-    h2.impact.trans-headline,
-    section.final-cta h2.impact {
-      background-image:linear-gradient(
-        168deg,
-        var(--white) 0%,
-        var(--off-white) 16%,
-        #c8dcf2 44%,
-        var(--blue-light) 74%,
-        var(--blue-bright) 100%
-      );
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-      -webkit-text-fill-color:transparent;
-      filter:drop-shadow(0 2px 14px rgba(5, 8, 16, .42));
-    }
-    h2.impact.sh-title em,
-    h2.impact.imani-title em,
-    h2.impact.trans-headline em,
-    section.final-cta h2.impact em {
-      background-image:linear-gradient(
-        132deg,
-        var(--off-white) 0%,
-        #cceaff 26%,
-        var(--blue-bright) 52%,
-        var(--blue-light) 78%,
-        #e8f6ff 100%
-      );
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-      -webkit-text-fill-color:transparent;
-      font-style:normal;
-    }
+    .sh-title { font-size:clamp(2.5rem,6vw,5rem); margin-top:.6rem; color:var(--white); }
+    .sh-title em { color:var(--blue-bright); font-style:normal; }
     .sh-body { max-width:var(--prose-max); color:var(--mist); font-size:.95rem; line-height:1.8; margin-top:1rem; }
     /* Coaches-intro: twee kolommen op desktop */
     @media(min-width:900px){
@@ -635,6 +600,16 @@
       font-size:clamp(3rem,8vw,7.5rem);
       text-align:center;
       margin-bottom:.4rem;
+      color:var(--white);
+      text-shadow:
+        0 1px 2px rgba(5, 8, 16, .95),
+        0 0 32px rgba(5, 8, 16, .48),
+        0 10px 36px rgba(5, 8, 16, .5);
+    }
+    .trans-headline em {
+      color:var(--blue-bright);
+      font-style:normal;
+      text-shadow:0 0 28px rgba(6, 20, 40, .82), 0 1px 2px rgba(5, 8, 16, .9);
     }
     .trans-sub {
       text-align:center;
@@ -889,7 +864,17 @@
       line-height:.93;
       letter-spacing:.03em;
       text-transform:uppercase;
+      color:var(--white);
       margin:.5rem 0 .85rem;
+      text-shadow:
+        0 1px 2px rgba(5, 8, 16, .95),
+        0 0 40px rgba(5, 8, 16, .5),
+        0 10px 36px rgba(5, 8, 16, .55);
+    }
+    .imani-title em {
+      color:var(--blue-bright);
+      font-style:normal;
+      text-shadow:0 0 28px rgba(6, 20, 40, .82), 0 1px 2px rgba(5, 8, 16, .9);
     }
 
     .imani-lead {
@@ -1081,6 +1066,12 @@
       border-left-color:var(--gold);
       background:rgba(14, 26, 44, .92);
     }
+    .faq--photo .faq-heading .impact.sh-title {
+      text-shadow:
+        0 1px 2px rgba(5, 8, 16, .95),
+        0 0 36px rgba(5, 8, 16, .45),
+        0 14px 32px rgba(5, 8, 16, .52);
+    }
     .faq--photo .faq-heading .label-tag {
       text-shadow: 0 1px 12px rgba(5, 8, 16, .55);
     }
@@ -1209,6 +1200,16 @@
     .final-cta h2 {
       font-size:clamp(3.5rem,10vw,9rem);
       margin-bottom:.3rem;
+      color:var(--white);
+      text-shadow:
+        0 1px 2px rgba(5, 8, 16, .95),
+        0 0 36px rgba(5, 8, 16, .5),
+        0 10px 40px rgba(5, 8, 16, .55);
+    }
+    .final-cta h2 em {
+      color:var(--blue-bright);
+      font-style:normal;
+      text-shadow:0 0 28px rgba(6, 20, 40, .82);
     }
     .final-cta p {
       font-family:var(--font-cond);
