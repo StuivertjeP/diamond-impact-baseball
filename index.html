@@ -323,7 +323,8 @@
         0 12px 48px rgba(5, 8, 16, .65);
       /* max two lines on desktop, three on mobile handled by font-size */
     }
-    .hero-h1 em {
+    /* Tweede titelregel volledig in accentblauw (voorheen alleen GAME) */
+    .hero-h1-accent {
       color: var(--blue-bright);
       font-style: normal;
       display: inline-block;
@@ -981,12 +982,23 @@
       text-transform:uppercase;
     }
     .form-box > p, .form-box .form-intro { font-size:.78rem; color:rgba(138,168,200,.55); max-width:260px; line-height:1.7; margin-inline:auto; }
+    .form-box .form-intro.form-intro--wide { max-width: min(42rem, 100%); width: 100%; margin-inline: 0; margin-bottom: 1.25rem; text-align: left; }
 
     .reg-form { display:flex; flex-direction:column; gap:.85rem; width:100%; }
     .form-row { display:grid; gap:.85rem; }
     @media(min-width:520px){ .form-row { grid-template-columns:1fr 1fr; } }
     .form-group { display:flex; flex-direction:column; gap:.4rem; }
     .form-label { font-family:var(--font-cond); font-size:.68rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--mist); }
+    /* Inschrijf­formulier: NL/ENG labels niet in all-caps */
+    .reg-form .form-label:not(.form-label--caps),
+    .reg-form span.form-label,
+    .reg-form .form-group > div.form-label-heading {
+      text-transform: none;
+      letter-spacing: 0.04em;
+      font-size: 0.74rem;
+      line-height: 1.4;
+      font-weight: 600;
+    }
     .form-input, .form-select, .form-textarea { background:var(--navy); border:1px solid rgba(30,95,173,.25); color:var(--off-white); font-family:var(--font-body); font-size:.9rem; padding:.7rem .9rem; border-radius:2px; outline:none; transition:border-color .2s; width:100%; }
     .form-input:focus, .form-select:focus, .form-textarea:focus { border-color:rgba(212,148,42,.5); }
     .form-input::placeholder, .form-textarea::placeholder { color:var(--mist-dark); opacity:.5; }
@@ -999,6 +1011,70 @@
     .form-nb-honeypot { position:absolute!important; height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap;border:0;padding:0;margin:-1px; }
     .form-success { display:none; flex-direction:column; align-items:center; text-align:center; gap:1rem; padding:2rem 1rem; }
     .form-success.visible { display:flex; }
+    .req { color: var(--red); font-weight: 700; margin-left: .12em; font-size: .85em; }
+    .form-hint {
+      font-size: .62rem;
+      color: var(--mist-dark);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: none;
+      margin-top: -.15rem;
+    }
+    .form-dob-grid { display: grid; gap: .65rem; grid-template-columns: 1fr 1fr 1.2fr; }
+    @media (max-width: 480px) { .form-dob-grid { grid-template-columns: 1fr 1fr 1fr; } }
+    .form-checkbox-grid {
+      display: grid;
+      gap: .55rem .85rem;
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: .25rem;
+    }
+    @media (max-width: 420px) { .form-checkbox-grid { grid-template-columns: 1fr; } }
+    .form-check {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .875rem;
+      color: var(--off-white);
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .form-check input[type="checkbox"] {
+      width: 1rem;
+      height: 1rem;
+      accent-color: var(--gold);
+      flex-shrink: 0;
+    }
+    .form-check-req-wrap {
+      display: flex;
+      align-items: flex-start;
+      gap: .55rem;
+      margin-top: .35rem;
+    }
+    .form-check-req-wrap input[type="checkbox"] {
+      margin-top: .2rem;
+      width: 1rem;
+      height: 1rem;
+      accent-color: var(--gold);
+      flex-shrink: 0;
+    }
+    .form-check-req-wrap span { font-size: .815rem; line-height: 1.55; color: var(--off-white); }
+    .signup-goody-note {
+      margin-top: 0.75rem;
+      font-family: var(--font-cond);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .footer-social { margin-top: 0.9rem; }
+    .footer-social a {
+      color: var(--mist);
+      font-size: 0.875rem;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .footer-social a:hover { color: var(--gold-light); }
     .success-icon { width:52px; height:52px; border:2px solid var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; }
     .success-icon svg { width:22px; height:22px; stroke:var(--gold); fill:none; stroke-width:2.5; }
     .success-title { font-family:'Bebas Neue',sans-serif; font-size:1.6rem; color:var(--white); letter-spacing:.05em; }
@@ -1275,7 +1351,7 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img class="nav-logo-img" src="assets/images/FCA-Logo.png" alt="FCA Netherlands" width="120" height="40" decoding="async" />
+          <img class="nav-logo-img" src="assets/images/FCA-Logo.png" alt="FCA" width="120" height="40" decoding="async" />
         </a>
 
         <div style="width:1px;height:24px;background:rgba(74,154,236,.15);flex-shrink:0;" aria-hidden="true"></div>
@@ -1356,14 +1432,15 @@
       <!-- H1: two lines on desktop, three on mobile -->
       <h1 id="hero-h" class="hero-h1">
         YOU ARE MORE<br/>
-        THAN YOUR <em>GAME</em>
+        <span class="hero-h1-accent">THAN YOUR GAME</span>
       </h1>
       <span class="hero-payoff">Een unieke tweedaagse baseball experience voor spelers die willen groeien.</span>
 
       <!-- Intro text -->
       <p class="hero-intro">
-        Train met internationale topcoaches uit Nederland en Amerika. Twee dagen vol high-level baseball, 
-        competitie, mentorship en inspiratie. Voor jongens en meisjes van 12 t/m 18 jaar die beter willen worden - op én buiten het veld.<br>
+        Train met internationale topcoaches uit Nederland en Amerika tijdens twee intensieve dagen vol high-level baseball, competitie, mentorship en karaktervorming.
+        <br><br>
+        <strong>Voor jongens van 12 t/m 18 jaar die beter willen worden - op én buiten het veld.</strong>
       </p>
 
       <!-- Date | Location — plain text -->
@@ -1401,20 +1478,20 @@
       <span class="ticker-item">Diamond Impact Baseball<span class="ticker-sep">◆</span></span>
       <span class="ticker-item">11 & 12 Augustus 2026<span class="ticker-sep">◆</span></span>
       <span class="ticker-item">HCAW Complex Bussum<span class="ticker-sep">◆</span></span>
-      <span class="ticker-item">Minor League &amp; Major League Coaches<span class="ticker-sep">◆</span></span>
+      <span class="ticker-item">Minor League, Major League &amp; College<span class="ticker-sep">◆</span></span>
       <span class="ticker-item">€140 Early Bird · Na 15 juni €160<span class="ticker-sep">◆</span></span>
       <span class="ticker-item">Leeftijden 12 t/m 18 Jaar<span class="ticker-sep">◆</span></span>
       <span class="ticker-item">Inschrijven vóór 31 Juli 2026<span class="ticker-sep">◆</span></span>
-      <span class="ticker-item">FCA Netherlands X Celebration Church Netherlands<span class="ticker-sep">◆</span></span>
+      <span class="ticker-item">FCA × Celebration Church Netherlands<span class="ticker-sep">◆</span></span>
       <!-- duplicate for seamless loop -->
       <span class="ticker-item">Diamond Impact Baseball<span class="ticker-sep">◆</span></span>
       <span class="ticker-item">11 &amp; 12 Augustus 2026<span class="ticker-sep">◆</span></span>
       <span class="ticker-item">HCAW Complex Bussum<span class="ticker-sep">◆</span></span>
-      <span class="ticker-item">Minor League &amp; Major League Coaches<span class="ticker-sep">◆</span></span>
+      <span class="ticker-item">Minor League, Major League &amp; College<span class="ticker-sep">◆</span></span>
       <span class="ticker-item">€140 Early Bird · Na 15 juni €160<span class="ticker-sep">◆</span></span>
       <span class="ticker-item">Leeftijden 12 t/m 18 Jaar<span class="ticker-sep">◆</span></span>
       <span class="ticker-item">Inschrijven vóór 31 Juli 2026<span class="ticker-sep">◆</span></span>
-      <span class="ticker-item">FCA Netherlands X Celebration Church Netherlands<span class="ticker-sep">◆</span></span>
+      <span class="ticker-item">FCA × Celebration Church Netherlands<span class="ticker-sep">◆</span></span>
     </div>
   </div>
 
@@ -1485,8 +1562,7 @@
           <span class="pillar-num">01</span>
           <h3>SKILLS DIE JE DIRECT TOEPAST</h3>
           <h4>Echte reps, echte feedback</h4>
-          <p>Je traint met coaches die op het hoogste (inter)nationale niveau hebben gespeeld
-            . Of het nu gaat om pitchen, slaan of veldspel: je krijgt hands-on aanwijzingen waar je direct een betere speler van wordt.</p>
+          <p>Je traint met coaches die op het hoogste (inter)nationale niveau hebben gespeeld en jou graag de fijne kneepjes van het spel uitleggen. Je krijgt hands-on aanwijzingen waar je direct een betere speler van wordt.</p>
         </div>
         <div class="pillar">
           <div class="pillar-icon">
@@ -1504,7 +1580,7 @@
           <span class="pillar-num">03</span>
           <h3>DOEL EN DRIVE (vrijwillige deelname)</h3>
           <h4>Een eerlijke blik op wat ons drijft </h4>
-          <p>We delen getuigenissen en muziek over de rol van geloof in de sport.
+          <p>We delen o.a. getuigenissen en muziek over de rol van geloof in de sport.
             <strong>Belangrijk: Deze momenten zijn volledig vrijwillig.</strong> We bieden de ruimte, jij bepaalt of je aansluit.
             </p>
         </div>
@@ -1530,7 +1606,7 @@
           <div class="coach-intro-col">
             <p><strong>🇳🇱 Nederlandse topcoaches &amp; internationals</strong><br>Spelers en coaches die het Europese topniveau kennen en weten wat nodig is om daar te presteren.</p>
             <p><strong>🤝 FCA &amp; Celebration Church</strong> — Een unieke samenwerking waarin topsport, mentorship en karakterontwikkeling samenkomen in een veilige en inspirerende omgeving.</p>
-            <p><strong>Voor jongens en meisjes van 12 t/m 18 jaar</strong><br>Of je nu ambitie hebt om de top te bereiken of simpelweg wilt groeien als speler — Diamond Impact Baseball is gebouwd om je uit te dagen op jouw niveau.</p>
+            <p><strong>Voor jongens van 12 t/m 18 jaar</strong><br>Of je nu ambitie hebt om de top te bereiken of simpelweg wilt groeien als speler — Diamond Impact Baseball is gebouwd om je uit te dagen op jouw niveau.</p>
           </div>
         </div>
       </div>
@@ -1611,11 +1687,11 @@
             rel="noopener noreferrer"
             aria-label="FCA — meer informatie"
           >
-            <img src="assets/images/FCA-Logo.png" alt="FCA Netherlands" width="160" height="80" decoding="async" />
+            <img src="assets/images/FCA-Logo.png" alt="FCA" width="160" height="80" decoding="async" />
           </a>
           <div class="partner-card-text">
-            <h4>FCA Netherlands</h4>
-            <p><strong>FCA NETHERLANDS 70 jaar ervaring in sport en geloof.</strong> De Fellowship of Christian Athletes is wereldwijd actief in meer dan 100 landen. 
+            <h4>FCA</h4>
+            <p><strong>FCA — 70 jaar ervaring in sport en geloof.</strong> De Fellowship of Christian Athletes is wereldwijd actief in meer dan 100 landen. 
                In Nederland faciliteren zij de karakter-sessies en de optionele geloofsmomenten. Hun aanpak is altijd sporter-gestuurd: we praten over wat jou drijft op het veld. Deelname aan geloofsactiviteiten is bij ons altijd een keuze, nooit een verplichting.</p>
             <p class="partner-card-more"><a href="https://www.fca.org/what-is-fca" target="_blank" rel="noopener noreferrer">Meer informatie over FCA</a></p>
           </div>
@@ -1651,30 +1727,30 @@
       <div class="imani-split imani-split--story">
         <div class="imani-copy-col reveal">
           <div class="imani-body imani-body--dual">
-            <p>In Uganda bouwt Kennedy Indevu via <strong>IMANI Outreach Ministries</strong> aan de volgende generatie jonge leiders — met baseball als middel voor mentoring, karaktervorming, onderwijs en geloof. Meer over hun werk: <a href="https://www.imaniministry.com/" target="_blank" rel="noopener noreferrer">imaniministry.com</a>.</p>
-            <p>Daar leren kinderen niet alleen slaan, gooien of fielden.</p>
+            <p>In Oeganda bouwt Kennedy Indevu via <strong>IMANI Outreach Ministries</strong> aan de volgende generatie jonge leiders — met baseball als middel voor mentoring, karaktervorming, onderwijs en geloof. Meer over hun werk: <a href="https://www.imaniministry.com/" target="_blank" rel="noopener noreferrer">imaniministry.com</a>.</p>
+            <p>Daar leren kinderen niet alleen honkbal skills.</p>
             <p>Ze leren discipline. Leiderschap. Doorzetten. Samenwerken. En vooral: dat hun waarde niet afhangt van prestaties.</p>
             <p>Precies dát is ook de kern van Diamond Impact.</p>
             <p>Omdat wij geloven dat de mooiste winst niet altijd op het scorebord staat.</p>
           </div>
-          <div class="imani-video-intro">IMANI Uganda - baseball &amp; community</div>
+          <div class="imani-video-intro">IMANI Oeganda — baseball &amp; community</div>
           <div class="imani-vimeo">
             <iframe
               loading="lazy"
               src="https://player.vimeo.com/video/1193482867?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
               allow="autoplay; fullscreen; picture-in-picture"
               referrerpolicy="strict-origin-when-cross-origin"
-              title="IMANI Outreach Ministries — Uganda"
+              title="IMANI Outreach Ministries — Oeganda"
             ></iframe>
           </div>
         </div>
 
         <aside class="imani-media-col reveal d2" aria-label="Kennedy Indevu">
           <article class="coach-card imani-ken-coach-card">
-            <figure class="imani-landscape" role="group" aria-label="Baseball op het veld in Uganda, IMANI Outreach Ministries">
+            <figure class="imani-landscape" role="group" aria-label="Baseball op het veld in Oeganda, IMANI Outreach Ministries">
               <img
                 src="assets/images/Imani-ministry-uganda-baseball-002.jpg"
-                alt="Spelers en IMANI baseball op het veld in Uganda"
+                alt="Spelers en IMANI baseball op het veld in Oeganda"
                 width="1200"
                 height="675"
                 loading="lazy"
@@ -1683,8 +1759,8 @@
             </figure>
             <div class="coach-body">
               <h3>KENNEDY INDEVU</h3>
-              <p class="coach-role">Guest Coach · IMANI Outreach Uganda · Youth Mentor</p>
-              <p class="coach-bio">Director van IMANI Outreach Ministries in Uganda, waar baseball wordt ingezet om kinderen en jongeren te begeleiden in karakter, leiderschap, geloof en persoonlijke groei.</p>
+              <p class="coach-role">Guest Coach · IMANI Outreach Ministries · Youth Mentor · Oeganda</p>
+              <p class="coach-bio">Director van IMANI Outreach Ministries in Oeganda, waar baseball wordt ingezet om kinderen en jongeren te begeleiden in karakter, leiderschap, geloof en persoonlijke groei.</p>
               <p class="coach-bio">Gedreven om via sport kansen te creëren en jonge spelers te helpen groeien, op én buiten het veld.</p>
             </div>
           </article>
@@ -1717,7 +1793,7 @@
             <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5"/></svg></span>Coaches met MLB / MiLB &amp; NL ervaring</li>
             <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5"/></svg></span>Kleine groepssessies &amp; getuigenissen</li>
             <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5"/></svg></span>Avondprogramma met muziek (optioneel)</li>
-            <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5"/></svg></span>Diamond Impact T-shirt</li>
+            <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5"/></svg></span>Toffe Diamond Impact-goodybag</li>
             <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5"/></svg></span>Geen overnachting nodig</li>
           </ul>
 
@@ -1782,6 +1858,7 @@
           <div class="sh signup-intro-head">
             <p class="label-tag">Beperkt aantal plaatsen</p>
             <h2 class="impact sh-title" id="signup-h">STAP OP<br/><em>DE PLAAT</em></h2>
+            <p class="signup-goody-note">Incl. toffe goodybag</p>
           </div>
           <p style="font-size:.925rem;color:var(--mist);line-height:1.8;margin-bottom:1.5rem;">
             <strong>Claim je plek bij een kamp dat baseball serieus neemt — en jou ook.</strong> We werken in kleine groepen. Dat betekent maximale reps, persoonlijke feedback van pro-coaches en gesprekken die je bijblijven.
@@ -1789,7 +1866,8 @@
           <ul class="checklist" style="margin-bottom:2rem;">
             <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5" stroke="var(--blue-bright)" fill="none" stroke-width="2.5"/></svg></span>11–12 augustus 2026 · HCAW Complex, Bussum</li>
             <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5" stroke="var(--blue-bright)" fill="none" stroke-width="2.5"/></svg></span>€140 early bird · Alle maaltijden · Geen overnachting</li>
-            <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5" stroke="var(--blue-bright)" fill="none" stroke-width="2.5"/></svg></span>Leeftijden 12–18 · Jongens en meisjes · Open voor iedereen</li>
+            <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5" stroke="var(--blue-bright)" fill="none" stroke-width="2.5"/></svg></span>Incl. toffe goodybag</li>
+            <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5" stroke="var(--blue-bright)" fill="none" stroke-width="2.5"/></svg></span>Voor spelers van 12 t/m 18 jaa</li>
             <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5" stroke="var(--blue-bright)" fill="none" stroke-width="2.5"/></svg></span>Geloofsmomenten zijn altijd optioneel</li>
           </ul>
 
@@ -1804,25 +1882,27 @@
           </div>
         </div>
 
-        <!-- Inschrijfformulier — Netlify Forms (data-netlify + honeypot; na deploy ingesteld onder Site → Forms) -->
+        <!--
+          Netlify Forms: ingestelde notificatie naar vrooi@celebrationchurch.nl —
+          Dashboard → Site → Forms → Notifications (of Settings → Notifications).
+        -->
         <div class="form-box form-box--register reveal d2">
           <div class="form-header">
             <div class="form-icon">
               <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10h8M8 14h5"/></svg>
             </div>
             <h2 class="form-register-heading">INSCHRIJVEN</h2>
-            <p class="form-intro">Ben jij klaar om te groeien in je game, je karakter en als mens? Laat hieronder je gegevens achter en meld je direct aan voor Diamond Impact Baseball.</p>
           </div>
+          <p class="form-intro form-intro--wide">Vul het formulier hieronder in. Na versturen ontvangen we je aanmelding via Netlify; je ziet hieronder een bevestiging. Vragen? Mail naar <a href="mailto:vrooi@celebrationchurch.nl" style="color:var(--gold-dim);">vrooi@celebrationchurch.nl</a>.</p>
 
           <div class="form-success" id="form-success">
             <div class="success-icon">
               <svg viewBox="0 0 24 24"><polyline points="4,12 9,17 20,6"/></svg>
             </div>
-            <p class="success-title">Yes het is gelukt! Welcome to the club!</p>
+            <p class="success-title">Aanmelding ontvangen</p>
             <p class="success-sub">
-              Dankjewel! Je plek is bijna geregeld. <br/><br/>Vince ontvangt je aanmelding direct en neemt binnenkort persoonlijk contact met je op.
-              <br/><br/>
-              Heb je in de tussentijd een vraag? Mail ze gerust naar <a href="mailto:vrooi@celebrationchurch.nl">vrooi@celebrationchurch.nl</a>
+              Dank je wel! Vince krijgt je gegevens binnen en neemt zo nodig persoonlijk contact op.
+              Bij vragen kun je ook mailen naar <a href="mailto:vrooi@celebrationchurch.nl">vrooi@celebrationchurch.nl</a>.
             </p>
           </div>
 
@@ -1837,64 +1917,106 @@
             novalidate
           >
             <input type="hidden" name="form-name" value="dib-aanmelding" />
-            <!-- spamfilter (laat verborgen, door niemand invullen — Netlify weigert automatisch bots) -->
             <p class="form-nb-honeypot" aria-hidden="true">
               <label for="dib-bot-field">Niet invullen:</label>
               <input id="dib-bot-field" type="text" name="bot-field" tabindex="-1" autocomplete="off" />
             </p>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="f-name">Voornaam *</label>
-                <input class="form-input" type="text" id="f-name" name="given-name" autocomplete="given-name" placeholder="Jan" required />
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="f-last">Achternaam *</label>
-                <input class="form-input" type="text" id="f-last" name="family-name" autocomplete="family-name" placeholder="Jansen" required />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="f-email">E-mailadres *</label>
-                <input class="form-input" type="email" id="f-email" name="email" autocomplete="email" placeholder="jan@email.nl" required />
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="f-phone">Telefoonnummer</label>
-                <input class="form-input" type="tel" id="f-phone" name="tel" autocomplete="tel" placeholder="06 12345678" />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label" for="f-dob">Geboortejaar *</label>
-                <input class="form-input" type="number" id="f-dob" name="birth-year" placeholder="2010" min="2008" max="2014" required />
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="f-pos">Positie</label>
-                <select class="form-select" id="f-pos" name="position">
-                  <option value="">Kies positie…</option>
-                  <option value="Pitcher">Pitcher</option>
-                  <option value="Catcher">Catcher</option>
-                  <option value="Infielder">Infielder</option>
-                  <option value="Outfielder">Outfielder</option>
-                  <option value="Utility / Meerdere">Utility / Meerdere</option>
-                </select>
-              </div>
-            </div>
+
             <div class="form-group">
-              <label class="form-label" for="f-club">Huidige club / team</label>
-              <input class="form-input" type="text" id="f-club" name="club" placeholder="HCAW, Mampaey, …" />
+              <label class="form-label" for="speler-voornaam">Speler voor- &amp; achternaam / Player first &amp; last name<span class="req" aria-hidden="true">*</span></label>
+              <div class="form-row">
+                <div class="form-group" style="gap:.4rem;">
+                  <input class="form-input" type="text" id="speler-voornaam" name="speler-voornaam" autocomplete="given-name" placeholder="Voornaam" required />
+                </div>
+                <div class="form-group" style="gap:.4rem;">
+                  <input class="form-input" type="text" id="speler-achternaam" name="speler-achternaam" autocomplete="family-name" placeholder="Achternaam" required />
+                </div>
+              </div>
             </div>
+
             <div class="form-group">
-              <label class="form-label" for="f-msg">Vragen of opmerkingen</label>
-              <textarea class="form-textarea" id="f-msg" name="message" placeholder="Bijv. dieetwensen, medische info, vragen…"></textarea>
+              <label class="form-label" for="geboorte-dag">Geboortedatum / Date of birth<span class="req" aria-hidden="true">*</span></label>
+              <p class="form-hint" id="dob-hint">(bijv. dag 25 · maand 05 · jaar 2010)</p>
+              <div class="form-dob-grid" role="group" aria-describedby="dob-hint">
+                <input class="form-input" type="number" name="geboorte-dag" id="geboorte-dag" placeholder="Dag" min="1" max="31" inputmode="numeric" required />
+                <input class="form-input" type="number" name="geboorte-maand" id="geboorte-maand" placeholder="Maand" min="1" max="12" inputmode="numeric" required />
+                <input class="form-input" type="number" name="geboorte-jaar" id="geboorte-jaar" placeholder="Jaar" min="1990" max="2016" inputmode="numeric" required />
+              </div>
             </div>
-            <p id="form-error" style="font-size:.75rem;color:var(--red);display:none;"></p>
+
+            <div class="form-group">
+              <label class="form-label" for="geslacht">Geslacht / Gender</label>
+              <select class="form-select" id="geslacht" name="geslacht">
+                <option value="">—</option>
+                <option value="Man / Male">Man / Male</option>
+                <option value="Vrouw / Female">Vrouw / Female</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="clubnaam">Clubnaam / Club name<span class="req" aria-hidden="true">*</span></label>
+              <input class="form-input" type="text" id="clubnaam" name="clubnaam" placeholder="Naam van je club of team" required />
+            </div>
+
+            <div class="form-group">
+              <span class="form-label">Positie / Position<span class="req" aria-hidden="true">*</span> <span class="form-hint" style="display:inline;margin:0;">(minimaal één)</span></span>
+              <div class="form-checkbox-grid" role="group" aria-label="Posities">
+                <label class="form-check"><input type="checkbox" name="positie_pitcher" value="Ja" /> Pitcher</label>
+                <label class="form-check"><input type="checkbox" name="positie_catcher" value="Ja" /> Catcher</label>
+                <label class="form-check"><input type="checkbox" name="positie_infield" value="Ja" /> Infield</label>
+                <label class="form-check"><input type="checkbox" name="positie_outfield" value="Ja" /> Outfield</label>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-top:.35rem;padding-top:1rem;border-top:1px solid rgba(30,95,173,.18);">
+              <span class="form-label">Gegevens ouder / Parent details<span class="req" aria-hidden="true">*</span></span>
+              <div class="form-row">
+                <div class="form-group" style="gap:.4rem;">
+                  <input class="form-input" type="text" id="ouder-voornaam" name="ouder-voornaam" placeholder="Voornaam ouder *" autocomplete="given-name" required />
+                </div>
+                <div class="form-group" style="gap:.4rem;">
+                  <input class="form-input" type="text" id="ouder-achternaam" name="ouder-achternaam" placeholder="Achternaam ouder *" autocomplete="family-name" required />
+                </div>
+              </div>
+              <div class="form-group" style="margin-top:.75rem;">
+                <input class="form-input" type="email" id="ouder-email" name="ouder-email" placeholder="E-mail ouder *" autocomplete="email" required />
+              </div>
+              <div class="form-group" style="margin-top:.75rem;">
+                <input class="form-input" type="tel" id="ouder-mobiel" name="ouder-mobiel" placeholder="Mobiele telefoon *" autocomplete="tel" required />
+              </div>
+              <div class="form-group" style="margin-top:.75rem;">
+                <input class="form-input" type="tel" id="ouder-thuis-telefoon" name="ouder-thuis-telefoon" placeholder="Thuis telefoonnummer" autocomplete="tel" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="hoe-gehoord">Hoe heb je van dit kamp gehoord? / How did you hear about this camp?</label>
+              <input class="form-input" type="text" id="hoe-gehoord" name="hoe-gehoord" placeholder="" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="opmerkingen">Opmerkingen / Remarks</label>
+              <textarea class="form-textarea" id="opmerkingen" name="opmerkingen" placeholder="" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+              <div class="form-label form-label-heading">
+                Ik geef toestemming voor gebruik van mijn foto&apos;s/video&apos;s voor promotie /
+                consent for promotional use of photos &amp; videos
+                <span class="req" aria-hidden="true">*</span>
+              </div>
+              <label class="form-check-req-wrap" for="promotietoestemming">
+                <input type="checkbox" id="promotietoestemming" name="promotietoestemming" value="Ja" required />
+                <span>Ja / Yes — ik verklaar hierboven accoord te gaan zoals gevraagd.</span>
+              </label>
+            </div>
+
+            <p id="form-error" style="font-size:.75rem;color:var(--red);display:none;margin:0;"></p>
             <button type="submit" class="btn btn-gold form-submit">
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" style="width:15px;height:15px;"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
-              YES! Hier wil ik bij zijn ⚾
+              Verstuur aanmelding
             </button>
-            <p class="form-note">
-        
-            </p>
+            <p class="form-note">Velden met <span class="req" style="display:inline;">*</span> zijn verplicht.</p>
           </form>
 
           <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(30,95,173,.15);width:100%;text-align:center;">
@@ -1958,7 +2080,7 @@
           <button class="faq-q" aria-expanded="false">Wat zit er precies in de €140?
             <span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="2" x2="5" y2="8"/><line x1="2" y1="5" x2="8" y2="5"/></svg></span>
           </button>
-          <div class="faq-a">Alles behalve reiskosten. Twee volledige trainingsdagen, alle maaltijden (ontbijt, lunch, avondeten dag 1 en lunch dag 2), snacks, een Diamond Impact T-shirt en toegang tot alle sessies inclusief het avondprogramma. Geen verborgen kosten. Na 15 juni stijgt de prijs naar €160.</div>
+          <div class="faq-a">Alles behalve reiskosten. Twee volledige trainingsdagen, alle maaltijden (ontbijt, lunch, avondeten dag 1 en lunch dag 2), snacks, incl. een toffe goodybag met o.a. je Diamond Impact T-shirt, plus toegang tot alle sessies inclusief het avondprogramma. Geen verborgen kosten. Na 15 juni stijgt de prijs naar €160.</div>
         </div>
 
         <div class="faq-item">
@@ -2057,6 +2179,9 @@
         <a href="#signup" class="btn btn-gold btn-cta-xl">Schrijf je nu in</a>
         <a href="mailto:vrooi@celebrationchurch.nl" class="btn btn-outline">Stel een vraag</a>
       </div>
+      <p class="reveal d3" style="margin-top:1.25rem;font-size:.875rem;">
+        <a href="https://www.instagram.com/diamondimpactbaseball/" target="_blank" rel="noopener noreferrer" style="color:var(--mist);text-decoration:underline;text-underline-offset:3px;">Instagram — @diamondimpactbaseball</a>
+      </p>
     </div>
   </section>
 
@@ -2074,8 +2199,11 @@
       </ul>
       <div class="footer-copy">
         © 2026 Diamond Impact Baseball<br/>
-        FCA Netherlands × Celebration Church Netherlands — Hilversum<br/>
+        FCA × Celebration Church Netherlands — Hilversum<br/>
         <a href="mailto:vrooi@celebrationchurch.nl">vrooi@celebrationchurch.nl</a>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/diamondimpactbaseball/" target="_blank" rel="noopener noreferrer">Instagram — @diamondimpactbaseball</a>
+        </div>
       </div>
     </div>
   </footer>
@@ -2197,21 +2325,38 @@
         });
       });
 
-      /** Netlify Forms: eerste deploy registreert form “dib-aanmelding”. Site → Forms → notifications naar vrooi@… */
+      /** Netlify Forms — formulier “dib-aanmelding”. Mail vrooi@… instellen onder Site → Forms → Notifications */
       var regForm = document.getElementById('reg-form');
       if (regForm) {
         regForm.addEventListener('submit', function (e) {
           e.preventDefault();
           var err = document.getElementById('form-error');
           var btn = regForm.querySelector('button[type="submit"]');
-          err.style.display = 'none';
-          var name = document.getElementById('f-name').value.trim();
-          var last = document.getElementById('f-last').value.trim();
-          var email = document.getElementById('f-email').value.trim();
-          var dob = document.getElementById('f-dob').value.trim();
-          if (!name || !last) { err.textContent = 'Vul je voor- en achternaam in.'; err.style.display = 'block'; return; }
-          if (!email || !email.includes('@')) { err.textContent = 'Vul een geldig e-mailadres in.'; err.style.display = 'block'; return; }
-          if (!dob) { err.textContent = 'Vul je geboortejaar in.'; err.style.display = 'block'; return; }
+          if (err) err.style.display = 'none';
+
+          var posBoxes = ['positie_pitcher', 'positie_catcher', 'positie_infield', 'positie_outfield'];
+          var posOk = posBoxes.some(function (n) {
+            var el = regForm.querySelector('input[name="' + n + '"]');
+            return el && el.checked;
+          });
+          if (!posOk) {
+            if (err) {
+              err.textContent = 'Kies minimaal één positie (Pitcher / Catcher / Infield / Outfield).';
+              err.style.display = 'block';
+            }
+            return;
+          }
+
+          var dobD = document.getElementById('geboorte-dag');
+          var dobM = document.getElementById('geboorte-maand');
+          var dobY = document.getElementById('geboorte-jaar');
+          if (!dobD || !dobM || !dobY || String(dobD.value).trim() === '' || String(dobM.value).trim() === '' || String(dobY.value).trim() === '') {
+            if (err) {
+              err.textContent = 'Vul geboortedatum volledig in (dag · maand · jaar).';
+              err.style.display = 'block';
+            }
+            return;
+          }
 
           var payload = new URLSearchParams(new FormData(regForm));
           if (btn) btn.disabled = true;
@@ -2226,17 +2371,21 @@
             })
             .then(function () {
               regForm.style.display = 'none';
-              document.getElementById('form-success').classList.add('visible');
+              var ok = document.getElementById('form-success');
+              if (ok) ok.classList.add('visible');
             })
             .catch(function () {
-              err.textContent = 'Versturen lukt niet — probeer later opnieuw of mail naar vrooi@celebrationchurch.nl.';
-              err.style.display = 'block';
+              if (err) {
+                err.textContent = 'Versturen lukt niet — probeer later opnieuw of mail naar vrooi@celebrationchurch.nl.';
+                err.style.display = 'block';
+              }
             })
             .finally(function () {
               if (btn) btn.disabled = false;
             });
         });
       }
+
     })();
   </script>
   <script src="https://player.vimeo.com/api/player.js"></script>
