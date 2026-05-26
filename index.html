@@ -760,7 +760,20 @@
     .coach-body .coach-bio + .coach-bio { margin-top:.65rem; }
 
     /* Partner bar */
-    .partner-bar { margin-top:3.5rem; display:grid; gap:1.5rem; }
+    .coaches-more-note {
+      margin-top: 2.25rem;
+      padding: 1.1rem 1.25rem;
+      text-align: center;
+      font-family: var(--font-cond);
+      font-size: 0.92rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      line-height: 1.55;
+      color: var(--gold-light);
+      border: 1px solid rgba(212, 148, 42, 0.28);
+      background: rgba(212, 148, 42, 0.06);
+    }
+    .partner-bar { margin-top:2.5rem; display:grid; gap:1.5rem; }
     @media(min-width:768px){ .partner-bar { grid-template-columns:1fr 1fr; } }
 
     .partner-card { background:var(--navy-3); border:1px solid rgba(30,95,173,.18); padding:2rem 2.25rem; display:flex; align-items:center; gap:1.5rem; transition:border-color .3s; }
@@ -1624,7 +1637,7 @@
         <h2 class="impact sh-title" id="coaches-h">COACHES UIT<br/><em>AMERIKA & NEDERLAND</em></h2>
         <div class="sh-body sh-body-columns">
           <div class="coach-intro-col">
-            <p>Diamond Impact brengt een unieke line-up samen van internationale coaches en spelers die het spel op het hoogste niveau hebben beleefd.</p> <strong>Hieronder een selectie van de coaches die al toegezegd hebben. De komende tijd volgen er meer namen van coaches die erbij aanwezig zullen zijn.</strong>
+            <p>Diamond Impact brengt een unieke line-up samen van internationale coaches en spelers die het spel op het hoogste niveau hebben beleefd. <strong>Hieronder een selectie van de coaches die al toegezegd hebben.</strong></p>
             <p>Van Minor League ervaring in Amerika tot internationals uit het Nederlandse topbaseball. <strong>Dit is een kans om te leren van mensen die weten wat er écht nodig is om te groeien.</strong></p>
             <p><strong>Onze coaching line-up bestaat uit:</strong></p>
             <p><strong>🇺🇸 Amerikaanse pro-ervaring</strong><br>Coaches en spelers met ervaring binnen het Amerikaanse baseballsysteem, van high-level college baseball tot professioneel niveau.</p>
@@ -1703,6 +1716,10 @@
           </div>
         </div>
       </div>
+
+      <p class="coaches-more-note reveal" role="note">
+        De komende tijd volgen er meer namen van coaches die erbij aanwezig zullen zijn.
+      </p>
 
       <div class="partner-bar reveal">
         <div class="partner-card">
