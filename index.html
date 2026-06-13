@@ -716,9 +716,11 @@
     /* ════════════════════════════════  COACHES  ══ */
     .coaches-section { background:var(--navy); }
 
-    .coach-grid { display:grid; gap:1.5rem; }
+    .coach-grid { display:grid; gap:1.5rem; opacity:1 !important; transform:none !important; }
     @media(min-width:600px){ .coach-grid { grid-template-columns:repeat(2,1fr); } }
-    @media(min-width:900px){ .coach-grid { grid-template-columns:repeat(3,1fr); } }
+    @media(min-width:1100px){ .coach-grid { grid-template-columns:repeat(4,1fr); } }
+
+    .coach-grid .coach-card { opacity:1 !important; transform:none !important; }
 
     .coach-card { background:var(--navy-3); border:1px solid rgba(30,95,173,.18); position:relative; overflow:hidden; transition:border-color .3s, transform .3s; }
     .coach-card:hover { border-color:rgba(74,154,236,.4); transform:translateY(-5px); }
@@ -778,6 +780,40 @@
     }
     .partner-bar { margin-top:2.5rem; display:grid; gap:1.5rem; }
     @media(min-width:768px){ .partner-bar { grid-template-columns:1fr 1fr; } }
+
+    .partner-guest-grid {
+      margin-top: 2.5rem;
+      display: grid;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    @media (min-width: 768px) {
+      .partner-guest-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+          "fca guest"
+          "cc cc";
+      }
+      .partner-fca-col { grid-area: fca; }
+      .partner-guest-col { grid-area: guest; }
+      .partner-cc-col { grid-area: cc; }
+    }
+    @media (min-width: 1100px) {
+      .partner-guest-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(260px, 320px) minmax(0, 1fr);
+        grid-template-areas: "fca guest cc";
+      }
+    }
+    .partner-guest-col { width: 100%; }
+    @media (min-width: 960px) {
+      .partner-guest-col .imani-ken-coach-card {
+        position: sticky;
+        top: 6.75rem;
+      }
+    }
+    .partner-guest-col .imani-landscape img {
+      object-position: center 18%;
+    }
 
     .partner-card { background:var(--navy-3); border:1px solid rgba(30,95,173,.18); padding:2rem 2.25rem; display:flex; align-items:center; gap:1.5rem; transition:border-color .3s; }
     .partner-card:hover { border-color:rgba(212,148,42,.3); }
@@ -895,15 +931,38 @@
       line-height:1.5;
     }
 
-    .imani-video-intro {
-      font-family:var(--font-cond);
-      font-size:.68rem;
-      font-weight:700;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color:var(--gold);
-      margin-top:2rem;
-      margin-bottom:.65rem;
+    .imani-video-block {
+      margin-top: 2rem;
+      max-width: 100%;
+    }
+    .imani-video-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.65rem, 3.8vw, 2.75rem);
+      line-height: 1.02;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin: 0 0 1rem;
+      text-shadow: 0 1px 2px rgba(5, 8, 16, .95);
+    }
+    .imani-video-body {
+      margin-top: 1.35rem;
+      font-size: .965rem;
+      color: var(--mist);
+      line-height: 1.78;
+      text-shadow: 0 1px 2px rgba(5, 8, 16, .5);
+    }
+    .imani-video-body p + p { margin-top: 1.05rem; }
+    .imani-video-tagline {
+      margin-top: 1.35rem !important;
+      font-family: var(--font-cond);
+      font-size: clamp(.88rem, 1.8vw, 1.05rem);
+      font-weight: 800;
+      font-style: italic;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      line-height: 1.45;
     }
     .imani-vimeo {
       position:relative;
@@ -1669,7 +1728,29 @@
       </div>
 
       <div class="coach-grid">
-        <div class="coach-card reveal">
+        <div class="coach-card">
+          <div class="coach-img coach-img--photo coach-img--photo-diego">
+            <img
+              src="assets/images/Diego-Diamond-Impact-001.jpeg"
+              alt="Diegomar Markwell"
+              width="600"
+              height="800"
+              loading="eager"
+              decoding="async"
+            />
+            <div class="coach-img-grain" aria-hidden="true"></div>
+            <div class="coach-flag">🇳🇱</div>
+            <div class="coach-level">Pitching Coach · Blue Jays · WBC</div>
+          </div>
+          <div class="coach-body">
+            <h3>DIEGOMAR MARKWELL</h3>
+            <p class="coach-role">Pitching Coach · Toronto Blue Jays · Team Kingdom NL</p>
+            <p class="coach-bio">Diegomar Markwell brengt meer dan 25 jaar ervaring mee op het hoogste niveau van het internationale honkbal. Als voormalig professioneel pitcher binnen de Toronto Blue Jays organisatie, wereldkampioen met Nederland, Olympiër en deelnemer aan vijf World Baseball Classics, heeft hij een schat aan kennis opgebouwd.</p>
+            <p class="coach-bio">Tegenwoordig is hij pitching coach van zowel Curaçao Neptunus als het Nederlands Koninkrijksteam. Tijdens Diamond Impact Baseball zal Diegomar zijn ervaring en inzichten delen met de volgende generatie spelers.</p>
+          </div>
+        </div>
+
+        <div class="coach-card">
           <div class="coach-img coach-img--photo coach-img--photo-raphael">
             <img
               src="assets/images/raphael-smeenk-002.jpeg"
@@ -1690,7 +1771,7 @@
           </div>
         </div>
 
-        <div class="coach-card reveal d1">
+        <div class="coach-card">
           <div class="coach-img coach-img--photo">
             <img
               src="assets/images/Vince%20-%20Diamond%20Base%20Ball%20-%20Hitting.JPG"
@@ -1712,7 +1793,7 @@
           </div>
         </div>
 
-        <div class="coach-card reveal d2">
+        <div class="coach-card">
           <div class="coach-img coach-img--photo coach-img--photo-jair">
             <img
               src="assets/images/Jair-van-Borkulo-Diamond-Impact-Baseball-002.jpeg"
@@ -1733,66 +1814,70 @@
             <p class="coach-bio">Bij Diamond Impact deelt hij zijn ervaring om jonge spelers sterker te maken technisch, mentaal en als teamgenoot.</p>
           </div>
         </div>
-
-        <div class="coach-card reveal d3">
-          <div class="coach-img coach-img--photo coach-img--photo-diego">
-            <img
-              src="assets/images/Diego-Diamond-Impact-001.jpeg"
-              alt="Diegomar Markwell"
-              width="600"
-              height="800"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="coach-img-grain" aria-hidden="true"></div>
-            <div class="coach-flag">🇳🇱</div>
-            <div class="coach-level">Pitching Coach · Blue Jays · WBC</div>
-          </div>
-          <div class="coach-body">
-            <h3>DIEGOMAR MARKWELL</h3>
-            <p class="coach-role">Pitching Coach · Toronto Blue Jays · Team Kingdom NL</p>
-            <p class="coach-bio">Diegomar Markwell brengt meer dan 25 jaar ervaring mee op het hoogste niveau van het internationale honkbal. Als voormalig professioneel pitcher binnen de Toronto Blue Jays organisatie, wereldkampioen met Nederland, Olympiër en deelnemer aan vijf World Baseball Classics, heeft hij een schat aan kennis opgebouwd.</p>
-            <p class="coach-bio">Tegenwoordig is hij pitching coach van zowel Curaçao Neptunus als het Nederlands Koninkrijksteam. Tijdens Diamond Impact Baseball zal Diegomar zijn ervaring en inzichten delen met de volgende generatie spelers.</p>
-          </div>
-        </div>
       </div>
 
       <p class="coaches-more-note reveal" role="note">
         De komende tijd volgen er meer namen van coaches die erbij aanwezig zullen zijn.
       </p>
 
-      <div class="partner-bar reveal">
-        <div class="partner-card">
-          <a
-            href="https://www.fca.org/what-is-fca"
-            class="partner-logo partner-logo--img partner-logo-link"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="FCA — meer informatie"
-          >
-            <img src="assets/images/FCA-Logo.png" alt="FCA" width="160" height="80" decoding="async" />
-          </a>
-          <div class="partner-card-text">
-            <h4>FCA</h4>
-            <p><strong>FCA — 70 jaar ervaring in sport en geloof.</strong> De Fellowship of Christian Athletes is wereldwijd actief in meer dan 100 landen. 
-               In Nederland faciliteren zij de karakter-sessies en de optionele geloofsmomenten. Hun aanpak is altijd sporter-gestuurd: we praten over wat jou drijft op het veld. Deelname aan geloofsactiviteiten is bij ons altijd een keuze, nooit een verplichting.</p>
-            <p class="partner-card-more"><a href="https://www.fca.org/what-is-fca" target="_blank" rel="noopener noreferrer">Meer informatie over FCA</a></p>
+      <div class="partner-guest-grid reveal">
+        <div class="partner-fca-col">
+          <div class="partner-card">
+            <a
+              href="https://www.fca.org/what-is-fca"
+              class="partner-logo partner-logo--img partner-logo-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="FCA — meer informatie"
+            >
+              <img src="assets/images/FCA-Logo.png" alt="FCA" width="160" height="80" decoding="async" />
+            </a>
+            <div class="partner-card-text">
+              <h4>FCA</h4>
+              <p><strong>FCA — 70 jaar ervaring in sport en geloof.</strong> De Fellowship of Christian Athletes is wereldwijd actief in meer dan 100 landen. 
+                 In Nederland faciliteren zij de karakter-sessies en de optionele geloofsmomenten. Hun aanpak is altijd sporter-gestuurd: we praten over wat jou drijft op het veld. Deelname aan geloofsactiviteiten is bij ons altijd een keuze, nooit een verplichting.</p>
+              <p class="partner-card-more"><a href="https://www.fca.org/what-is-fca" target="_blank" rel="noopener noreferrer">Meer informatie over FCA</a></p>
+            </div>
           </div>
         </div>
-        <div class="partner-card">
-          <a
-            href="https://www.celebrationchurch.nl/"
-            class="partner-logo partner-logo--img partner-logo-link"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Celebration Church Netherlands — meer informatie"
-          >
-            <img src="assets/images/CCNL-logo.webp" alt="Celebration Church Netherlands" width="160" height="80" decoding="async" />
-          </a>
-          <div class="partner-card-text">
-            <h4>Celebration Church Netherlands</h4>
-            <p><strong>Samen met FCA organiseert Celebration Church Diamond Impact.</strong> Vanuit hun thuisbasis verzorgen zij de praktische organisatie, de hospitality en de gezonde maaltijden tijdens het weekend. Celebration Church staat voor een omgeving waar iedereen welkom is, ongeacht je achtergrond of overtuiging.</p>
-            <p class="partner-card-more"><a href="https://www.celebrationchurch.nl/" target="_blank" rel="noopener noreferrer">Meer informatie over Celebration Church</a></p>
+
+        <aside class="partner-guest-col" aria-label="Mathieu ten Dam">
+          <article class="coach-card imani-ken-coach-card">
+            <figure class="imani-landscape" role="group" aria-label="Mathieu ten Dam, guest coach FCA Sports Netherlands">
+              <img
+                src="assets/images/Mathieu-Ten-Dam-Diamond-Impact-baseball.png"
+                alt="Mathieu ten Dam — FCA Sports Netherlands"
+                width="1200"
+                height="900"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+            <div class="coach-body">
+              <h3>MATHIEU TEN DAM</h3>
+              <p class="coach-role">Guest Coach · FCA Sports Netherlands · Coach · Oranje International</p>
+              <p class="coach-bio">Na een carrière in de topsport ontdekte Mathieu dat succes verder gaat dan winnen alleen. Vandaag helpt hij sporters groeien in Body, Mind &amp; Heart en ontdekken wie zij zijn, los van prestaties en resultaten.</p>
+              <p class="coach-bio">Een krachtige stem op het gebied van karakter, leiderschap en geloof binnen de sport.</p>
+            </div>
+          </article>
+        </aside>
+
+        <div class="partner-cc-col">
+          <div class="partner-card">
+            <a
+              href="https://www.celebrationchurch.nl/"
+              class="partner-logo partner-logo--img partner-logo-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Celebration Church Netherlands — meer informatie"
+            >
+              <img src="assets/images/CCNL-logo.webp" alt="Celebration Church Netherlands" width="160" height="80" decoding="async" />
+            </a>
+            <div class="partner-card-text">
+              <h4>Celebration Church Netherlands</h4>
+              <p><strong>Samen met FCA organiseert Celebration Church Diamond Impact.</strong> Vanuit hun thuisbasis verzorgen zij de praktische organisatie, de hospitality en de gezonde maaltijden tijdens het weekend. Celebration Church staat voor een omgeving waar iedereen welkom is, ongeacht je achtergrond of overtuiging.</p>
+              <p class="partner-card-more"><a href="https://www.celebrationchurch.nl/" target="_blank" rel="noopener noreferrer">Meer informatie over Celebration Church</a></p>
+            </div>
           </div>
         </div>
       </div>
@@ -1816,15 +1901,23 @@
             <p>Precies dát is ook de kern van Diamond Impact.</p>
             <p>Omdat wij geloven dat de mooiste winst niet altijd op het scorebord staat.</p>
           </div>
-          <div class="imani-video-intro">IMANI Oeganda — baseball &amp; community</div>
-          <div class="imani-vimeo">
-            <iframe
-              loading="lazy"
-              src="https://player.vimeo.com/video/1195342862?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-              allow="autoplay; fullscreen; picture-in-picture"
-              referrerpolicy="strict-origin-when-cross-origin"
-              title="IMANI Outreach Ministries — Oeganda"
-            ></iframe>
+          <div class="imani-video-block">
+            <h3 class="imani-video-title">Vince Rooi zijn trip naar Uganda</h3>
+            <div class="imani-vimeo">
+              <iframe
+                loading="lazy"
+                src="https://player.vimeo.com/video/1201006580?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                allow="autoplay; fullscreen; picture-in-picture"
+                referrerpolicy="strict-origin-when-cross-origin"
+                title="Vince Rooi zijn trip naar Uganda — IMANI Outreach Ministries"
+              ></iframe>
+            </div>
+            <div class="imani-video-body">
+              <p>Tijdens zijn bezoek aan IMANI Outreach Ministries zag Vince van dichtbij hoe baseball levens kan veranderen.</p>
+              <p>Door sport, mentoring en geloof krijgen jongeren de kans om te groeien in karakter, leiderschap en vertrouwen.</p>
+              <p>Diezelfde overtuiging vormt vandaag het hart van Diamond Impact Baseball.</p>
+              <p class="imani-video-tagline">You are more than your game.</p>
+            </div>
           </div>
         </div>
 
