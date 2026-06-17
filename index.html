@@ -1133,6 +1133,21 @@
     .form-submit { width:100%; justify-content:center; font-size:.8rem; padding:1rem; margin-top:.25rem; }
     .form-note { font-size:.68rem; color:var(--mist-dark); text-align:center; line-height:1.7; margin-top:.25rem; }
     .form-note a { color:var(--gold-dim); }
+    .form-cancel-note {
+      margin-top: 1.1rem;
+      font-size: .78rem;
+      color: var(--mist);
+      line-height: 1.75;
+      text-align: left;
+      width: 100%;
+    }
+    .form-cancel-note strong {
+      display: block;
+      color: var(--off-white);
+      font-weight: 600;
+      margin-bottom: .4rem;
+      font-size: .8rem;
+    }
     .form-nb-honeypot { position:absolute!important; height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap;border:0;padding:0;margin:-1px; }
     .form-success { display:none; flex-direction:column; align-items:center; text-align:center; gap:1rem; padding:2rem 1rem; }
     .form-success.visible { display:flex; }
@@ -2196,6 +2211,10 @@
               <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" style="width:15px;height:15px;"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
               Verstuur aanmelding
             </button>
+            <p class="form-cancel-note">
+              <strong>Annuleringsvoorwaarden</strong>
+              Tot en met 1 juli 2026 ontvang je het volledige inschrijfgeld retour. Daarna is restitutie helaas niet meer mogelijk, omdat wij dan al kosten hebben gemaakt voor coaches, locatie en organisatie.
+            </p>
             <p class="form-note">Velden met <span class="req" style="display:inline;">*</span> zijn verplicht.</p>
           </form>
 
@@ -2275,6 +2294,13 @@
             <span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="2" x2="5" y2="8"/><line x1="2" y1="5" x2="8" y2="5"/></svg></span>
           </button>
           <div class="faq-a">Inschrijven kan uiterlijk 31 juli 2026 of zolang er plaatsen beschikbaar zijn. We houden de groep bewust klein zodat elke speler echte coachtijd krijgt. Early bird prijs (€140) geldt tot 15 juni — daarna €160. Betalingsinstructies volgen na bevestiging van inschrijving.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Wat gebeurt er als ik mijn inschrijving moet annuleren?
+            <span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="2" x2="5" y2="8"/><line x1="2" y1="5" x2="8" y2="5"/></svg></span>
+          </button>
+          <div class="faq-a">Tot en met 1 juli 2026 ontvang je het volledige inschrijfgeld retour. Daarna is restitutie helaas niet meer mogelijk, omdat wij dan al kosten hebben gemaakt voor coaches, locatie en organisatie.<br/><br/>Bijzondere omstandigheden zijn er altijd. Neem gerust contact met ons op. We denken graag met je mee.</div>
         </div>
 
         <div class="faq-item">
