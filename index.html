@@ -1086,6 +1086,171 @@
     .signup-grid { display:grid; gap:4rem; position:relative; z-index:1; }
     @media(min-width:900px){ .signup-grid { grid-template-columns:1fr 1fr; align-items:start; } }
 
+    .sponsor-mini {
+      margin-top: 0;
+      margin-bottom: 2rem;
+      padding: 1.75rem 1.65rem;
+      background: linear-gradient(155deg, rgba(30, 95, 173, 0.14) 0%, rgba(6, 11, 20, 0.35) 55%);
+      border: 1px solid rgba(212, 148, 42, 0.32);
+      border-left: 3px solid var(--gold);
+      box-shadow: 0 18px 40px rgba(5, 8, 16, 0.28);
+    }
+    .sponsor-mini-head {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      margin-bottom: .85rem;
+    }
+    .sponsor-mini-eyebrow {
+      font-family: var(--font-cond);
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .sponsor-mini-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.5rem, 3.5vw, 1.9rem);
+      line-height: 1.05;
+      color: var(--white);
+      letter-spacing: .02em;
+    }
+    .sponsor-mini-text {
+      font-size: .85rem;
+      color: var(--mist);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 1.1rem;
+    }
+    .sponsor-amount-label {
+      display: block;
+      font-family: var(--font-cond);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--mist);
+      margin-bottom: .55rem;
+    }
+    .sponsor-mini-amounts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .5rem;
+      margin-bottom: .75rem;
+      border: none;
+      padding: 0;
+      margin-left: 0;
+      margin-right: 0;
+      min-width: 0;
+    }
+    .sponsor-mini-amounts .amount-chip {
+      font-family: var(--font-body);
+      font-size: .88rem;
+      font-weight: 600;
+    }
+    .amount-chip {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: .6rem .4rem;
+      background: var(--navy-4);
+      border: 1px solid rgba(74,154,236,.22);
+      border-radius: 2px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.05rem;
+      color: var(--off-white);
+      letter-spacing: .02em;
+      cursor: pointer;
+      transition: border-color .2s, background .2s, color .2s, box-shadow .2s;
+    }
+    .amount-chip:hover {
+      border-color: rgba(212,148,42,.45);
+      color: var(--white);
+    }
+    .amount-chip.is-selected {
+      background: rgba(212,148,42,.14);
+      border-color: var(--gold);
+      color: var(--gold-light);
+      box-shadow: 0 0 0 1px rgba(212,148,42,.25);
+    }
+    .amount-chip--full.is-selected {
+      background: rgba(212,148,42,.2);
+    }
+    .sponsor-custom-wrap { margin-bottom: 1.1rem; }
+    .sponsor-custom-input {
+      width: 100%;
+      background: var(--navy);
+      border: 1px solid rgba(30,95,173,.25);
+      color: var(--off-white);
+      font-family: var(--font-body);
+      font-size: .9rem;
+      padding: .7rem .9rem;
+      border-radius: 2px;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .sponsor-custom-input:focus {
+      border-color: rgba(212,148,42,.5);
+    }
+    .sponsor-custom-input::placeholder { color: var(--mist-dark); opacity: .55; }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .sponsor-mini-cta {
+      width: 100%;
+      justify-content: center;
+      font-size: .8rem;
+      margin-bottom: .9rem;
+    }
+    .sponsor-mini-cta.is-disabled {
+      opacity: .42;
+      pointer-events: none;
+      cursor: not-allowed;
+      filter: grayscale(0.15);
+    }
+    .sponsor-mini-note {
+      font-size: .72rem;
+      color: var(--mist-dark);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .sponsor-mini-progress {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+    .progress-icon { font-size: .85rem; opacity: .8; flex-shrink: 0; }
+    .progress-bar {
+      flex: 1;
+      height: 4px;
+      background: var(--navy-4);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+      border-radius: 2px;
+    }
+    .progress-text {
+      font-family: var(--font-cond);
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--mist-dark);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
 
     .testimonial-block { background:var(--navy-4); border-left:3px solid var(--gold); padding:1.25rem 1.5rem; margin-top:2rem; }
     .testimonial-block p { font-family:var(--font-cond); font-style:italic; font-size:.95rem; color:var(--off-white); line-height:1.65; }
@@ -1447,6 +1612,17 @@
     .footer-links a:hover { color:var(--gold); }
     .footer-copy { font-size:.72rem; color:rgba(142,168,200,.82); line-height:1.7; text-shadow:0 1px 2px rgba(5, 8, 16, .5); }
     .footer-copy a { color:var(--gold-dim); }
+    .footer-donate {
+      margin-top: 0.85rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid rgba(30, 95, 173, 0.22);
+      font-size: 0.74rem;
+      color: rgba(142, 168, 200, 0.92);
+      line-height: 1.65;
+      max-width: 22rem;
+    }
+    .footer-donate a { color: var(--gold-dim); text-decoration: underline; text-underline-offset: 2px; }
+    .footer-donate a:hover { color: var(--gold-light); }
 
     /* ── Utility block styles used inline ── */
     .info-strip { display:flex; align-items:flex-start; gap:.75rem; padding:1rem 1.25rem; border:1px solid rgba(212,148,42,.15); background:rgba(212,148,42,.05); }
@@ -2052,12 +2228,71 @@
           <p style="font-size:.925rem;color:var(--mist);line-height:1.8;margin-bottom:1.5rem;">
             <strong>Claim je plek bij een kamp dat baseball serieus neemt — en jou ook.</strong> We werken in kleine groepen. Dat betekent maximale reps, persoonlijke feedback van pro-coaches en gesprekken die je bijblijven.
           </p>
-          <ul class="checklist" style="margin-bottom:2rem;">
-            <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5" stroke="var(--blue-bright)" fill="none" stroke-width="2.5"/></svg></span>11–12 augustus 2026 · HCAW Complex, Bussum</li>
-            <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5" stroke="var(--blue-bright)" fill="none" stroke-width="2.5"/></svg></span>€160 · Alle maaltijden · Geen overnachting</li>
+
+          <ul class="checklist" style="margin-bottom:1.75rem;">
+            <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5" stroke="var(--blue-bright)" fill="none" stroke-width="2.5"/></svg></span>11–12 augustus 2026 · €160</li>
             <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5" stroke="var(--blue-bright)" fill="none" stroke-width="2.5"/></svg></span>Voor spelers van 12 t/m 18 jaar</li>
             <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5" stroke="var(--blue-bright)" fill="none" stroke-width="2.5"/></svg></span>Geloofsmomenten zijn altijd optioneel</li>
           </ul>
+
+          <div class="sponsor-mini reveal" id="sponsor-mini" aria-labelledby="donate-h">
+            <div class="sponsor-mini-head">
+              <span class="sponsor-mini-eyebrow">★ Niet voor iedereen vanzelfsprekend</span>
+              <h3 class="sponsor-mini-title" id="donate-h">GEEF EEN SPELER<br/>EEN KANS</h3>
+            </div>
+
+            <p class="sponsor-mini-text">
+              Sommige jongens willen er graag bij zijn, maar voor niet ieder gezin is deelname vanzelfsprekend.
+              Met een bijdrage help je mee om een speler toch de kans te geven om mee te doen.
+            </p>
+
+            <span class="sponsor-amount-label" id="sponsor-amount-label">Kies je geefbedrag</span>
+            <fieldset class="sponsor-mini-amounts" aria-labelledby="sponsor-amount-label">
+              <button type="button" class="amount-chip" data-sponsor-amount="10">€10</button>
+              <button type="button" class="amount-chip" data-sponsor-amount="25">€25</button>
+              <button type="button" class="amount-chip" data-sponsor-amount="50">€50</button>
+              <button type="button" class="amount-chip" data-sponsor-amount="100">€100</button>
+              <button type="button" class="amount-chip amount-chip--full" data-sponsor-amount="160">€160</button>
+              <button type="button" class="amount-chip" data-sponsor-custom>Anders</button>
+            </fieldset>
+
+            <div class="sponsor-custom-wrap">
+              <label class="sr-only" for="sponsor-custom-amount">Eigen bedrag in euro</label>
+              <input
+                type="number"
+                id="sponsor-custom-amount"
+                class="sponsor-custom-input"
+                placeholder="€ Of vul een eigen bedrag in"
+                min="1"
+                step="1"
+                inputmode="numeric"
+              />
+            </div>
+
+            <a
+              id="sponsor-cta"
+              href="https://online.givtapp.net/NjFmN2VkMDE0ZTRjMDQyNWQwMDAuYzAwMDAwMDAwMDAx"
+              class="btn btn-gold sponsor-mini-cta is-disabled"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-disabled="true"
+            >
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 1v14M2 8h12"/></svg>
+              <span id="sponsor-cta-label">Kies een bedrag</span>
+            </a>
+
+            <p class="sponsor-mini-note">
+              Een volledige plek kost €160. Overgebleven donaties worden gebruikt voor materialen, maaltijden en ondersteuning van het kamp.
+            </p>
+
+            <div class="sponsor-mini-progress">
+              <span class="progress-icon" aria-hidden="true">⚾</span>
+              <div class="progress-bar" id="sponsor-progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" aria-label="Voortgang sponsoring">
+                <div class="progress-fill" id="sponsor-progress-fill" style="width:10%;"></div>
+              </div>
+              <span class="progress-text" id="sponsor-progress-text">1 van de 10 spelers geholpen</span>
+            </div>
+          </div>
 
           <div class="testimonial-block">
             <p>"Wij geloven dat je het hardst groeit op een veld waar het veilig is om te falen, te leren en het opnieuw te proberen."</p>
@@ -2303,6 +2538,13 @@
         </div>
 
         <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Wat als deelname financieel lastig is?
+            <span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="2" x2="5" y2="8"/><line x1="2" y1="5" x2="8" y2="5"/></svg></span>
+          </button>
+          <div class="faq-a">We willen niet dat jongens Diamond Impact Baseball moeten missen omdat het financieel niet haalbaar is.<br/><br/>Is deelname voor jullie op dit moment lastig te betalen? Neem dan gerust contact op via <a href="mailto:vince@celebrationchurch.nl" style="color:var(--gold);">vince@celebrationchurch.nl</a>. We kijken dan persoonlijk mee of er vanuit de donaties een plek mogelijk gemaakt kan worden.<br/><br/>We gaan hier zorgvuldig en discreet mee om.</div>
+        </div>
+
+        <div class="faq-item">
           <button class="faq-q" aria-expanded="false">Wie is Vince Rooi en hoe kan ik contact opnemen?
             <span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="2" x2="5" y2="8"/><line x1="2" y1="5" x2="8" y2="5"/></svg></span>
           </button>
@@ -2406,6 +2648,9 @@
         © 2026 Diamond Impact Baseball<br/>
         FCA × Celebration Church Netherlands — Hilversum<br/>
         <a href="mailto:vrooi@celebrationchurch.nl">vrooi@celebrationchurch.nl</a>
+        <p class="footer-donate">
+          Wil je een speler helpen deelnemen? Met een <a href="#signup">donatie</a> help je jongens voor wie het kamp financieel lastig is toch mee te doen.
+        </p>
         <div class="footer-social">
           <a href="https://www.instagram.com/diamondimpactbaseball/" target="_blank" rel="noopener noreferrer">Instagram — @diamondimpactbaseball</a>
         </div>
@@ -2589,6 +2834,90 @@
               if (btn) btn.disabled = false;
             });
         });
+      }
+
+      var sponsorRoot = document.getElementById('sponsor-mini');
+      if (sponsorRoot) {
+        var GIVT_BASE = 'https://online.givtapp.net/NjFmN2VkMDE0ZTRjMDQyNWQwMDAuYzAwMDAwMDAwMDAx';
+        var amountBtns = sponsorRoot.querySelectorAll('[data-sponsor-amount]');
+        var andersBtn = sponsorRoot.querySelector('[data-sponsor-custom]');
+        var customInput = document.getElementById('sponsor-custom-amount');
+        var cta = document.getElementById('sponsor-cta');
+        var ctaLabel = document.getElementById('sponsor-cta-label');
+        var selectedAmount = null;
+        var customMode = false;
+
+        function parseAmount(val) {
+          var n = parseFloat(String(val).replace(',', '.'));
+          return isFinite(n) && n >= 1 ? Math.round(n * 100) / 100 : null;
+        }
+
+        function clearChipSelection() {
+          amountBtns.forEach(function (b) { b.classList.remove('is-selected'); });
+          if (andersBtn) andersBtn.classList.remove('is-selected');
+        }
+
+        function getActiveAmount() {
+          if (customMode || (customInput && String(customInput.value).trim() !== '')) {
+            return parseAmount(customInput.value);
+          }
+          return selectedAmount;
+        }
+
+        function updateCta() {
+          var amt = getActiveAmount();
+          var valid = amt !== null;
+          if (!cta) return;
+          cta.classList.toggle('is-disabled', !valid);
+          cta.setAttribute('aria-disabled', valid ? 'false' : 'true');
+          if (ctaLabel) {
+            ctaLabel.textContent = valid ? 'Doorgaan — €' + amt : 'Kies een bedrag';
+          }
+          var sep = GIVT_BASE.indexOf('?') >= 0 ? '&' : '?';
+          cta.href = valid ? GIVT_BASE + sep + 'amount=' + encodeURIComponent(String(amt)) : GIVT_BASE;
+        }
+
+        function selectPreset(btn) {
+          customMode = false;
+          if (customInput) customInput.value = '';
+          clearChipSelection();
+          btn.classList.add('is-selected');
+          selectedAmount = parseAmount(btn.getAttribute('data-sponsor-amount'));
+          updateCta();
+        }
+
+        amountBtns.forEach(function (btn) {
+          btn.addEventListener('click', function () { selectPreset(btn); });
+        });
+
+        if (andersBtn) {
+          andersBtn.addEventListener('click', function () {
+            customMode = true;
+            selectedAmount = null;
+            clearChipSelection();
+            andersBtn.classList.add('is-selected');
+            if (customInput) customInput.focus();
+            updateCta();
+          });
+        }
+
+        if (customInput) {
+          customInput.addEventListener('input', function () {
+            customMode = true;
+            selectedAmount = null;
+            amountBtns.forEach(function (b) { b.classList.remove('is-selected'); });
+            if (andersBtn) andersBtn.classList.add('is-selected');
+            updateCta();
+          });
+        }
+
+        if (cta) {
+          cta.addEventListener('click', function (e) {
+            if (cta.classList.contains('is-disabled')) e.preventDefault();
+          });
+        }
+
+        updateCta();
       }
 
     })();
