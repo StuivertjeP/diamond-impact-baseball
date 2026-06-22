@@ -117,6 +117,8 @@ const C={
   blue:'#1E5FAD',blueB:'#4A9AEC',
   gold:'#D4942A',goldL:'#F0B840',goldBr:'#FFD060',
   white:'#EEF2F8',mist:'#8EA8C8',
+  skin:'#5C3D2E',skinL:'#7A5238',
+  orange:'#E8610A',orangeD:'#C45108',
   green:'#2A5C2A',greenL:'#3A7A3A',greenD:'#1E421E',
   dirt:'#8B5E3C',dirtL:'#A07040',dirtD:'#6B4828',
   red:'#C0392B',
@@ -276,23 +278,27 @@ function drawPlayer(){
   ctx.fillStyle='rgba(0,0,0,0.3)'; ctx.fill();
 
   /* Jersey */
-  ctx.fillStyle=C.navy2;
+  ctx.fillStyle=C.orange;
   ctx.fillRect(px-15,py-16,30,28);
-  /* Gold sleeve stripes */
-  ctx.fillStyle=C.gold;
+  /* Sleeve stripes */
+  ctx.fillStyle=C.navy3;
   ctx.fillRect(px-15,py-16,3,28);
   ctx.fillRect(px+12,py-16,3,28);
 
+  /* Face */
+  ctx.fillStyle=C.skin;
+  ctx.beginPath(); ctx.arc(px,py-14,7,0,Math.PI*2); ctx.fill();
+
   /* Cap */
-  ctx.fillStyle=C.white;
+  ctx.fillStyle=C.blue;
   ctx.beginPath(); ctx.arc(px,py-20,10,0,Math.PI*2); ctx.fill();
   ctx.fillStyle=C.navy3;
   ctx.fillRect(px-10,py-26,20,8);
 
   /* Jersey number */
   ctx.font=`7px 'Press Start 2P',monospace`;
-  ctx.fillStyle=C.gold; ctx.textAlign='center';
-  ctx.fillText('7',px,py+2);
+  ctx.fillStyle=C.navy; ctx.textAlign='center';
+  ctx.fillText('41',px,py+2);
   ctx.textAlign='left';
 
   /* Glove */

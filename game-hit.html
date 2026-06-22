@@ -97,6 +97,7 @@ const C={
   blue:'#1E5FAD',blueB:'#4A9AEC',
   gold:'#D4942A',goldL:'#F0B840',goldBr:'#FFD060',
   white:'#EEF2F8',mist:'#8EA8C8',
+  skin:'#5C3D2E',skinL:'#7A5238',skinLight:'#B8956E',
   green:'#2A5C2A',greenL:'#3A7A3A',greenD:'#1E421E',
   dirt:'#8B5E3C',dirtL:'#A07040',dirtD:'#6B4828',red:'#C0392B',
 };
@@ -169,14 +170,18 @@ function drawBall(){
 function drawPitcher(){
   const x=PX,y=PY+4;
   ctx.fillStyle=C.navy2; ctx.fillRect(x-8,y-16,16,20);
-  ctx.beginPath(); ctx.arc(x,y-20,9,0,Math.PI*2); ctx.fillStyle=C.white; ctx.fill();
+  ctx.beginPath(); ctx.arc(x,y-20,9,0,Math.PI*2); ctx.fillStyle=C.skinLight; ctx.fill();
   ctx.fillStyle=C.navy3; ctx.fillRect(x-9,y-28,18,7); ctx.fillRect(x-3,y-32,12,5);
   ctx.fillStyle=C.white; ctx.fillRect(x+8,y-14,10,4);
 }
 function drawBatter(){
   const x=PLATEX,y=PLATEY-20,swinging=swingAnim>0;
   ctx.fillStyle=C.navy2; ctx.fillRect(x+10,y-14,14,20);
-  ctx.beginPath(); ctx.arc(x+17,y-18,8,0,Math.PI*2); ctx.fillStyle=C.white; ctx.fill();
+  ctx.font=`6px 'Press Start 2P',monospace`;
+  ctx.fillStyle=C.gold; ctx.textAlign='center';
+  ctx.fillText('41',x+17,y-2);
+  ctx.textAlign='left';
+  ctx.beginPath(); ctx.arc(x+17,y-18,8,0,Math.PI*2); ctx.fillStyle=C.skin; ctx.fill();
   ctx.fillStyle=C.navy; ctx.beginPath(); ctx.arc(x+17,y-22,9,Math.PI,Math.PI*2); ctx.fill();
   ctx.fillRect(x+8,y-22,18,5);
   if(swinging){

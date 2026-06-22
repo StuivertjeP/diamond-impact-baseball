@@ -145,6 +145,21 @@
     .btn-gold:hover { background: var(--gold-bright); border-color: var(--gold-bright); transform: translateY(-2px); box-shadow: 0 10px 35px rgba(212,148,42,.4); }
     .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,.3); }
     .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+    .btn-white-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+      text-transform: none;
+      letter-spacing: .04em;
+      font-weight: 700;
+      transition: all .3s ease;
+    }
+    .btn-white-outline:hover {
+      background: var(--white);
+      color: var(--navy);
+      border-color: var(--white);
+      transform: translateY(-2px);
+    }
     .btn svg { width: 17px; height: 17px; flex-shrink: 0; }
     /* Iets nadruk voor belangrijkste CTAs — lang emailadres apart compacter gehouden */
     .btn-cta-xl { padding: 1.12rem 2.85rem; font-size: clamp(1.08rem, 2.55vw, 1.22rem); }
@@ -454,7 +469,7 @@
     /* ── CTAs ── */
     .hero-ctas { display: flex; flex-wrap: wrap; gap: .875rem; }
 
-    /* ── Scroll — centred ── */
+    /* ── Scroll hint — dubbele pijl ── */
     .hero-scroll {
       position: absolute;
       bottom: 1.75rem;
@@ -464,12 +479,43 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: .4rem;
-      opacity: .4;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
       animation: fadeIn 1s ease 1.5s both;
     }
-    .hero-scroll span { font-family:var(--font-cond); font-size:.55rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--mist); }
-    .scroll-bar { width:1px; height:44px; background:linear-gradient(180deg,var(--blue-bright),transparent); }
+    .hero-scroll:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+    .scroll-arrows {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      line-height: 0;
+    }
+    .scroll-arrow {
+      width: 1.35rem;
+      height: 1.35rem;
+      stroke: var(--gold-light);
+      fill: none;
+      stroke-width: 2.25;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: drop-shadow(0 1px 3px rgba(5, 8, 16, .65));
+      animation: scrollChevron 1.75s ease-in-out infinite;
+    }
+    .scroll-arrow + .scroll-arrow {
+      margin-top: -.55rem;
+      animation-delay: .2s;
+      opacity: .55;
+    }
+    @keyframes scrollChevron {
+      0%, 100% { transform: translateY(0); opacity: .4; }
+      50% { transform: translateY(7px); opacity: 1; }
+    }
 
     /* ════════════════════════════════  TICKER  ══ */
     .ticker-wrap {
@@ -540,6 +586,7 @@
       }
     }
     .coaches-section .coach-intro-col{ color:var(--mist); font-size:.95rem; line-height:1.82; margin:0; }
+    .coaches-section .coach-intro-col strong { color:var(--white); font-weight:600; }
     .coaches-section .coach-intro-col p + p { margin-top:1rem; }
     .coaches-section .sh-body-columns{ margin-top:1rem; max-width:none !important; }
 
@@ -553,10 +600,28 @@
     /* Kopblok links: zelfde typografie als coaches (.label-tag + .impact.sh-title); géén extra .sh-ondermarge */
     .problem .prob-grid > .reveal > .sh.problem-head-block { margin-bottom:0; }
 
-    .prob-list { list-style:none; display:flex; flex-direction:column; gap:1.2rem; }
-    .prob-list li { display:flex; gap:1rem; font-size:.925rem; color:var(--mist); line-height:1.65; padding-bottom:1.2rem; border-bottom:1px solid rgba(26,75,140,.18); }
+    .prob-list { list-style:none; display:flex; flex-direction:column; gap:1.35rem; }
+    .prob-list li {
+      padding-bottom:1.25rem;
+      border-bottom:1px solid rgba(26,75,140,.18);
+    }
     .prob-list li:last-child { border-bottom:none; padding-bottom:0; }
-    .prob-num { font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:rgba(74,154,236,.18); line-height:1; flex-shrink:0; min-width:1.5rem; }
+    .prob-item-title {
+      display:block;
+      font-family:var(--font-cond);
+      font-size:1.05rem;
+      font-weight:700;
+      letter-spacing:.03em;
+      color:var(--white);
+      margin:0 0 .45rem;
+      line-height:1.35;
+    }
+    .prob-list li p {
+      margin:0;
+      font-size:.925rem;
+      color:var(--mist);
+      line-height:1.68;
+    }
     .prob-subh {
       font-family:'Bebas Neue',sans-serif;
       font-size:clamp(1.35rem,3vw,1.85rem);
@@ -713,6 +778,36 @@
     .pillar h4 { font-family:var(--font-cond); font-size:.72rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-dim); margin-top:-.15rem; }
     .pillar p  { font-size:.875rem; color:var(--mist); line-height:1.7; }
 
+    .transform-cta {
+      margin-top:clamp(2.5rem, 5vw, 3.5rem);
+      text-align:center;
+    }
+    .transform-cta-label {
+      display:inline-flex;
+      justify-content:center;
+      margin:0 auto 1.35rem;
+      text-transform:none;
+      letter-spacing:.06em;
+      font-size:clamp(.82rem, 1.85vw, .95rem);
+      line-height:1.55;
+      max-width:32rem;
+    }
+    .transform--photo .transform-cta-label { text-shadow:0 1px 2px rgba(5, 8, 16, .88); }
+    .transform-cta-btns {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:.75rem;
+    }
+    @media(min-width:640px){
+      .transform-cta-btns {
+        flex-direction:row;
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:1rem;
+      }
+    }
+
     /* ════════════════════════════════  COACHES  ══ */
     .coaches-section { background:var(--navy); }
 
@@ -777,6 +872,61 @@
       color: var(--gold-light);
       border: 1px solid rgba(212, 148, 42, 0.28);
       background: rgba(212, 148, 42, 0.06);
+    }
+    .coaches-cta {
+      margin-top: clamp(2.5rem, 5vw, 3.5rem);
+      padding: clamp(2rem, 4vw, 2.75rem) clamp(1.5rem, 4vw, 2.5rem);
+      text-align: center;
+      border: 1px solid rgba(212, 148, 42, 0.28);
+      border-left: 3px solid var(--gold);
+      background: linear-gradient(155deg, rgba(30, 95, 173, 0.12) 0%, rgba(6, 11, 20, 0.35) 55%);
+    }
+    .coaches-cta-label {
+      display: inline-flex;
+      justify-content: center;
+      margin: 0 auto 0.85rem;
+    }
+    .coaches-cta-title {
+      font-size: clamp(2rem, 5.2vw, 3.35rem);
+      color: var(--white);
+      margin: 0 0 1rem;
+      line-height: 0.95;
+    }
+    .coaches-cta-title em {
+      color: var(--blue-bright);
+      font-style: normal;
+    }
+    .coaches-cta-text {
+      font-size: 0.925rem;
+      color: var(--mist);
+      line-height: 1.8;
+      max-width: 36rem;
+      margin: 0 auto 1.5rem;
+    }
+    .coaches-cta-btns {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 28rem;
+      margin: 0 auto;
+    }
+    .coaches-cta-btns .btn {
+      width: 100%;
+      justify-content: center;
+    }
+    @media (min-width: 640px) {
+      .coaches-cta-btns {
+        flex-direction: row;
+        max-width: 44rem;
+        gap: 1rem;
+      }
+      .coaches-cta-btns .btn {
+        flex: 1 1 0;
+        min-width: 0;
+        width: auto;
+      }
     }
     .partner-bar { margin-top:2.5rem; display:grid; gap:1.5rem; }
     @media(min-width:768px){ .partner-bar { grid-template-columns:1fr 1fr; } }
@@ -932,6 +1082,11 @@
       font-size:.875rem;
     }
 
+    .imani-copy-col,
+    .imani-media-col {
+      min-width: 0;
+    }
+
     .imani-video-block {
       margin-top: 2rem;
       max-width: 100%;
@@ -950,20 +1105,32 @@
     .imani-video-body p + p { margin-top:1.05rem; }
     .imani-vimeo {
       position:relative;
-      padding:56.25% 0 0;
+      aspect-ratio:16 / 9;
       border-radius:4px;
       overflow:hidden;
       border:1px solid rgba(30,95,173,.42);
-      background:var(--navy-3);
+      background:var(--navy-3) center / cover no-repeat url("assets/images/Imani-ministry-uganda-baseball-002.jpg");
       box-shadow:0 16px 44px rgba(5, 8, 16, .45);
       max-width:100%;
     }
-    .imani-vimeo iframe {
+    .imani-vimeo iframe,
+    .imani-vimeo video {
       position:absolute;
       inset:0;
       width:100%;
       height:100%;
       border:0;
+      object-fit:cover;
+      display:block;
+    }
+    .imani-vimeo iframe {
+      display:none;
+    }
+    .imani-vimeo.is-vimeo iframe {
+      display:block;
+    }
+    .imani-vimeo.is-vimeo video {
+      display:none;
     }
 
     .imani-copy .label-tag,
@@ -1072,22 +1239,21 @@
 
     .sponsor-mini {
       margin-top: 0;
-      margin-bottom: 2rem;
-      padding: 1.75rem 1.65rem;
-      background: linear-gradient(155deg, rgba(30, 95, 173, 0.14) 0%, rgba(6, 11, 20, 0.35) 55%);
-      border: 1px solid rgba(212, 148, 42, 0.32);
+      margin-bottom: 1.5rem;
+      padding: 1.25rem 1.2rem;
+      background: linear-gradient(155deg, rgba(30, 95, 173, 0.12) 0%, rgba(6, 11, 20, 0.32) 55%);
+      border: 1px solid rgba(212, 148, 42, 0.28);
       border-left: 3px solid var(--gold);
-      box-shadow: 0 18px 40px rgba(5, 8, 16, 0.28);
     }
     .sponsor-mini-head {
       display: flex;
       flex-direction: column;
-      gap: .5rem;
-      margin-bottom: .85rem;
+      gap: .35rem;
+      margin-bottom: .65rem;
     }
     .sponsor-mini-eyebrow {
       font-family: var(--font-cond);
-      font-size: .65rem;
+      font-size: .62rem;
       font-weight: 700;
       letter-spacing: .14em;
       text-transform: uppercase;
@@ -1095,117 +1261,27 @@
     }
     .sponsor-mini-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(1.5rem, 3.5vw, 1.9rem);
+      font-size: clamp(1.35rem, 3vw, 1.65rem);
       line-height: 1.05;
       color: var(--white);
       letter-spacing: .02em;
     }
     .sponsor-mini-text {
-      font-size: .85rem;
+      font-size: .82rem;
       color: var(--mist);
-      line-height: 1.7;
-      max-width: 520px;
-      margin-bottom: 1.1rem;
-    }
-    .sponsor-amount-label {
-      display: block;
-      font-family: var(--font-cond);
-      font-size: .68rem;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--mist);
-      margin-bottom: .55rem;
-    }
-    .sponsor-mini-amounts {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: .5rem;
-      margin-bottom: .75rem;
-      border: none;
-      padding: 0;
-      margin-left: 0;
-      margin-right: 0;
-      min-width: 0;
-    }
-    .sponsor-mini-amounts .amount-chip {
-      font-family: var(--font-body);
-      font-size: .88rem;
-      font-weight: 600;
-    }
-    .amount-chip {
-      display: block;
-      width: 100%;
-      text-align: center;
-      padding: .6rem .4rem;
-      background: var(--navy-4);
-      border: 1px solid rgba(74,154,236,.22);
-      border-radius: 2px;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.05rem;
-      color: var(--off-white);
-      letter-spacing: .02em;
-      cursor: pointer;
-      transition: border-color .2s, background .2s, color .2s, box-shadow .2s;
-    }
-    .amount-chip:hover {
-      border-color: rgba(212,148,42,.45);
-      color: var(--white);
-    }
-    .amount-chip.is-selected {
-      background: rgba(212,148,42,.14);
-      border-color: var(--gold);
-      color: var(--gold-light);
-      box-shadow: 0 0 0 1px rgba(212,148,42,.25);
-    }
-    .amount-chip--full.is-selected {
-      background: rgba(212,148,42,.2);
-    }
-    .sponsor-custom-wrap { margin-bottom: 1.1rem; }
-    .sponsor-custom-input {
-      width: 100%;
-      background: var(--navy);
-      border: 1px solid rgba(30,95,173,.25);
-      color: var(--off-white);
-      font-family: var(--font-body);
-      font-size: .9rem;
-      padding: .7rem .9rem;
-      border-radius: 2px;
-      outline: none;
-      transition: border-color .2s;
-    }
-    .sponsor-custom-input:focus {
-      border-color: rgba(212,148,42,.5);
-    }
-    .sponsor-custom-input::placeholder { color: var(--mist-dark); opacity: .55; }
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
+      line-height: 1.65;
+      margin-bottom: 1rem;
     }
     .sponsor-mini-cta {
       width: 100%;
       justify-content: center;
-      font-size: .8rem;
-      margin-bottom: .9rem;
-    }
-    .sponsor-mini-cta.is-disabled {
-      opacity: .42;
-      pointer-events: none;
-      cursor: not-allowed;
-      filter: grayscale(0.15);
+      margin-bottom: .75rem;
     }
     .sponsor-mini-note {
-      font-size: .72rem;
+      font-size: .7rem;
       color: var(--mist-dark);
-      line-height: 1.6;
-      margin-bottom: 1rem;
+      line-height: 1.55;
+      margin-bottom: .85rem;
     }
     .sponsor-mini-progress {
       display: flex;
@@ -1240,74 +1316,139 @@
     .testimonial-block p { font-family:var(--font-cond); font-style:italic; font-size:.95rem; color:var(--off-white); line-height:1.65; }
     .testimonial-block cite { display:block; margin-top:.6rem; font-size:.68rem; font-style:normal; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-dim); font-family:var(--font-cond); font-weight:700; }
 
-    .form-box { background:var(--navy-4); border:1px solid rgba(74,154,236,.18); padding:3rem 2rem; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; text-align:center; min-height:420px; gap:1rem; }
-    .form-box--register { align-items:stretch; text-align:left; }
-    .form-box--register .form-header { align-self:center; text-align:center; width:100%; max-width:320px; }
-    .form-icon { width:52px; height:52px; border:2px dashed rgba(212,148,42,.3); border-radius:50%; display:flex; align-items:center; justify-content:center; margin-inline:auto; }
-    .form-icon svg { width:20px; height:20px; stroke:var(--gold); fill:none; stroke-width:1.5; opacity:.6; }
+    .form-box {
+      background: linear-gradient(165deg, rgba(30, 95, 173, 0.1) 0%, var(--navy-4) 42%);
+      border: 1px solid rgba(212, 148, 42, 0.22);
+      border-left: 3px solid var(--gold);
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: center;
+      min-height: auto;
+      gap: 0.65rem;
+    }
+    @media (min-width: 640px) {
+      .form-box { padding: 2rem 1.85rem; }
+    }
+    .form-box--register { align-items: stretch; text-align: left; }
+    .form-box--register .form-header { align-self: stretch; text-align: left; width: 100%; max-width: none; margin-bottom: 0.15rem; }
     .form-box--register .form-register-heading {
-      font-family:'Bebas Neue',sans-serif;
-      font-size:clamp(1.85rem, 4.5vw, 2.75rem);
-      line-height:1.02;
-      color:var(--white);
-      letter-spacing:.06em;
-      margin:0;
-      font-weight:400;
-      text-transform:uppercase;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.85rem, 4.5vw, 2.75rem);
+      line-height: 1.02;
+      color: var(--white);
+      letter-spacing: .06em;
+      margin: 0;
+      font-weight: 400;
+      text-transform: uppercase;
     }
-    .form-box > p, .form-box .form-intro { font-size:.78rem; color:rgba(138,168,200,.55); max-width:260px; line-height:1.7; margin-inline:auto; }
-    .form-box .form-intro.form-intro--wide { max-width: min(42rem, 100%); width: 100%; margin-inline: 0; margin-bottom: 1.25rem; text-align: left; }
-
-    .reg-form { display:flex; flex-direction:column; gap:.85rem; width:100%; }
-    .form-row { display:grid; gap:.85rem; }
-    @media(min-width:520px){ .form-row { grid-template-columns:1fr 1fr; } }
-    .form-group { display:flex; flex-direction:column; gap:.4rem; }
-    .form-label { font-family:var(--font-cond); font-size:.68rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--mist); }
-    /* Inschrijf­formulier: NL/ENG labels niet in all-caps */
-    .reg-form .form-label:not(.form-label--caps),
-    .reg-form span.form-label,
-    .reg-form .form-group > div.form-label-heading {
-      text-transform: none;
-      letter-spacing: 0.04em;
-      font-size: 0.74rem;
-      line-height: 1.4;
-      font-weight: 600;
-    }
-    .form-input, .form-select, .form-textarea { background:var(--navy); border:1px solid rgba(30,95,173,.25); color:var(--off-white); font-family:var(--font-body); font-size:.9rem; padding:.7rem .9rem; border-radius:2px; outline:none; transition:border-color .2s; width:100%; }
-    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color:rgba(212,148,42,.5); }
-    .form-input::placeholder, .form-textarea::placeholder { color:var(--mist-dark); opacity:.5; }
-    .form-select { appearance:none; cursor:pointer; }
-    .form-select option { background:var(--navy-2); }
-    .form-textarea { resize:vertical; min-height:90px; }
-    .form-submit { width:100%; justify-content:center; font-size:.8rem; padding:1rem; margin-top:.25rem; }
-    .form-note { font-size:.68rem; color:var(--mist-dark); text-align:center; line-height:1.7; margin-top:.25rem; }
-    .form-note a { color:var(--gold-dim); }
-    .form-cancel-note {
-      margin-top: 1.1rem;
-      font-size: .78rem;
-      color: var(--mist);
+    .form-box > p, .form-box .form-intro {
+      font-size: .95rem;
+      color: var(--off-white);
+      max-width: 100%;
       line-height: 1.75;
+      margin-inline: 0;
+      text-transform: none;
+      font-weight: 400;
+    }
+    .form-box .form-intro.form-intro--wide {
+      max-width: min(42rem, 100%);
+      width: 100%;
+      margin-bottom: 1.35rem;
       text-align: left;
+    }
+
+    .reg-form { display: flex; flex-direction: column; gap: 0.7rem; width: 100%; }
+    .form-row { display: grid; gap: 0.7rem; }
+    @media(min-width:520px){ .form-row { grid-template-columns:1fr 1fr; } }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-label {
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      text-transform: none;
+      color: var(--off-white);
+      line-height: 1.45;
+    }
+    .form-input, .form-select, .form-textarea {
+      background: var(--navy);
+      border: 1px solid rgba(74, 154, 236, 0.22);
+      color: var(--off-white);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      padding: 0.62rem 0.85rem;
+      border-radius: 2px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
       width: 100%;
     }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: rgba(212, 148, 42, 0.65);
+      box-shadow: 0 0 0 1px rgba(212, 148, 42, 0.2);
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--mist-dark); opacity: .55; }
+    .form-select { appearance: none; cursor: pointer; }
+    .form-select option { background: var(--navy-2); }
+    .form-textarea { resize: vertical; min-height: 80px; }
+    .form-submit { width: 100%; justify-content: center; font-size: .8rem; padding: 0.95rem; margin-top: 0.15rem; }
+    .form-note { font-size: .68rem; color: var(--mist-dark); text-align: left; line-height: 1.7; margin-top: 0.15rem; }
+    .form-note a { color: var(--gold-dim); }
+    .form-cancel-note {
+      margin-top: 0.85rem;
+      font-size: 0.8rem;
+      color: var(--mist);
+      line-height: 1.65;
+      text-align: left;
+      width: 100%;
+      font-weight: 400;
+    }
     .form-cancel-note strong {
-      display: block;
-      color: var(--off-white);
+      display: inline;
+      color: inherit;
+      font-weight: 400;
+      margin-bottom: 0;
+      font-size: inherit;
+    }
+    .form-label-heading {
+      font-family: var(--font-body);
+      font-size: 0.88rem;
       font-weight: 600;
-      margin-bottom: .4rem;
-      font-size: .8rem;
+      letter-spacing: 0.01em;
+      text-transform: none;
+      color: var(--off-white);
+      line-height: 1.45;
+    }
+    .form-section {
+      margin-top: 0.25rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid rgba(212, 148, 42, 0.15);
+    }
+    .form-footer {
+      margin-top: 1.15rem;
+      padding-top: 1.15rem;
+      border-top: 1px solid rgba(212, 148, 42, 0.12);
+      width: 100%;
+      text-align: left;
+    }
+    .form-footer p {
+      font-size: 0.78rem;
+      color: var(--mist);
+      margin-bottom: 0.55rem;
     }
     .form-nb-honeypot { position:absolute!important; height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap;border:0;padding:0;margin:-1px; }
     .form-success { display:none; flex-direction:column; align-items:center; text-align:center; gap:1rem; padding:2rem 1rem; }
     .form-success.visible { display:flex; }
     .req { color: var(--red); font-weight: 700; margin-left: .12em; font-size: .85em; }
     .form-hint {
-      font-size: .62rem;
-      color: var(--mist-dark);
-      font-weight: 500;
-      letter-spacing: 0.04em;
+      font-size: .75rem;
+      color: var(--mist);
+      font-weight: 400;
+      letter-spacing: 0;
       text-transform: none;
-      margin-top: -.15rem;
+      margin-top: -.1rem;
     }
     .form-dob-grid { display: grid; gap: .65rem; grid-template-columns: 1fr 1fr 1.2fr; }
     @media (max-width: 480px) { .form-dob-grid { grid-template-columns: 1fr 1fr 1fr; } }
@@ -1346,7 +1487,7 @@
       accent-color: var(--gold);
       flex-shrink: 0;
     }
-    .form-check-req-wrap span { font-size: .815rem; line-height: 1.55; color: var(--off-white); }
+    .form-check-req-wrap span { font-size: .85rem; line-height: 1.55; color: var(--mist); font-weight: 400; }
     .footer-social { margin-top: 0.9rem; }
     .footer-social a {
       color: var(--mist);
@@ -1442,13 +1583,45 @@
     .faq-item { background:var(--navy-3); border-left:2px solid transparent; transition:border-color .3s; }
     .faq-item.open { border-left-color:var(--gold); background:var(--navy-4); }
 
-    .faq-q { width:100%; background:transparent; padding:1.2rem 1.5rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; text-align:left; font-family:var(--font-cond); font-size:.95rem; font-weight:600; letter-spacing:.03em; color:var(--off-white); cursor:pointer; transition:color .2s; }
+    .faq-q {
+      width:100%;
+      background:transparent;
+      padding:1.2rem 1.5rem;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      text-align:left;
+      font-family:var(--font-body);
+      font-size:1rem;
+      font-weight:600;
+      letter-spacing:0.01em;
+      text-transform:none;
+      color:var(--off-white);
+      cursor:pointer;
+      transition:color .2s;
+    }
     .faq-q:hover { color:var(--gold); }
     .faq-icon { width:22px; height:22px; border:1px solid rgba(74,154,236,.25); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:transform .3s, background .3s, border-color .3s; }
     .faq-item.open .faq-icon { transform:rotate(45deg); background:rgba(212,148,42,.12); border-color:rgba(212,148,42,.4); }
     .faq-icon svg { width:10px; height:10px; stroke:var(--blue-bright); fill:none; stroke-width:2.5; }
     .faq-item.open .faq-icon svg { stroke:var(--gold); }
-    .faq-a { display:none; padding:0 1.5rem 1.25rem; font-size:.875rem; color:var(--mist); line-height:1.8; }
+    .faq-a {
+      display:none;
+      padding:0 1.5rem 1.25rem;
+      font-family:var(--font-body);
+      font-size:0.95rem;
+      font-weight:400;
+      letter-spacing:normal;
+      text-transform:none;
+      color:var(--mist);
+      line-height:1.75;
+    }
+    .faq-a strong {
+      font-weight:600;
+      color:var(--off-white);
+      text-transform:none;
+    }
     .faq-item.open .faq-a { display:block; }
 
     /* ════════════════════════════════  GAMES (inline)  ══ */
@@ -1718,7 +1891,7 @@
       </svg>
       <div class="hero-burst-inner">
         <div class="burst-price">€160</div>
-        <div class="burst-note">All-in · geen verborgen kosten</div>
+        <div class="burst-note">All-in deelname</div>
       </div>
     </div>
 
@@ -1734,9 +1907,8 @@
 
       <!-- Intro text -->
       <p class="hero-intro">
-        Train met internationale topcoaches uit Nederland en Amerika tijdens twee intensieve dagen vol high-level baseball, competitie, mentorship en karaktervorming.
-        <br><br>
-        <strong>Voor jongens van 12 t/m 18 jaar die beter willen worden - op én buiten het veld.</strong>
+        Train twee dagen met internationale topcoaches uit Nederland en Amerika. Tijdens twee intensieve dagen vol high-level baseball, competitie, mentorship en karaktervorming.
+        Voor jongens van 12 t/m 18 jaar die beter willen worden - op én buiten het veld.
       </p>
 
       <!-- Date | Location — plain text -->
@@ -1762,10 +1934,12 @@
       </div>
     </div>
 
-    <div class="hero-scroll" aria-hidden="true">
-      <span>Scroll</span>
-      <div class="scroll-bar"></div>
-    </div>
+    <a href="#problem" class="hero-scroll" aria-label="Scroll naar beneden">
+      <span class="scroll-arrows" aria-hidden="true">
+        <svg class="scroll-arrow" viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg>
+        <svg class="scroll-arrow" viewBox="0 0 24 24"><polyline points="6,9 12,15 18,9"/></svg>
+      </span>
+    </a>
   </section>
 
   <!-- ══════════════ TICKER ══════════════ -->
@@ -1802,20 +1976,31 @@
             <p class="label-tag">De realiteit van jonge spelers</p>
             <h2 class="impact sh-title" id="prob-h">JE HOEFT JEZELF<br/><em>NIET TE BEWIJZEN</em></h2>
             <p class="sh-body">
-              Veel jonge spelers stappen het veld op met onzichtbare druk. De druk om te presteren. Om geen fouten te maken. Om te laten zien dat je goed genoeg bent.
-              <br><br>
-              Maar baseball speel je niet op je best wanneer je vastzit in bewijsdrang. Diamond Impact Baseball is de plek waar jonge spelers leren groeien in baseball skills, vertrouwen en karakter, en ontdekken dat er méér is dan alleen prestaties en statistieken.
+              Veel jonge spelers stappen het veld op met onzichtbare druk. <br>Om te presteren.<br> Om geen fouten te maken. <br>Om te laten zien dat je goed genoeg bent.<br><br>
+            
+              Diamond Impact Baseball is de plek waar jonge spelers leren groeien in baseball skills, vertrouwen en karakter, en ontdekken dat er méér is dan alleen prestaties en statistieken.
             </p>
           </div>
         </div>
         <div class="reveal d2">
           <h3 class="prob-subh">Herken jij dit?</h3>
           <ul class="prob-list">
-            <li><span class="prob-num">01</span><span><strong>Spelen met druk in je hoofd</strong><br>Je wilt presteren, geen fouten maken en laten zien wat je kunt. Maar juist die druk kan ervoor zorgen dat je minder vrij speelt.</span></li>
-            <li><span class="prob-num">02</span><span><strong>Techniek is maar één deel van het spel</strong><br>Slaan, pitchen, fielding en game awareness kun je trainen. Maar wat doe je als de spanning oploopt? Het mentale spel maakt vaak het verschil.
-            </span></li>
-            <li><span class="prob-num">03</span><span><strong>Karakter telt ook mee</strong><br>Een goede speler draait niet alleen om statistieken. Hoe je omgaat met tegenslag, competitie, teamgenoten en druk zegt minstens zoveel over je ontwikkeling.</span></li>
-            <li><span class="prob-num">04</span><span><strong>Waarom speel je eigenlijk?</strong><br>Soms raakt het plezier ondergesneeuwd door presteren, verwachtingen en competitie. Terwijl juist liefde voor het spel je verder brengt.</span></li>
+            <li>
+              <strong class="prob-item-title">Spelen met druk in je hoofd</strong>
+              <p>Je wilt presteren, geen fouten maken en laten zien wat je kunt. Maar juist die druk kan ervoor zorgen dat je minder vrij speelt.</p>
+            </li>
+            <li>
+              <strong class="prob-item-title">Techniek is maar één deel van het spel</strong>
+              <p>Slaan, pitchen, fielding en game awareness kun je trainen. Maar wat doe je als de spanning oploopt? Het mentale spel maakt vaak het verschil.</p>
+            </li>
+            <li>
+              <strong class="prob-item-title">Karakter telt ook mee</strong>
+              <p>Een goede speler draait niet alleen om statistieken. Hoe je omgaat met tegenslag, competitie, teamgenoten en druk zegt minstens zoveel over je ontwikkeling.</p>
+            </li>
+            <li>
+              <strong class="prob-item-title">Waarom speel je eigenlijk?</strong>
+              <p>Soms raakt het plezier ondergesneeuwd door presteren, verwachtingen en competitie. Terwijl juist liefde voor het spel je verder brengt.</p>
+            </li>
           </ul>
           <div style="margin-top:2rem;">
             <a href="#signup" class="btn btn-gold">Dit kamp is voor jou →</a>
@@ -1874,11 +2059,19 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="var(--blue-mid)" stroke-width="1.5"><path d="M12 21c-5-3-9-7-9-12a9 9 0 0118 0c0 5-4 9-9 12z"/><circle cx="12" cy="9" r="2"/></svg>
           </div>
           <span class="pillar-num">03</span>
-          <h3>DOEL EN DRIVE (vrijwillige deelname)</h3>
+          <h3>MEER DAN BASEBALL</h3>
           <h4>Een eerlijke blik op wat ons drijft </h4>
           <p>We delen o.a. getuigenissen en muziek over de rol van geloof in de sport.
             <strong>Belangrijk: Deze momenten zijn volledig vrijwillig.</strong> We bieden de ruimte, jij bepaalt of je aansluit.
             </p>
+        </div>
+      </div>
+
+      <div class="transform-cta reveal d4">
+        <p class="label-tag transform-cta-label">Klaar om te groeien in je game én je karakter?</p>
+        <div class="transform-cta-btns">
+          <a href="#coaches" class="btn btn-outline">Ontmoet de coaches</a>
+          <a href="#signup" class="btn btn-gold">Claim jouw plek</a>
         </div>
       </div>
     </div>
@@ -1897,11 +2090,11 @@
             <p>Diamond Impact brengt een unieke line-up samen van internationale coaches en spelers die het spel op het hoogste niveau hebben beleefd. <strong>Hieronder een selectie van de coaches die al toegezegd hebben.</strong></p>
             <p>Van Minor League ervaring in Amerika tot internationals uit het Nederlandse topbaseball. <strong>Dit is een kans om te leren van mensen die weten wat er écht nodig is om te groeien.</strong></p>
             <p><strong>Onze coaching line-up bestaat uit:</strong></p>
-            <p><strong>🇺🇸 Amerikaanse pro-ervaring</strong><br>Coaches en spelers met ervaring binnen het Amerikaanse baseballsysteem, van high-level college baseball tot professioneel niveau.</p>
+            <p><strong>Amerikaanse pro-ervaring</strong><br>Coaches en spelers met ervaring binnen het Amerikaanse baseballsysteem, van high-level college baseball tot professioneel niveau.</p>
           </div>
           <div class="coach-intro-col">
-            <p><strong>🇳🇱 Nederlandse topcoaches &amp; internationals</strong><br>Spelers en coaches die het Europese topniveau kennen en weten wat nodig is om daar te presteren.</p>
-            <p><strong>🤝 FCA &amp; Celebration Church</strong> — Een unieke samenwerking waarin topsport, mentorship en karakterontwikkeling samenkomen in een veilige en inspirerende omgeving.</p>
+            <p><strong>Nederlandse topcoaches &amp; internationals</strong><br>Spelers en coaches die het Europese topniveau kennen en weten wat nodig is om daar te presteren.</p>
+            <p><strong>FCA &amp; Celebration Church</strong> — Een unieke samenwerking waarin topsport, mentorship en karakterontwikkeling samenkomen in een veilige en inspirerende omgeving.</p>
             <p><strong>Voor jongens van 12 t/m 18 jaar</strong><br>Of je nu ambitie hebt om de top te bereiken of simpelweg wilt groeien als speler — Diamond Impact Baseball is gebouwd om je uit te dagen op jouw niveau.</p>
           </div>
         </div>
@@ -2061,6 +2254,16 @@
           </div>
         </div>
       </div>
+
+      <div class="coaches-cta reveal">
+        <p class="label-tag coaches-cta-label">Train met de besten</p>
+        <h3 class="impact coaches-cta-title">NU IS HET <em>JOUW BEURT.</em></h3>
+        <p class="coaches-cta-text">Train twee dagen met coaches die hebben gespeeld op het hoogste niveau van Nederland, Amerika en de wereld.</p>
+        <div class="coaches-cta-btns">
+          <a href="#signup" class="btn btn-gold">Claim jouw plek</a>
+          <a href="#geef-een-kans" class="btn btn-white-outline">Gun een speler een kans</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -2076,60 +2279,32 @@
             <h2 class="impact sh-title" id="signup-h">STAP OP<br/><em>DE PLAAT</em></h2>
           </div>
           <p style="font-size:.925rem;color:var(--mist);line-height:1.8;margin-bottom:1.5rem;">
-            <strong>Claim je plek bij een kamp dat baseball serieus neemt — en jou ook.</strong> We werken in kleine groepen. Dat betekent maximale reps, persoonlijke feedback van pro-coaches en gesprekken die je bijblijven.
+            <strong>Claim je plek bij een kamp dat baseball serieus neemt - en jou ook.</strong> <br>We werken in kleine groepen. Dat betekent maximale reps, persoonlijke feedback van pro-coaches en gesprekken die je bijblijven.
           </p>
 
           <ul class="checklist" style="margin-bottom:1.75rem;">
-            <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5" stroke="var(--blue-bright)" fill="none" stroke-width="2.5"/></svg></span>11–12 augustus 2026 · €160</li>
-            <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5" stroke="var(--blue-bright)" fill="none" stroke-width="2.5"/></svg></span>Voor spelers van 12 t/m 18 jaar</li>
+            <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5" stroke="var(--blue-bright)" fill="none" stroke-width="2.5"/></svg></span>11–12 augustus 2026</li>
+            <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5" stroke="var(--blue-bright)" fill="none" stroke-width="2.5"/></svg></span>Voor jongens van 12 t/m 18 jaar</li>
+            <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5" stroke="var(--blue-bright)" fill="none" stroke-width="2.5"/></svg></span>€ 160,- (All-in deelname)</li>
             <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5" stroke="var(--blue-bright)" fill="none" stroke-width="2.5"/></svg></span>Geloofsmomenten zijn altijd optioneel</li>
           </ul>
 
-          <div class="sponsor-mini reveal" id="sponsor-mini" aria-labelledby="donate-h">
+          <div class="sponsor-mini reveal" id="geef-een-kans" aria-labelledby="donate-h">
             <div class="sponsor-mini-head">
               <span class="sponsor-mini-eyebrow">★ Niet voor iedereen vanzelfsprekend</span>
-              <h3 class="sponsor-mini-title" id="donate-h">GEEF EEN SPELER<br/>EEN KANS</h3>
+              <h3 class="sponsor-mini-title" id="donate-h">GUN EEN SPELER<br/>EEN KANS</h3>
             </div>
 
             <p class="sponsor-mini-text">
-              Sommige jongens willen er graag bij zijn, maar voor niet ieder gezin is deelname vanzelfsprekend.
-              Met een bijdrage help je mee om een speler toch de kans te geven om mee te doen.
+              Niet voor iedere speler is deelname vanzelfsprekend. Help mee om een jongen toch de kans te geven om erbij te zijn.
             </p>
 
-            <span class="sponsor-amount-label" id="sponsor-amount-label">Kies je geefbedrag</span>
-            <fieldset class="sponsor-mini-amounts" aria-labelledby="sponsor-amount-label">
-              <button type="button" class="amount-chip" data-sponsor-amount="10">€10</button>
-              <button type="button" class="amount-chip" data-sponsor-amount="25">€25</button>
-              <button type="button" class="amount-chip" data-sponsor-amount="50">€50</button>
-              <button type="button" class="amount-chip" data-sponsor-amount="100">€100</button>
-              <button type="button" class="amount-chip amount-chip--full" data-sponsor-amount="160">€160</button>
-              <button type="button" class="amount-chip" data-sponsor-custom>Anders</button>
-            </fieldset>
-
-            <div class="sponsor-custom-wrap">
-              <label class="sr-only" for="sponsor-custom-amount">Eigen bedrag in euro</label>
-              <input
-                type="number"
-                id="sponsor-custom-amount"
-                class="sponsor-custom-input"
-                placeholder="€ Of vul een eigen bedrag in"
-                min="1"
-                step="1"
-                inputmode="numeric"
-              />
-            </div>
-
             <a
-              id="sponsor-cta"
               href="https://online.givtapp.net/NjFmN2VkMDE0ZTRjMDQyNWQwMDAuYzAwMDAwMDAwMDAx"
-              class="btn btn-gold sponsor-mini-cta is-disabled"
+              class="btn btn-gold sponsor-mini-cta"
               target="_blank"
               rel="noopener noreferrer"
-              aria-disabled="true"
-            >
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 1v14M2 8h12"/></svg>
-              <span id="sponsor-cta-label">Kies een bedrag</span>
-            </a>
+            >Sponsor een speler</a>
 
             <p class="sponsor-mini-note">
               Een volledige plek kost €160. Overgebleven donaties worden gebruikt voor materialen, maaltijden en ondersteuning van het kamp.
@@ -2161,12 +2336,9 @@
         -->
         <div class="form-box form-box--register reveal d2">
           <div class="form-header">
-            <div class="form-icon">
-              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10h8M8 14h5"/></svg>
-            </div>
             <h2 class="form-register-heading">INSCHRIJVEN</h2>
           </div>
-          <p class="form-intro form-intro--wide">Vul het formulier hieronder in, en we nemen snel contact met je op.</p>
+          <p class="form-intro form-intro--wide">Vul het formulier hieronder in en we nemen snel contact met je op. Diamond Impact Baseball is een kamp voor jongens van 12 t/m 18 jaar.</p>
 
           <div class="form-success" id="form-success">
             <div class="success-icon">
@@ -2195,7 +2367,7 @@
             </p>
 
             <div class="form-group">
-              <label class="form-label" for="speler-voornaam">Speler voor- &amp; achternaam / Player first &amp; last name<span class="req" aria-hidden="true">*</span></label>
+              <label class="form-label" for="speler-voornaam">Speler voor- en achternaam<span class="req" aria-hidden="true">*</span></label>
               <div class="form-row">
                 <div class="form-group" style="gap:.4rem;">
                   <input class="form-input" type="text" id="speler-voornaam" name="speler-voornaam" autocomplete="given-name" placeholder="Voornaam" required />
@@ -2207,9 +2379,8 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="geboorte-dag">Geboortedatum / Date of birth<span class="req" aria-hidden="true">*</span></label>
-              <p class="form-hint" id="dob-hint">(bijv. dag 25 · maand 05 · jaar 2010)</p>
-              <div class="form-dob-grid" role="group" aria-describedby="dob-hint">
+              <label class="form-label" for="geboorte-dag">Geboortedatum<span class="req" aria-hidden="true">*</span></label>
+              <div class="form-dob-grid" role="group" aria-label="Geboortedatum">
                 <input class="form-input" type="number" name="geboorte-dag" id="geboorte-dag" placeholder="Dag" min="1" max="31" inputmode="numeric" required />
                 <input class="form-input" type="number" name="geboorte-maand" id="geboorte-maand" placeholder="Maand" min="1" max="12" inputmode="numeric" required />
                 <input class="form-input" type="number" name="geboorte-jaar" id="geboorte-jaar" placeholder="Jaar" min="1990" max="2016" inputmode="numeric" required />
@@ -2217,21 +2388,12 @@
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="geslacht">Geslacht / Gender</label>
-              <select class="form-select" id="geslacht" name="geslacht">
-                <option value="">—</option>
-                <option value="Man / Male">Man / Male</option>
-                <option value="Vrouw / Female">Vrouw / Female</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="clubnaam">Clubnaam / Club name<span class="req" aria-hidden="true">*</span></label>
+              <label class="form-label" for="clubnaam">Clubnaam<span class="req" aria-hidden="true">*</span></label>
               <input class="form-input" type="text" id="clubnaam" name="clubnaam" placeholder="Naam van je club of team" required />
             </div>
 
             <div class="form-group">
-              <span class="form-label">Positie / Position<span class="req" aria-hidden="true">*</span> <span class="form-hint" style="display:inline;margin:0;">(minimaal één)</span></span>
+              <span class="form-label">Positie<span class="req" aria-hidden="true">*</span> <span class="form-hint" style="display:inline;margin:0;">(minimaal één)</span></span>
               <div class="form-checkbox-grid" role="group" aria-label="Posities">
                 <label class="form-check"><input type="checkbox" name="positie_pitcher" value="Ja" /> Pitcher</label>
                 <label class="form-check"><input type="checkbox" name="positie_catcher" value="Ja" /> Catcher</label>
@@ -2240,8 +2402,8 @@
               </div>
             </div>
 
-            <div class="form-group" style="margin-top:.35rem;padding-top:1rem;border-top:1px solid rgba(30,95,173,.18);">
-              <span class="form-label">Gegevens ouder / Parent details<span class="req" aria-hidden="true">*</span></span>
+            <div class="form-group form-section">
+              <span class="form-label">Gegevens ouder<span class="req" aria-hidden="true">*</span></span>
               <div class="form-row">
                 <div class="form-group" style="gap:.4rem;">
                   <input class="form-input" type="text" id="ouder-voornaam" name="ouder-voornaam" placeholder="Voornaam ouder *" autocomplete="given-name" required />
@@ -2250,31 +2412,30 @@
                   <input class="form-input" type="text" id="ouder-achternaam" name="ouder-achternaam" placeholder="Achternaam ouder *" autocomplete="family-name" required />
                 </div>
               </div>
-              <div class="form-group" style="margin-top:.75rem;">
+              <div class="form-group" style="margin-top:.5rem;">
                 <input class="form-input" type="email" id="ouder-email" name="ouder-email" placeholder="E-mail ouder *" autocomplete="email" required />
               </div>
-              <div class="form-group" style="margin-top:.75rem;">
+              <div class="form-group" style="margin-top:.5rem;">
                 <input class="form-input" type="tel" id="ouder-mobiel" name="ouder-mobiel" placeholder="Mobiele telefoon *" autocomplete="tel" required />
               </div>
-              <div class="form-group" style="margin-top:.75rem;">
+              <div class="form-group" style="margin-top:.5rem;">
                 <input class="form-input" type="tel" id="ouder-thuis-telefoon" name="ouder-thuis-telefoon" placeholder="Thuis telefoonnummer" autocomplete="tel" />
               </div>
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="hoe-gehoord">Hoe heb je van dit kamp gehoord? / How did you hear about this camp?</label>
+              <label class="form-label" for="hoe-gehoord">Hoe heb je van dit kamp gehoord?</label>
               <input class="form-input" type="text" id="hoe-gehoord" name="hoe-gehoord" placeholder="" />
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="opmerkingen">Opmerkingen / Remarks</label>
+              <label class="form-label" for="opmerkingen">Opmerkingen</label>
               <textarea class="form-textarea" id="opmerkingen" name="opmerkingen" placeholder="" rows="3"></textarea>
             </div>
 
             <div class="form-group">
               <div class="form-label form-label-heading" id="promotietoestemming-label">
-                I give my consent for using my pictures/videos for promotion purposes /
-                I geef toestemming voor gebruik van mijn foto&apos;s/videos voor promotiedoeleinden
+                Ik geef toestemming voor gebruik van mijn foto&apos;s en video&apos;s voor promotiedoeleinden
                 <span class="req" aria-hidden="true">*</span>
               </div>
               <label class="form-check-req-wrap" for="promotietoestemming">
@@ -2286,7 +2447,7 @@
                   required
                   aria-labelledby="promotietoestemming-label"
                 />
-                <span>Yes / Ja</span>
+                <span>Ja, ik geef toestemming</span>
               </label>
             </div>
 
@@ -2296,14 +2457,13 @@
               Verstuur aanmelding
             </button>
             <p class="form-cancel-note">
-              <strong>Annuleringsvoorwaarden</strong>
-              Tot en met 1 juli 2026 ontvang je het volledige inschrijfgeld retour. Daarna is restitutie helaas niet meer mogelijk, omdat wij dan al kosten hebben gemaakt voor coaches, locatie en organisatie.
+              Annuleringsvoorwaarden: tot en met 1 juli 2026 ontvang je het volledige inschrijfgeld retour. Daarna is restitutie helaas niet meer mogelijk, omdat wij dan al kosten hebben gemaakt voor coaches, locatie en organisatie.
             </p>
             <p class="form-note">Velden met <span class="req" style="display:inline;">*</span> zijn verplicht.</p>
           </form>
 
-          <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(30,95,173,.15);width:100%;text-align:center;">
-            <p style="font-size:.72rem;color:var(--mist-dark);margin-bottom:.6rem;">Heb je in de tussentijd een vraag? Mail ze gerust naar</p>
+          <div class="form-footer">
+            <p>Heb je in de tussentijd een vraag? Mail ze gerust naar</p>
             <a href="mailto:vrooi@celebrationchurch.nl" class="btn btn-outline signup-mail-btn">vrooi@celebrationchurch.nl</a>
           </div>
         </div>
@@ -2409,13 +2569,22 @@
             <p>Precies dát is ook de kern van Diamond Impact.</p>
             <p>Omdat wij geloven dat de mooiste winst niet altijd op het scorebord staat.</p>
           </div>
-          <div class="imani-video-block">
+          <div class="imani-video-block reveal d3">
             <h3>VINCE ROOI ZIJN TRIP NAAR OEGANDA</h3>
-            <div class="imani-vimeo">
+            <div class="imani-vimeo" id="imani-vimeo-player">
+              <video
+                class="imani-video-native"
+                controls
+                playsinline
+                preload="metadata"
+                poster="assets/images/Imani-ministry-uganda-baseball-002.jpg"
+                title="Vince Rooi zijn trip naar Oeganda — IMANI Outreach Ministries"
+              >
+                <source src="assets/video/imani-Ministry-uganda-baseball.mp4" type="video/mp4" />
+              </video>
               <iframe
-                loading="lazy"
-                src="https://player.vimeo.com/video/1201006580?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-                allow="autoplay; fullscreen; picture-in-picture"
+                src="https://player.vimeo.com/video/1201006580?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;title=0&amp;byline=0&amp;portrait=0"
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
                 referrerpolicy="strict-origin-when-cross-origin"
                 title="Vince Rooi zijn trip naar Oeganda — IMANI Outreach Ministries"
               ></iframe>
@@ -2483,7 +2652,7 @@
             <span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="2" x2="5" y2="8"/><line x1="2" y1="5" x2="8" y2="5"/></svg></span>
           </button>
           <div class="faq-a">Diamond Impact is in de basis een honkbalkamp voor iedereen. 
-            De geloofsmomenten (zoals getuigenissen of muziek) zijn altijd volledig vrijwillig. <strong>Geen druk, geen preken.</strong> 
+            De geloofsmomenten (zoals getuigenissen of muziek) zijn altijd volledig vrijwillig.
             </div>
         </div>
 
@@ -2498,7 +2667,7 @@
           <button class="faq-q" aria-expanded="false">Moet ik overnachten?
             <span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="2" x2="5" y2="8"/><line x1="2" y1="5" x2="8" y2="5"/></svg></span>
           </button>
-          <div class="faq-a">Geen overnachting nodig. Beide dagen starten 's ochtends en eindigen 's avonds. Je kunt elke nacht naar huis reizen. Wil je vlakbij overnachten met teamgenoten? Dat regel je zelf — het maakt geen deel uit van het pakket.</div>
+          <div class="faq-a">Geen overnachting nodig. Beide dagen starten 's ochtends en eindigen 's avonds. Je kunt elke nacht naar huis reizen. Wil je vlakbij overnachten met teamgenoten? Dat regel je zelf - het maakt geen deel uit van het pakket.</div>
         </div>
 
         <div class="faq-item">
@@ -2533,7 +2702,7 @@
           <button class="faq-q" aria-expanded="false">Wat als deelname financieel lastig is?
             <span class="faq-icon"><svg viewBox="0 0 10 10"><line x1="5" y1="2" x2="5" y2="8"/><line x1="2" y1="5" x2="8" y2="5"/></svg></span>
           </button>
-          <div class="faq-a">We willen niet dat jongens Diamond Impact Baseball moeten missen omdat het financieel niet haalbaar is.<br/><br/>Is deelname voor jullie op dit moment lastig te betalen? Neem dan gerust contact op via <a href="mailto:vince@celebrationchurch.nl" style="color:var(--gold);">vince@celebrationchurch.nl</a>. We kijken dan persoonlijk mee of er vanuit de donaties een plek mogelijk gemaakt kan worden.<br/><br/>We gaan hier zorgvuldig en discreet mee om.</div>
+          <div class="faq-a">We willen niet dat jongens Diamond Impact Baseball moeten missen omdat het financieel niet haalbaar is.<br/><br/>Is deelname voor jullie op dit moment lastig te betalen? Neem dan gerust contact op via <a href="mailto:vrooi@celebrationchurch.nl" style="color:var(--gold);">vrooi@celebrationchurch.nl</a>. We kijken dan persoonlijk mee of er vanuit de donaties een plek mogelijk gemaakt kan worden.<br/><br/>We gaan hier zorgvuldig en discreet mee om.</div>
         </div>
 
         <div class="faq-item">
@@ -2778,6 +2947,22 @@
         });
       });
 
+      var imaniPlayer = document.getElementById('imani-vimeo-player');
+      if (imaniPlayer) {
+        var nativeVid = imaniPlayer.querySelector('.imani-video-native');
+        function useImaniVimeoFallback() {
+          imaniPlayer.classList.add('is-vimeo');
+        }
+        if (nativeVid) {
+          nativeVid.addEventListener('error', useImaniVimeoFallback);
+          if (nativeVid.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) {
+            useImaniVimeoFallback();
+          }
+        } else {
+          useImaniVimeoFallback();
+        }
+      }
+
       /** Netlify Forms — formulier “dib-aanmelding”. Mail vrooi@… instellen onder Site → Forms → Notifications */
       var regForm = document.getElementById('reg-form');
       if (regForm) {
@@ -2837,90 +3022,6 @@
               if (btn) btn.disabled = false;
             });
         });
-      }
-
-      var sponsorRoot = document.getElementById('sponsor-mini');
-      if (sponsorRoot) {
-        var GIVT_BASE = 'https://online.givtapp.net/NjFmN2VkMDE0ZTRjMDQyNWQwMDAuYzAwMDAwMDAwMDAx';
-        var amountBtns = sponsorRoot.querySelectorAll('[data-sponsor-amount]');
-        var andersBtn = sponsorRoot.querySelector('[data-sponsor-custom]');
-        var customInput = document.getElementById('sponsor-custom-amount');
-        var cta = document.getElementById('sponsor-cta');
-        var ctaLabel = document.getElementById('sponsor-cta-label');
-        var selectedAmount = null;
-        var customMode = false;
-
-        function parseAmount(val) {
-          var n = parseFloat(String(val).replace(',', '.'));
-          return isFinite(n) && n >= 1 ? Math.round(n * 100) / 100 : null;
-        }
-
-        function clearChipSelection() {
-          amountBtns.forEach(function (b) { b.classList.remove('is-selected'); });
-          if (andersBtn) andersBtn.classList.remove('is-selected');
-        }
-
-        function getActiveAmount() {
-          if (customMode || (customInput && String(customInput.value).trim() !== '')) {
-            return parseAmount(customInput.value);
-          }
-          return selectedAmount;
-        }
-
-        function updateCta() {
-          var amt = getActiveAmount();
-          var valid = amt !== null;
-          if (!cta) return;
-          cta.classList.toggle('is-disabled', !valid);
-          cta.setAttribute('aria-disabled', valid ? 'false' : 'true');
-          if (ctaLabel) {
-            ctaLabel.textContent = valid ? 'Doorgaan — €' + amt : 'Kies een bedrag';
-          }
-          var sep = GIVT_BASE.indexOf('?') >= 0 ? '&' : '?';
-          cta.href = valid ? GIVT_BASE + sep + 'amount=' + encodeURIComponent(String(amt)) : GIVT_BASE;
-        }
-
-        function selectPreset(btn) {
-          customMode = false;
-          if (customInput) customInput.value = '';
-          clearChipSelection();
-          btn.classList.add('is-selected');
-          selectedAmount = parseAmount(btn.getAttribute('data-sponsor-amount'));
-          updateCta();
-        }
-
-        amountBtns.forEach(function (btn) {
-          btn.addEventListener('click', function () { selectPreset(btn); });
-        });
-
-        if (andersBtn) {
-          andersBtn.addEventListener('click', function () {
-            customMode = true;
-            selectedAmount = null;
-            clearChipSelection();
-            andersBtn.classList.add('is-selected');
-            if (customInput) customInput.focus();
-            updateCta();
-          });
-        }
-
-        if (customInput) {
-          customInput.addEventListener('input', function () {
-            customMode = true;
-            selectedAmount = null;
-            amountBtns.forEach(function (b) { b.classList.remove('is-selected'); });
-            if (andersBtn) andersBtn.classList.add('is-selected');
-            updateCta();
-          });
-        }
-
-        if (cta) {
-          cta.addEventListener('click', function (e) {
-            if (cta.classList.contains('is-disabled')) e.preventDefault();
-          });
-        }
-
-        updateCta();
       }
 
     })();
