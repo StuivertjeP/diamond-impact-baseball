@@ -927,51 +927,27 @@
 
     .imani-ken-coach-card .coach-role {
       font-size:.8rem;
-      font-weight:500;
-      text-transform:none;
-      letter-spacing:normal;
-      line-height:1.55;
-      color:var(--mist);
     }
     .imani-ken-coach-card .coach-bio {
       font-size:.875rem;
-      line-height:1.7;
     }
 
     .imani-video-block {
       margin-top: 2rem;
       max-width: 100%;
     }
-    .imani-video-title {
-      font-family:var(--font-body);
-      font-size:1rem;
-      font-weight:600;
-      line-height:1.45;
-      letter-spacing:normal;
-      text-transform:none;
-      color:var(--off-white);
+    .imani-video-block h3 {
+      font-family:'Bebas Neue',sans-serif;
+      font-size:1.5rem;
+      color:var(--white);
+      letter-spacing:.04em;
       margin:0 0 1rem;
-      text-shadow:none;
+      text-transform:none;
     }
     .imani-video-body {
-      margin-top: 1.35rem;
-      font-size: .925rem;
-      color: var(--mist);
-      line-height: 1.8;
-      text-shadow: none;
+      margin-top:1.35rem;
     }
-    .imani-video-body p + p { margin-top: 1.05rem; }
-    .imani-video-tagline {
-      margin-top: 1.35rem !important;
-      font-family: var(--font-body);
-      font-size: .925rem;
-      font-weight: 600;
-      font-style: italic;
-      letter-spacing: normal;
-      text-transform: none;
-      color: var(--gold-light);
-      line-height: 1.65;
-    }
+    .imani-video-body p + p { margin-top:1.05rem; }
     .imani-vimeo {
       position:relative;
       padding:56.25% 0 0;
@@ -992,42 +968,45 @@
 
     .imani-copy .label-tag,
     .imani-inner > .label-tag { margin-bottom:.35rem; }
-    .imani .imani-intro-head.sh { margin-bottom:1.25rem; }
+    .imani-section .imani-intro-head.sh { margin-bottom:1.25rem; }
 
-    /* Body copy: altijd normale zinstekst (nooit Bebas/caps) */
-    .imani-section .imani-lead,
-    .imani-section .imani-body,
-    .imani-section .imani-body p,
-    .imani-section .imani-video-body,
-    .imani-section .imani-video-body p,
+    /* Body copy: zelfde gewicht als inschrijf-sectie (normaal, niet vet) */
+    .imani-section .imani-copy-col .imani-lead,
+    .imani-section .imani-copy-col .imani-body,
+    .imani-section .imani-copy-col .imani-body p,
+    .imani-section .imani-copy-col .imani-video-body,
+    .imani-section .imani-copy-col .imani-video-body p,
     .imani-section .imani-ken-coach-card .coach-role,
     .imani-section .imani-ken-coach-card .coach-bio {
       font-family:var(--font-body);
+      font-weight:400;
+      font-size:.925rem;
+      line-height:1.8;
+      color:var(--mist);
       text-transform:none;
       letter-spacing:normal;
       font-variant:normal;
+      text-shadow:none;
+    }
+    .imani-section .imani-copy-col .imani-body strong,
+    .imani-section .imani-copy-col .imani-video-body strong {
+      font-weight:600;
+      color:var(--off-white);
+    }
+    .imani-section .imani-copy-col .imani-video-tagline {
+      margin-top:1.35rem;
+      font-weight:500;
+      font-style:italic;
+      color:var(--gold-light);
     }
 
     .imani-lead {
-      font-family:var(--font-body);
-      font-style:normal;
-      font-size:.925rem;
-      font-weight:400;
-      letter-spacing:normal;
-      line-height:1.8;
-      color:var(--mist);
       margin-bottom:1.5rem;
       max-width:none;
-      text-shadow:none;
     }
     .imani-body {
-      font-size:.925rem;
-      color:var(--mist);
-      line-height:1.8;
       max-width:none;
-      text-shadow:none;
     }
-    .imani-body p strong { font-weight:600; color:var(--off-white); }
     .imani-body p + p { margin-top:1.05rem; }
     .imani-body a {
       color:var(--gold);
@@ -2431,14 +2410,14 @@
             <p>Omdat wij geloven dat de mooiste winst niet altijd op het scorebord staat.</p>
           </div>
           <div class="imani-video-block">
-            <h3 class="imani-video-title">Vince Rooi zijn trip naar Uganda</h3>
+            <h3>VINCE ROOI ZIJN TRIP NAAR OEGANDA</h3>
             <div class="imani-vimeo">
               <iframe
                 loading="lazy"
                 src="https://player.vimeo.com/video/1201006580?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
                 allow="autoplay; fullscreen; picture-in-picture"
                 referrerpolicy="strict-origin-when-cross-origin"
-                title="Vince Rooi zijn trip naar Uganda — IMANI Outreach Ministries"
+                title="Vince Rooi zijn trip naar Oeganda — IMANI Outreach Ministries"
               ></iframe>
             </div>
             <div class="imani-video-body">
