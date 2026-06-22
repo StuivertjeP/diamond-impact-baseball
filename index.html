@@ -1076,109 +1076,24 @@
     .badge-game   { background:rgba(212,148,42,.12); color:var(--gold); }
     .badge-faith  { background:rgba(80,140,110,.12); color:#7BC8A0; }
 
+    /* Signup kopblok = zelfde structuur als coaches; compactere ondermarge vóór bullets */
+    .signup .signup-intro-head.sh { margin-bottom:1.25rem; }
+
     .signup { background:var(--navy-3); position:relative; overflow:hidden; }
     .signup::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,transparent,var(--gold-dim),var(--gold),var(--gold-dim),transparent); }
     .signup::after  { content:''; position:absolute; bottom:-20%; right:-10%; width:600px; height:600px; border-radius:50%; background:radial-gradient(circle,rgba(30,95,173,.07) 0%,transparent 70%); pointer-events:none; }
-
-    .signup-stack { position:relative; z-index:1; }
-
-    .signup-hero-banner {
-      text-align:center;
-      padding:clamp(1.75rem, 4vw, 2.75rem) clamp(1.25rem, 4vw, 2.5rem);
-      margin-bottom:clamp(1.35rem, 3vw, 2rem);
-      background:linear-gradient(160deg, rgba(30, 95, 173, .24) 0%, rgba(12, 22, 40, .94) 48%, rgba(6, 11, 20, .98) 100%);
-      border:1px solid rgba(212, 148, 42, .48);
-      border-radius:3px;
-      box-shadow:0 24px 52px rgba(5, 8, 16, .38), inset 0 1px 0 rgba(212, 148, 42, .14);
-      position:relative;
-      overflow:hidden;
-    }
-    .signup-hero-banner::before {
-      content:'⚾';
-      position:absolute;
-      right:clamp(1rem, 4vw, 2.5rem);
-      top:50%;
-      transform:translateY(-50%);
-      font-size:clamp(3.5rem, 11vw, 6.5rem);
-      opacity:.07;
-      pointer-events:none;
-      line-height:1;
-    }
-    .signup-hero-banner .label-tag { justify-content:center; margin-bottom:.75rem; }
-    .signup-hero-title {
-      font-family:'Bebas Neue', sans-serif;
-      font-size:clamp(2.5rem, 7.5vw, 4.75rem);
-      line-height:.95;
-      letter-spacing:.03em;
-      text-transform:uppercase;
-      color:var(--white);
-      margin:0 0 .7rem;
-      text-shadow:0 1px 2px rgba(5, 8, 16, .95), 0 12px 32px rgba(5, 8, 16, .45);
-    }
-    .signup-hero-title em { color:var(--gold); font-style:normal; }
-    .signup-hero-lead {
-      font-size:clamp(.9rem, 2vw, 1.02rem);
-      color:var(--mist);
-      line-height:1.75;
-      max-width:38rem;
-      margin:0 auto 1.35rem;
-    }
-    .signup-hero-chips {
-      display:flex;
-      flex-wrap:wrap;
-      gap:.5rem;
-      justify-content:center;
-      list-style:none;
-      margin:0;
-      padding:0;
-    }
-    .signup-hero-chips li {
-      font-family:var(--font-cond);
-      font-size:.7rem;
-      font-weight:700;
-      letter-spacing:.1em;
-      text-transform:uppercase;
-      padding:.5rem .9rem;
-      background:rgba(212, 148, 42, .11);
-      border:1px solid rgba(212, 148, 42, .38);
-      color:var(--gold-light);
-      border-radius:2px;
-    }
-
-    .signup-donate-wrap { margin-bottom:clamp(2rem, 4vw, 3rem); }
 
     .signup-grid { display:grid; gap:4rem; position:relative; z-index:1; }
     @media(min-width:900px){ .signup-grid { grid-template-columns:1fr 1fr; align-items:start; } }
 
     .sponsor-mini {
       margin-top: 0;
-      margin-bottom: 0;
+      margin-bottom: 2rem;
       padding: 1.75rem 1.65rem;
       background: linear-gradient(155deg, rgba(30, 95, 173, 0.14) 0%, rgba(6, 11, 20, 0.35) 55%);
       border: 1px solid rgba(212, 148, 42, 0.32);
       border-left: 3px solid var(--gold);
       box-shadow: 0 18px 40px rgba(5, 8, 16, 0.28);
-    }
-    .sponsor-mini--banner {
-      padding: clamp(1.5rem, 3vw, 2rem) clamp(1.35rem, 3vw, 2.25rem);
-      background: linear-gradient(135deg, rgba(212, 148, 42, .1) 0%, rgba(30, 95, 173, .16) 42%, rgba(6, 11, 20, .55) 100%);
-      border: 1px solid rgba(212, 148, 42, .42);
-      border-left-width: 4px;
-      box-shadow: 0 22px 48px rgba(5, 8, 16, .34);
-    }
-    @media (min-width: 900px) {
-      .sponsor-mini--banner {
-        display: grid;
-        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-        gap: clamp(1.5rem, 3vw, 2.5rem);
-        align-items: start;
-      }
-      .sponsor-mini--banner .sponsor-mini-text { max-width: none; margin-bottom: 0; }
-      .sponsor-mini--banner .sponsor-mini-cta { margin-bottom: .75rem; }
-    }
-    .imani-section--after-signup {
-      background: var(--navy);
-      padding-top: clamp(4rem, 8vw, 6rem);
     }
     .sponsor-mini-head {
       display: flex;
@@ -2167,6 +2082,67 @@
 
   <div class="rule"></div>
 
+  <!-- ══════════════ IMANI / THE BIGGER PICTURE ══════════════ -->
+  <section class="section imani-section" id="imani" aria-labelledby="imani-h">
+    <div class="container imani-inner">
+      <p class="label-tag reveal">THE BIGGER PICTURE</p>
+      <h2 class="impact imani-title reveal" id="imani-h">SOMS IS BASEBALL<br/><em>MEER DAN EEN SPEL</em></h2>
+      <p class="imani-lead reveal">Wat begint met een bal en handschoen, kan levens veranderen</p>
+      <div class="imani-split imani-split--story">
+        <div class="imani-copy-col reveal">
+          <div class="imani-body imani-body--dual">
+            <p>In Oeganda bouwt Kennedy Indevu via <strong>IMANI Outreach Ministries</strong> aan de volgende generatie jonge leiders — met baseball als middel voor mentoring, karaktervorming, onderwijs en geloof. Meer over hun werk: <a href="https://www.imaniministry.com/" target="_blank" rel="noopener noreferrer">imaniministry.com</a>.</p>
+            <p>Daar leren kinderen niet alleen honkbal skills.</p>
+            <p>Ze leren discipline. Leiderschap. Doorzetten. Samenwerken. En vooral: dat hun waarde niet afhangt van prestaties.</p>
+            <p>Precies dát is ook de kern van Diamond Impact.</p>
+            <p>Omdat wij geloven dat de mooiste winst niet altijd op het scorebord staat.</p>
+          </div>
+          <div class="imani-video-block">
+            <h3 class="imani-video-title">Vince Rooi zijn trip naar Uganda</h3>
+            <div class="imani-vimeo">
+              <iframe
+                loading="lazy"
+                src="https://player.vimeo.com/video/1201006580?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                allow="autoplay; fullscreen; picture-in-picture"
+                referrerpolicy="strict-origin-when-cross-origin"
+                title="Vince Rooi zijn trip naar Uganda — IMANI Outreach Ministries"
+              ></iframe>
+            </div>
+            <div class="imani-video-body">
+              <p>Tijdens zijn bezoek aan IMANI Outreach Ministries zag Vince van dichtbij hoe baseball levens kan veranderen.</p>
+              <p>Door sport, mentoring en geloof krijgen jongeren de kans om te groeien in karakter, leiderschap en vertrouwen.</p>
+              <p>Diezelfde overtuiging vormt vandaag het hart van Diamond Impact Baseball.</p>
+              <p class="imani-video-tagline">You are more than your game.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="imani-media-col reveal d2" aria-label="Kennedy Indevu">
+          <article class="coach-card imani-ken-coach-card">
+            <figure class="imani-landscape" role="group" aria-label="Baseball op het veld in Oeganda, IMANI Outreach Ministries">
+              <img
+                src="assets/images/Imani-ministry-uganda-baseball-002.jpg"
+                alt="Spelers en IMANI baseball op het veld in Oeganda"
+                width="1200"
+                height="675"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+            <div class="coach-body">
+              <h3>KENNEDY INDEVU</h3>
+              <p class="coach-role">Guest Coach · IMANI Outreach Ministries · Youth Mentor · Oeganda</p>
+              <p class="coach-bio">Director van IMANI Outreach Ministries in Oeganda, waar baseball wordt ingezet om kinderen en jongeren te begeleiden in karakter, leiderschap, geloof en persoonlijke groei.</p>
+              <p class="coach-bio">Gedreven om via sport kansen te creëren en jonge spelers te helpen groeien, op én buiten het veld.</p>
+            </div>
+          </article>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
   <!-- ══════════════ PROGRAM (tijdelijk verborgen — verwijder `hidden` om weer te tonen) ══════════════ -->
   <section class="section program" id="program" aria-labelledby="prog-h" hidden>
     <div class="container">
@@ -2248,39 +2224,34 @@
 
   <!-- ══════════════ SIGNUP ══════════════ -->
   <section class="section signup" id="signup" aria-labelledby="signup-h">
-    <div class="container signup-stack">
-      <header class="signup-hero-banner reveal">
-        <p class="label-tag">Beperkt aantal plaatsen</p>
-        <h2 class="signup-hero-title" id="signup-h">STAP OP <em>DE PLAAT</em></h2>
-        <p class="signup-hero-lead">
-          <strong style="color:var(--off-white);">Claim je plek bij een kamp dat baseball serieus neemt — en jou ook.</strong>
-          Kleine groepen, maximale reps en persoonlijke feedback van pro-coaches.
-        </p>
-        <ul class="signup-hero-chips" aria-label="Kerngegevens kamp">
-          <li>11–12 augustus 2026</li>
-          <li>€160 · all-in</li>
-          <li>Spelers 12–18 jaar</li>
-          <li>Geloof optioneel</li>
-        </ul>
-      </header>
+    <div class="container">
+      <div class="signup-grid">
+        <div class="reveal">
+          <div class="sh signup-intro-head">
+            <p class="label-tag">Beperkt aantal plaatsen</p>
+            <h2 class="impact sh-title" id="signup-h">STAP OP<br/><em>DE PLAAT</em></h2>
+          </div>
+          <p style="font-size:.925rem;color:var(--mist);line-height:1.8;margin-bottom:1.5rem;">
+            <strong>Claim je plek bij een kamp dat baseball serieus neemt — en jou ook.</strong> We werken in kleine groepen. Dat betekent maximale reps, persoonlijke feedback van pro-coaches en gesprekken die je bijblijven.
+          </p>
 
-      <div class="signup-donate-wrap reveal d1">
-        <div class="sponsor-mini sponsor-mini--banner" id="sponsor-mini" aria-labelledby="donate-h">
-          <div class="sponsor-mini-intro">
+          <ul class="checklist" style="margin-bottom:1.75rem;">
+            <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5" stroke="var(--blue-bright)" fill="none" stroke-width="2.5"/></svg></span>11–12 augustus 2026 · €160</li>
+            <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5" stroke="var(--blue-bright)" fill="none" stroke-width="2.5"/></svg></span>Voor spelers van 12 t/m 18 jaar</li>
+            <li><span class="chk"><svg viewBox="0 0 10 10"><polyline points="2,5.5 4,8 8,2.5" stroke="var(--blue-bright)" fill="none" stroke-width="2.5"/></svg></span>Geloofsmomenten zijn altijd optioneel</li>
+          </ul>
+
+          <div class="sponsor-mini reveal" id="sponsor-mini" aria-labelledby="donate-h">
             <div class="sponsor-mini-head">
               <span class="sponsor-mini-eyebrow">★ Niet voor iedereen vanzelfsprekend</span>
               <h3 class="sponsor-mini-title" id="donate-h">GEEF EEN SPELER<br/>EEN KANS</h3>
             </div>
+
             <p class="sponsor-mini-text">
               Sommige jongens willen er graag bij zijn, maar voor niet ieder gezin is deelname vanzelfsprekend.
               Met een bijdrage help je mee om een speler toch de kans te geven om mee te doen.
             </p>
-            <p class="sponsor-mini-note" style="margin-bottom:0;">
-              Een volledige plek kost €160. Overgebleven donaties worden gebruikt voor materialen, maaltijden en ondersteuning van het kamp.
-            </p>
-          </div>
 
-          <div class="sponsor-mini-actions">
             <span class="sponsor-amount-label" id="sponsor-amount-label">Kies je geefbedrag</span>
             <fieldset class="sponsor-mini-amounts" aria-labelledby="sponsor-amount-label">
               <button type="button" class="amount-chip" data-sponsor-amount="10">€10</button>
@@ -2316,6 +2287,10 @@
               <span id="sponsor-cta-label">Kies een bedrag</span>
             </a>
 
+            <p class="sponsor-mini-note">
+              Een volledige plek kost €160. Overgebleven donaties worden gebruikt voor materialen, maaltijden en ondersteuning van het kamp.
+            </p>
+
             <div class="sponsor-mini-progress">
               <span class="progress-icon" aria-hidden="true">⚾</span>
               <div class="progress-bar" id="sponsor-progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" aria-label="Voortgang sponsoring">
@@ -2324,12 +2299,8 @@
               <span class="progress-text" id="sponsor-progress-text">1 van de 10 spelers geholpen</span>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="signup-grid">
-        <div class="reveal">
-          <div class="testimonial-block" style="margin-top:0;">
+          <div class="testimonial-block">
             <p>"Wij geloven dat je het hardst groeit op een veld waar het veilig is om te falen, te leren en het opnieuw te proberen."</p>
             <cite>De filosofie achter Diamond Impact</cite>
           </div>
@@ -2498,67 +2469,6 @@
 
   <div class="rule"></div>
 
-  <!-- ══════════════ IMANI / THE BIGGER PICTURE ══════════════ -->
-  <section class="section imani-section imani-section--after-signup" id="imani" aria-labelledby="imani-h">
-    <div class="container imani-inner">
-      <p class="label-tag reveal">THE BIGGER PICTURE</p>
-      <h2 class="impact imani-title reveal" id="imani-h">SOMS IS BASEBALL<br/><em>MEER DAN EEN SPEL</em></h2>
-      <p class="imani-lead reveal">Wat begint met een bal en handschoen, kan levens veranderen</p>
-      <div class="imani-split imani-split--story">
-        <div class="imani-copy-col reveal">
-          <div class="imani-body imani-body--dual">
-            <p>In Oeganda bouwt Kennedy Indevu via <strong>IMANI Outreach Ministries</strong> aan de volgende generatie jonge leiders — met baseball als middel voor mentoring, karaktervorming, onderwijs en geloof. Meer over hun werk: <a href="https://www.imaniministry.com/" target="_blank" rel="noopener noreferrer">imaniministry.com</a>.</p>
-            <p>Daar leren kinderen niet alleen honkbal skills.</p>
-            <p>Ze leren discipline. Leiderschap. Doorzetten. Samenwerken. En vooral: dat hun waarde niet afhangt van prestaties.</p>
-            <p>Precies dát is ook de kern van Diamond Impact.</p>
-            <p>Omdat wij geloven dat de mooiste winst niet altijd op het scorebord staat.</p>
-          </div>
-          <div class="imani-video-block">
-            <h3 class="imani-video-title">Vince Rooi zijn trip naar Uganda</h3>
-            <div class="imani-vimeo">
-              <iframe
-                loading="lazy"
-                src="https://player.vimeo.com/video/1201006580?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-                allow="autoplay; fullscreen; picture-in-picture"
-                referrerpolicy="strict-origin-when-cross-origin"
-                title="Vince Rooi zijn trip naar Uganda — IMANI Outreach Ministries"
-              ></iframe>
-            </div>
-            <div class="imani-video-body">
-              <p>Tijdens zijn bezoek aan IMANI Outreach Ministries zag Vince van dichtbij hoe baseball levens kan veranderen.</p>
-              <p>Door sport, mentoring en geloof krijgen jongeren de kans om te groeien in karakter, leiderschap en vertrouwen.</p>
-              <p>Diezelfde overtuiging vormt vandaag het hart van Diamond Impact Baseball.</p>
-              <p class="imani-video-tagline">You are more than your game.</p>
-            </div>
-          </div>
-        </div>
-
-        <aside class="imani-media-col reveal d2" aria-label="Kennedy Indevu">
-          <article class="coach-card imani-ken-coach-card">
-            <figure class="imani-landscape" role="group" aria-label="Baseball op het veld in Oeganda, IMANI Outreach Ministries">
-              <img
-                src="assets/images/Imani-ministry-uganda-baseball-002.jpg"
-                alt="Spelers en IMANI baseball op het veld in Oeganda"
-                width="1200"
-                height="675"
-                loading="lazy"
-                decoding="async"
-              />
-            </figure>
-            <div class="coach-body">
-              <h3>KENNEDY INDEVU</h3>
-              <p class="coach-role">Guest Coach · IMANI Outreach Ministries · Youth Mentor · Oeganda</p>
-              <p class="coach-bio">Director van IMANI Outreach Ministries in Oeganda, waar baseball wordt ingezet om kinderen en jongeren te begeleiden in karakter, leiderschap, geloof en persoonlijke groei.</p>
-              <p class="coach-bio">Gedreven om via sport kansen te creëren en jonge spelers te helpen groeien, op én buiten het veld.</p>
-            </div>
-          </article>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <div class="rule"></div>
-
   <!-- ══════════════ FAQ ══════════════ -->
   <section class="section faq faq--photo" id="faq" aria-labelledby="faq-h">
     <div class="faq-bg-visual" aria-hidden="true">
@@ -2576,7 +2486,7 @@
     </div>
     <div class="container faq-inner">
       <div class="sh reveal faq-heading" style="text-align:center;">
-        <p class="label-tag" style="justify-content:center;margin-bottom:1rem;">Q&amp;A</p>
+        <p class="label-tag" style="justify-content:center;margin-bottom:1rem;">Vragen?</p>
         <h2 class="impact sh-title" id="faq-h" style="text-align:center;"><em>ANTWOORDEN</em></h2>
       </div>
 
