@@ -840,6 +840,9 @@
     .coach-img--photo-diego img {
       object-position:center 35%;
     }
+    .coach-img--photo-kennedy img {
+      object-position:center 18%;
+    }
     .coach-img-grain {
       position:absolute; inset:-1px; z-index:1; pointer-events:none;
       opacity:.16;
@@ -1015,8 +1018,8 @@
       position:relative;
     }
 
-    /* Liggende IMANI-foto vast boven Kennedy-kaart (één visueel blok) */
-    .imani-ken-coach-card .imani-landscape {
+    /* Liggende foto — alleen partner-guest (Mathieu) */
+    .partner-guest-col .imani-ken-coach-card .imani-landscape {
       margin:0;
       max-width:none;
       width:100%;
@@ -1025,7 +1028,7 @@
       box-shadow:none;
       background:var(--navy-4);
     }
-    .imani-ken-coach-card .imani-landscape img {
+    .partner-guest-col .imani-ken-coach-card .imani-landscape img {
       width:100%;
       height:auto;
       display:block;
@@ -1050,7 +1053,7 @@
         justify-self:stretch;
         max-width:none;
       }
-      .imani-ken-coach-card {
+      .imani-media-col .coach-card {
         position:sticky;
         top:6.75rem;
       }
@@ -1069,17 +1072,6 @@
     .imani-media-col {
       width:100%;
       margin-inline:auto;
-    }
-
-    .imani-ken-coach-card.coach-card {
-      overflow:hidden;
-    }
-
-    .imani-ken-coach-card .coach-role {
-      font-size:.8rem;
-    }
-    .imani-ken-coach-card .coach-bio {
-      font-size:.875rem;
     }
 
     .imani-copy-col,
@@ -1113,24 +1105,12 @@
       box-shadow:0 16px 44px rgba(5, 8, 16, .45);
       max-width:100%;
     }
-    .imani-vimeo iframe,
-    .imani-vimeo video {
+    .imani-vimeo iframe {
       position:absolute;
       inset:0;
       width:100%;
       height:100%;
       border:0;
-      object-fit:cover;
-      display:block;
-    }
-    .imani-vimeo iframe {
-      display:none;
-    }
-    .imani-vimeo.is-vimeo iframe {
-      display:block;
-    }
-    .imani-vimeo.is-vimeo video {
-      display:none;
     }
 
     .imani-copy .label-tag,
@@ -1142,9 +1122,7 @@
     .imani-section .imani-copy-col .imani-body,
     .imani-section .imani-copy-col .imani-body p,
     .imani-section .imani-copy-col .imani-video-body,
-    .imani-section .imani-copy-col .imani-video-body p,
-    .imani-section .imani-ken-coach-card .coach-role,
-    .imani-section .imani-ken-coach-card .coach-bio {
+    .imani-section .imani-copy-col .imani-video-body p {
       font-family:var(--font-body);
       font-weight:400;
       font-size:.925rem;
@@ -2571,17 +2549,7 @@
           </div>
           <div class="imani-video-block reveal d3">
             <h3>VINCE ROOI ZIJN TRIP NAAR OEGANDA</h3>
-            <div class="imani-vimeo" id="imani-vimeo-player">
-              <video
-                class="imani-video-native"
-                controls
-                playsinline
-                preload="metadata"
-                poster="assets/images/Imani-ministry-uganda-baseball-002.jpg"
-                title="Vince Rooi zijn trip naar Oeganda — IMANI Outreach Ministries"
-              >
-                <source src="assets/video/imani-Ministry-uganda-baseball.mp4" type="video/mp4" />
-              </video>
+            <div class="imani-vimeo">
               <iframe
                 src="https://player.vimeo.com/video/1201006580?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;title=0&amp;byline=0&amp;portrait=0"
                 allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
@@ -2599,17 +2567,20 @@
         </div>
 
         <aside class="imani-media-col reveal d2" aria-label="Kennedy Indevu">
-          <article class="coach-card imani-ken-coach-card">
-            <figure class="imani-landscape" role="group" aria-label="Baseball op het veld in Oeganda, IMANI Outreach Ministries">
+          <article class="coach-card">
+            <div class="coach-img coach-img--photo coach-img--photo-kennedy">
               <img
-                src="assets/images/Imani-ministry-uganda-baseball-002.jpg"
-                alt="Spelers en IMANI baseball op het veld in Oeganda"
-                width="1200"
-                height="675"
+                src="assets/images/Imani-ministry-uganda-baseball-005.jpg"
+                alt="Kennedy Indevu"
+                width="600"
+                height="800"
                 loading="lazy"
                 decoding="async"
               />
-            </figure>
+              <div class="coach-img-grain" aria-hidden="true"></div>
+              <div class="coach-flag">🇺🇬</div>
+              <div class="coach-level">Guest Coach · IMANI · Oeganda</div>
+            </div>
             <div class="coach-body">
               <h3>KENNEDY INDEVU</h3>
               <p class="coach-role">Guest Coach · IMANI Outreach Ministries · Youth Mentor · Oeganda</p>
@@ -2946,22 +2917,6 @@
           }
         });
       });
-
-      var imaniPlayer = document.getElementById('imani-vimeo-player');
-      if (imaniPlayer) {
-        var nativeVid = imaniPlayer.querySelector('.imani-video-native');
-        function useImaniVimeoFallback() {
-          imaniPlayer.classList.add('is-vimeo');
-        }
-        if (nativeVid) {
-          nativeVid.addEventListener('error', useImaniVimeoFallback);
-          if (nativeVid.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) {
-            useImaniVimeoFallback();
-          }
-        } else {
-          useImaniVimeoFallback();
-        }
-      }
 
       /** Netlify Forms — formulier “dib-aanmelding”. Mail vrooi@… instellen onder Site → Forms → Notifications */
       var regForm = document.getElementById('reg-form');
